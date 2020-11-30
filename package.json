@@ -1,0 +1,62 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "lerna run build --scope frontend && lerna run build --scope single-page-markdown-website",
+    "clean": "lerna run --parallel clean && rimraf '*.log'",
+    "fix": "lerna run --parallel fix",
+    "lint": "lerna run --parallel lint",
+    "postinstall": "yarn run build",
+    "reset": "yarn run clean && lerna clean --yes && rimraf node_modules yarn.lock && yarn install",
+    "test": "lerna run test"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.4",
+    "@types/html-minifier": "^4.0.0",
+    "@types/node": "^14.14.10",
+    "@types/tap": "^14.10.1",
+    "@types/unist": "^2.0.3",
+    "chokidar-cli": "^2.1.0",
+    "concurrently": "^5.3.0",
+    "eslint": "^7.14.0",
+    "eslint-config-yuanqing": "^0.0.4",
+    "highlight.js": "^10.4.0",
+    "husky": "^4.3.0",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.5.2",
+    "mkdirp": "^1.0.4",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "sass": "^1.29.0",
+    "stylelint": "^13.8.0",
+    "stylelint-config-yuanqing": "^0.0.1",
+    "tap": "^14.11.0",
+    "terser": "^5.5.1",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2",
+    "webpack": "^5.9.0",
+    "webpack-cli": "^4.2.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-yuanqing"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint"
+    ],
+    "*.scss": [
+      "stylelint"
+    ]
+  },
+  "prettier": "eslint-config-yuanqing/prettier",
+  "stylelint": {
+    "extends": "stylelint-config-yuanqing"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

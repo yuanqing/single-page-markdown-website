@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "name": "frontend",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "yarn run clean && concurrently --raw 'yarn run build-html' 'yarn run build-scss' 'yarn run build-ts'",
+    "build-html": "mkdirp ../single-page-markdown-website/build && cp src/html/template.html ../single-page-markdown-website/build/template.html",
+    "build-scss": "sass --load-path ../../node_modules --no-source-map --stop-on-error --style compressed src/scss/style.scss ../single-page-markdown-website/build/style.css",
+    "build-ts": "webpack",
+    "clean": "rimraf '*.log' ../single-page-markdown-website/build",
+    "fix": "concurrently --raw 'yarn run fix-scss' 'yarn run fix-ts'",
+    "fix-scss": "stylelint --fix 'src/**/*.scss'",
+    "fix-ts": "eslint --fix webpack.config.js 'src/**/*.ts'",
+    "lint": "concurrently --raw 'yarn run lint-scss' 'yarn run lint-ts'",
+    "lint-scss": "stylelint 'src/**/*.scss'",
+    "lint-ts": "eslint webpack.config.js 'src/**/*.ts'",
+    "watch": "yarn run clean && concurrently --raw 'yarn run watch-html' 'yarn run watch-scss' 'yarn run watch-ts'",
+    "watch-html": "chokidar --command 'yarn run build-html' --initial --silent 'src/html/**/*.html'",
+    "watch-scss": "chokidar --command 'yarn run build-scss' --initial --silent 'src/scss/**/*.scss'",
+    "watch-ts": "chokidar --command 'yarn run build-ts' --initial --silent 'src/ts/**/*.ts'"
+  }
+}

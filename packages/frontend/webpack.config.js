@@ -4,7 +4,7 @@ const TerserWebpackPlugin = require('terser-webpack-plugin')
 module.exports = function (_, argv) {
   const isProduction = argv.mode === 'production'
   return {
-    devtool: 'eval-cheap-source-map',
+    devtool: isProduction === true ? undefined : 'eval-cheap-source-map',
     entry: './src/ts/script.ts',
     mode: argv.mode,
     module: {

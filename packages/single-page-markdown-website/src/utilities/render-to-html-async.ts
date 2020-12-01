@@ -1,8 +1,7 @@
-import * as fs from 'fs-extra'
 import { minify } from 'html-minifier'
 import * as unified from 'unified'
 
-import { resolveFrontendLibFilePathAsync } from './resolve-frontend-lib-file-path-async'
+import { readFrontendLibFileAsync } from './read-frontend-lib-file-async'
 
 const remarkParse = require('remark-parse')
 const remarkToRehype = require('remark-rehype')
@@ -20,13 +19,12 @@ export async function renderToHtmlAsync({
   content: string
   toc: string
 }): Promise<string> {
-  const htmlTemplate = await fs.readFile(
-    await resolveFrontendLibFilePathAsync('index.html'),
-    'utf8'
-  )
+  const htmlTemplate = await readFrontendLibFileAsync('index.html')
   const html = htmlTemplate
-    .replace(/__CONTENT__/, await renderMarkdownToHtmlAsync(content))
+    .replace(/__CSS__/, await readFrontendLibFileAsync('style.css'))
+    .replace(/__JS__/, await readFrontendLibFileAsync('script.js'))
     .replace(/__TITLE__/, title === null ? '' : title)
+    .replace(/__CONTENT__/, await renderMarkdownToHtmlAsync(content))
     .replace(/__TOC__/, await renderMarkdownToHtmlAsync(toc))
     .trim()
   return minify(html, {

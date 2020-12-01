@@ -1,7 +1,8 @@
 import * as fs from 'fs-extra'
 import { minify } from 'html-minifier'
-import * as path from 'path'
 import * as unified from 'unified'
+
+import { resolveFrontendLibFilePathAsync } from './resolve-frontend-lib-file-path-async'
 
 const remarkParse = require('remark-parse')
 const remarkToRehype = require('remark-rehype')
@@ -9,10 +10,6 @@ const rehypeStringify = require('rehype-stringify')
 const rehypeAutolinkHeadings = require('rehype-autolink-headings')
 const rehypeHighlightJs = require('rehype-highlight')
 const rehypeSlug = require('rehype-slug')
-
-const htmlTemplateFileName = 'template.html'
-const cssFileName = 'style.css'
-const jsFileName = 'script.js'
 
 export async function renderToHtmlAsync({
   title,
@@ -23,16 +20,13 @@ export async function renderToHtmlAsync({
   content: string
   toc: string
 }): Promise<string> {
-  const htmlTemplate = await readFileFromBuildDirectoryAsync(
-    htmlTemplateFileName
+  const htmlTemplate = await fs.readFile(
+    await resolveFrontendLibFilePathAsync('index.html'),
+    'utf8'
   )
-  const css = await readFileFromBuildDirectoryAsync(cssFileName)
-  const js = await readFileFromBuildDirectoryAsync(jsFileName)
   const html = htmlTemplate
-    .replace(/__TITLE__/, title === null ? '' : title)
-    .replace(/__CSS__/, css)
-    .replace(/__JS__/, js)
     .replace(/__CONTENT__/, await renderMarkdownToHtmlAsync(content))
+    .replace(/__TITLE__/, title === null ? '' : title)
     .replace(/__TOC__/, await renderMarkdownToHtmlAsync(toc))
     .trim()
   return minify(html, {
@@ -40,13 +34,6 @@ export async function renderToHtmlAsync({
     minifyJS: true,
     removeTagWhitespace: true
   })
-}
-
-async function readFileFromBuildDirectoryAsync(
-  fileName: string
-): Promise<string> {
-  const filePath = path.resolve(__dirname, '..', '..', 'build', fileName)
-  return fs.readFile(filePath, 'utf8')
 }
 
 async function renderMarkdownToHtmlAsync(content: string): Promise<string> {

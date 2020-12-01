@@ -11,7 +11,6 @@
     "directory": "packages/single-page-markdown-website"
   },
   "files": [
-    "build",
     "lib"
   ],
   "scripts": {
@@ -20,12 +19,14 @@
     "fix": "eslint --fix 'src/**/*.ts'",
     "lint": "eslint 'src/**/*.ts'",
     "prepublishOnly": "yarn run build",
-    "start": "yarn run clean && chokidar --command 'cd sandbox && ts-node ../src/cli.ts \"*.md\" --output index.html' --initial --silent 'build/**/*' 'src/**/*.ts'",
+    "start": "yarn run clean && chokidar --command 'cd sandbox && ts-node ../src/cli.ts \"*.md\"' --initial --silent 'build/**/*' 'src/**/*.ts'",
     "test": "tap 'src/**/__tests__/**/*.ts' --coverage-report html --coverage-report text --jobs-auto --no-browser --reporter terse",
     "watch": "chokidar --command 'yarn run build' --initial --silent 'build/**/*' 'src/**/*.ts'"
   },
   "dependencies": {
+    "@single-page-markdown-website/frontend": "*",
     "@yuanqing/cli": "^0.0.7",
+    "find-up": "^5.0.0",
     "fs-extra": "^9.0.1",
     "globby": "^11.0.1",
     "gray-matter": "^4.0.2",

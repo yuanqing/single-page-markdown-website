@@ -2,8 +2,8 @@
 
 import { createCli } from '@yuanqing/cli'
 
-import { buildHtmlPageAsync } from './build-html-page-async'
-import { CliOptions } from './types'
+import { buildAsync } from './build-async'
+import { Options } from './types'
 import { readConfigAsync } from './utilities/read-config-async'
 
 const packageJson = require('../package.json')
@@ -15,13 +15,12 @@ const cliConfig = {
 
 const commandConfig = {
   description: `${packageJson.description}.`,
-  examples: ["'docs/*.md' --output 'build/index.html'"],
+  examples: ["'*.md'", "'*.md' --output dist"],
   options: [
     {
       aliases: ['o'],
-      default: null,
-      description:
-        'Set the output file path. Defaults to writing to `stdout` if not specified.',
+      default: './build',
+      description: "Set the output directory. Defaults './build'.",
       name: 'output',
       type: 'STRING'
     }
@@ -43,7 +42,10 @@ async function main() {
       const { positionals, options, remainder } = result
       const globPatterns = [positionals.files as string, ...remainder]
       const config = await readConfigAsync()
-      await buildHtmlPageAsync(globPatterns, config, options as CliOptions)
+      await buildAsync(globPatterns, {
+        outputDirectory: options.output,
+        ...config
+      } as Options)
     }
   } catch (error) {
     console.error(error.message) // eslint-disable-line no-console

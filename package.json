@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "lerna run build --scope frontend && lerna run build --scope single-page-markdown-website",
+    "build": "lerna run build --scope @single-page-markdown-website/frontend && lerna run build --scope single-page-markdown-website",
     "clean": "lerna run --parallel clean && rimraf '*.log'",
     "fix": "lerna run --parallel fix",
     "lint": "lerna run --parallel lint",
@@ -30,7 +30,7 @@
     "stylelint": "^13.8.0",
     "stylelint-config-yuanqing": "^0.0.1",
     "tap": "^14.11.0",
-    "terser": "^5.5.1",
+    "terser-webpack-plugin": "^5.0.3",
     "ts-loader": "^8.0.11",
     "typescript": "^4.1.2",
     "webpack": "^5.9.0",

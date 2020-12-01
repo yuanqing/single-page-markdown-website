@@ -1,13 +1,27 @@
 {
-  "private": true,
-  "name": "frontend",
+  "name": "@single-page-markdown-website/frontend",
   "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "",
+  "keywords": [],
+  "author": "Yuan Qing Lim",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yuanqing/single-page-markdown-website.git",
+    "directory": "packages/frontend"
+  },
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "yarn run clean && concurrently --raw 'yarn run build-html' 'yarn run build-scss' 'yarn run build-ts'",
-    "build-html": "mkdirp ../single-page-markdown-website/build && cp src/html/template.html ../single-page-markdown-website/build/template.html",
-    "build-scss": "sass --load-path ../../node_modules --no-source-map --stop-on-error --style compressed src/scss/style.scss ../single-page-markdown-website/build/style.css",
-    "build-ts": "webpack",
-    "clean": "rimraf '*.log' ../single-page-markdown-website/build",
+    "build-html": "mkdirp lib && cp src/html/index.html lib",
+    "build-scss": "sass --load-path ../../node_modules --no-source-map --stop-on-error --style compressed src/scss/style.scss lib/style.css",
+    "build-ts": "webpack --mode production",
+    "clean": "rimraf '*.log' lib",
     "fix": "concurrently --raw 'yarn run fix-scss' 'yarn run fix-ts'",
     "fix-scss": "stylelint --fix 'src/**/*.scss'",
     "fix-ts": "eslint --fix webpack.config.js 'src/**/*.ts'",
@@ -17,6 +31,6 @@
     "watch": "yarn run clean && concurrently --raw 'yarn run watch-html' 'yarn run watch-scss' 'yarn run watch-ts'",
     "watch-html": "chokidar --command 'yarn run build-html' --initial --silent 'src/html/**/*.html'",
     "watch-scss": "chokidar --command 'yarn run build-scss' --initial --silent 'src/scss/**/*.scss'",
-    "watch-ts": "chokidar --command 'yarn run build-ts' --initial --silent 'src/ts/**/*.ts'"
+    "watch-ts": "chokidar --command 'webpack' --initial --silent 'src/ts/**/*.ts'"
   }
 }

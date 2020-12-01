@@ -1,14 +1,14 @@
-export type CliOptions = {
-  output: null | string
+export interface Options extends Config {
+  outputDirectory: string
 }
 
-export type Config = {
-  title: null | string
+export interface Config {
   hiddenTocHeadings: Array<string>
+  title: null | string
 }
 
 export type MarkdownFile = {
+  content: string
   filePath: string
   weight: number
-  content: string
 }

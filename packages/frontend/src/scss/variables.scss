@@ -1,4 +1,4 @@
-html {
+:root {
   --border-radius: 0.25rem;
   --color-bg: #fff;
   --color-fg-1: #000;
@@ -10,7 +10,7 @@ html {
   --font-weight-regular: 400;
   --font-weight-bold: 700;
   --font-family: 'Inter', sans-serif;
-  --font-family-code: 'Menlo', monospace;
+  --font-family-code: 'IBM Plex Mono', monospace;
   --size-1: 0.25rem;
   --size-2: 0.5rem;
   --size-3: 0.75rem;
@@ -25,8 +25,10 @@ html {
   --size-16: 4rem;
   --size-20: 5rem;
   --size-24: 6rem;
+  --size-64: 16rem;
   --z-index-1: 1;
   --z-index-2: 2;
+
   --toggle-button-svg-height: 1.5rem;
   --toggle-button-padding: 1rem;
   --toggle-button-height: 3.5rem;

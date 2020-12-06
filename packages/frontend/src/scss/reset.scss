@@ -13,16 +13,13 @@ html {
   line-height: 1;
 }
 
-body {
-  margin: 0;
-}
-
 ul,
 ol {
   padding: 0;
   list-style-type: none;
 }
 
+body,
 h1,
 h2,
 h3,
@@ -34,7 +31,8 @@ p,
 ol,
 ul,
 li,
-input {
+input,
+hr {
   margin: 0;
 }
 

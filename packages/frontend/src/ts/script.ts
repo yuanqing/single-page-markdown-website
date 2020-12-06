@@ -22,40 +22,10 @@ function setUpToc(options: {
   if (tocElement === null) {
     throw new Error(`Could not find ${options.tocSelector}`)
   }
-  let scrollY = 0
-  function toggleTocVisibility(): void {
-    const isTocVisible =
-      document.body.classList.contains(options.tocVisibleClassName) === true
-    if (isTocVisible === false) {
-      scrollY = window.scrollY
-      document.body.classList.add(options.tocVisibleClassName)
-      return
-    }
-    document.body.classList.remove(options.tocVisibleClassName)
-    window.scrollTo(0, scrollY)
-  }
   toggleButtonElement.addEventListener('click', function () {
-    toggleTocVisibility()
+    document.body.classList.toggle(options.tocVisibleClassName)
   })
-  tocElement.addEventListener('click', function (event: Event) {
-    if (event.target === null) {
-      return
-    }
-    const element = event.target as HTMLElement
-    const href = element.getAttribute('href')
-    if (href === null || href === '' || href[0] !== '#') {
-      return
-    }
-    const headerElement = document.querySelector(`[id='${href.slice(1)}']`)
-    if (headerElement === null) {
-      return
-    }
-    event.preventDefault()
+  tocElement.addEventListener('click', function () {
     document.body.classList.remove(options.tocVisibleClassName)
-    const scrollY =
-      headerElement.getBoundingClientRect().top -
-      (toggleButtonElement as HTMLButtonElement).offsetHeight -
-      16
-    window.scrollTo(0, scrollY)
   })
 }

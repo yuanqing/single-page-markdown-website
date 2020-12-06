@@ -44,7 +44,7 @@
     }
   }
 
-  > .toc__inner > ul > li:first-child > a:before {
+  > ul > li:first-child > a:before {
     display: none;
   }
 
@@ -65,5 +65,25 @@
   }
   li li li li li li a {
     padding-left: calc(6 * var(--size-4));
+  }
+}
+
+@media (min-width: $screen-xl) {
+  .toc {
+    top: 0;
+    right: auto;
+    display: block;
+    width: var(--size-64);
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    pointer-events: auto;
+
+    .--toc-visible & {
+      display: block;
+    }
+
+    a:before {
+      right: 0;
+      left: 0;
+    }
   }
 }

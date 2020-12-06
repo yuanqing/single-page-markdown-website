@@ -43,3 +43,9 @@
     }
   }
 }
+
+@media (min-width: $screen-xl) {
+  .toc-toggle-button {
+    display: none;
+  }
+}

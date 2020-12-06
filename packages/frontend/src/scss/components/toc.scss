@@ -1,16 +1,15 @@
 .toc {
   position: fixed;
-  top: 0;
+  top: var(--toggle-button-height);
   right: 0;
   bottom: 0;
   left: 0;
   display: none;
-  padding-top: var(--toggle-button-height);
   overflow-y: auto;
   background-color: var(--color-bg);
   pointer-events: none;
 
-  .toc-visible & {
+  .--toc-visible & {
     display: block;
     pointer-events: auto;
   }
@@ -24,6 +23,11 @@
     color: var(--color-fg-2);
     overflow-wrap: break-word;
 
+    &:focus {
+      background-color: var(--color-accent);
+      outline: 0;
+    }
+
     &:before {
       position: absolute;
       top: 0;
@@ -33,6 +37,10 @@
       height: 1px;
       background-color: var(--color-fg-5);
       content: '';
+    }
+
+    &:focus:before {
+      display: none;
     }
   }
 

@@ -8,8 +8,12 @@ body {
   background-color: var(--color-bg);
 }
 
-.toc-visible {
+.--toc-visible {
   position: fixed;
+}
+
+::selection {
+  background-color: var(--color-accent);
 }
 
 @media (min-width: 640px) {

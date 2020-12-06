@@ -1,7 +1,7 @@
 function main(): void {
   setUpToc({
     tocSelector: '[data-js="toc"]',
-    tocVisibleClassName: 'toc-visible',
+    tocVisibleClassName: '--toc-visible',
     toggleButtonSelector: '[data-js="toc-toggle-button"]'
   })
 }

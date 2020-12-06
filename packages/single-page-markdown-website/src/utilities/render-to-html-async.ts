@@ -6,6 +6,7 @@ import * as remarkParse from 'remark-parse'
 import * as remarkToRehype from 'remark-rehype'
 import * as unified from 'unified'
 
+import { glyphs } from './glyphs'
 import { readFrontendLibFileAsync } from './read-frontend-lib-file-async'
 
 const rehypeAutolinkHeadings = require('rehype-autolink-headings')
@@ -25,6 +26,7 @@ export async function renderToHtmlAsync({
   const html = htmlTemplate
     .replace(/\/\*__CSS__\*\//, await readFrontendLibFileAsync('style.css'))
     .replace(/__JS__/, await readFrontendLibFileAsync('script.js'))
+    .replace(/__GLYPHS__/, glyphs.join(''))
     .replace(/__TITLE__/, title === null ? '' : title)
     .replace(/__CONTENT__/, await renderMarkdownToHtmlAsync(content))
     .replace(/__TOC__/, await renderMarkdownToHtmlAsync(toc))

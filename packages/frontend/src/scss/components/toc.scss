@@ -1,0 +1,57 @@
+.toc {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  padding-top: var(--toggle-button-height);
+  overflow-y: auto;
+  background-color: var(--color-bg);
+  pointer-events: none;
+
+  .toc-visible & {
+    display: block;
+    pointer-events: auto;
+  }
+
+  a {
+    position: relative;
+    display: block;
+    padding-top: var(--size-4);
+    padding-right: var(--size-4);
+    padding-bottom: var(--size-4);
+    color: var(--color-fg-2);
+    overflow-wrap: break-word;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      right: var(--size-4);
+      left: var(--size-4);
+      display: block;
+      height: 1px;
+      background-color: var(--color-fg-5);
+      content: '';
+    }
+  }
+
+  li a {
+    padding-left: calc(1 * var(--size-4));
+  }
+  li li a {
+    padding-left: calc(2 * var(--size-4));
+  }
+  li li li a {
+    padding-left: calc(3 * var(--size-4));
+  }
+  li li li li a {
+    padding-left: calc(4 * var(--size-4));
+  }
+  li li li li li a {
+    padding-left: calc(5 * var(--size-4));
+  }
+  li li li li li li a {
+    padding-left: calc(6 * var(--size-4));
+  }
+}

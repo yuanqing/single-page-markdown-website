@@ -1,0 +1,25 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  color: var(--color-fg-1);
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+}
+
+.toc-visible {
+  position: fixed;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 960px) {
+  html {
+    font-size: 24px;
+  }
+}

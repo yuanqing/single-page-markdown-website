@@ -4,14 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>__TITLE__</title>
-    <link href="style.css" rel="stylesheet">
+    <style>/*__CSS__*/</style>
   </head>
   <body>
     <main class="content">__CONTENT__</main>
-    <button class="toggle-button" data-js="toggle-button">Toggle Button</button>
-    <aside class="toc">
+    <div class="toc-toggle-button">
+      <button class="toc-toggle-button__button" data-js="toc-toggle-button">
+        <svg viewBox="0 0 24 24" class="toc-toggle-button__menu">
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M3.75 5.25c-.41421 0-.75.33579-.75.75s.33579.75.75.75h16.5c.4142 0 .75-.33579.75-.75s-.3358-.75-.75-.75H3.75zM3 12c0-.4142.33579-.75.75-.75h16.5c.4142 0 .75.3358.75.75s-.3358.75-.75.75H3.75c-.41421 0-.75-.3358-.75-.75zm0 6c0-.4142.33579-.75.75-.75h16.5c.4142 0 .75.3358.75.75s-.3358.75-.75.75H3.75c-.41421 0-.75-.3358-.75-.75z" />
+        </svg>
+        <svg viewBox="0 0 24 24" class="toc-toggle-button__close">
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M5.78033 4.71967c-.29289-.29289-.76777-.29289-1.06066 0s-.29289.76777 0 1.06066L10.9393 12l-6.21963 6.2197c-.29289.2929-.29289.7677 0 1.0606.29289.2929.76777.2929 1.06066 0L12 13.0607l6.2197 6.2196c.2929.2929.7677.2929 1.0606 0 .2929-.2929.2929-.7677 0-1.0606L13.0607 12l6.2196-6.21967c.2929-.29289.2929-.76777 0-1.06066s-.7677-.29289-1.0606 0L12 10.9393 5.78033 4.71967z" />
+        </svg>
+      </button>
+    </div>
+    <aside class="toc" data-js="toc">
       <div class="toc__inner">__TOC__</div>
     </aside>
-    <script src="script.js"></script>
+    <script>__JS__</script>
   </body>
 </html>

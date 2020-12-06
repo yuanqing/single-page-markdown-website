@@ -1,58 +1,9 @@
-@import 'highlight.js/scss/default.scss';
+@import url('https://fonts.googleapis.com/css?family=Inter:400,500,700&display=swap');
+
 @import './reset.scss';
-@import './constants.scss';
-
-a {
-  color: blue;
-}
-
-.content {
-  padding: 48px $padding 0 $padding;
-}
-
-.toc {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  z-index: 1;
-  display: none;
-  width: 200px;
-  overflow-y: auto;
-
-  .toc-visible & {
-    display: block;
-  }
-}
-
-.toc li li {
-  padding-left: $padding;
-}
-
-.toggle-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-@media (min-width: 960px) {
-  .content {
-    position: relative;
-    left: $toc-width / 2;
-    z-index: 2;
-    width: $content-width;
-    margin: auto;
-    padding: 0;
-    padding-right: 0;
-    padding-left: 0;
-  }
-
-  .toc {
-    display: block;
-    margin-left: ($content-width + $toc-width) / 2 * -1;
-  }
-
-  .toggle-button {
-    display: none;
-  }
-}
+@import './variables.scss';
+@import './base.scss';
+@import './components/content.scss';
+@import './components/highlightjs.scss';
+@import './components/toc-toggle-button.scss';
+@import './components/toc.scss';

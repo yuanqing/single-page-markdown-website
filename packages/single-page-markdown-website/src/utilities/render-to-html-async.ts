@@ -1,14 +1,16 @@
 import { minify } from 'html-minifier'
+import * as rehypeSlug from 'rehype-slug'
+import * as rehypeStringify from 'rehype-stringify'
+import * as remarkGfm from 'remark-gfm'
+import * as remarkParse from 'remark-parse'
+import * as remarkToRehype from 'remark-rehype'
 import * as unified from 'unified'
 
 import { readFrontendLibFileAsync } from './read-frontend-lib-file-async'
 
-const remarkParse = require('remark-parse')
-const remarkToRehype = require('remark-rehype')
-const rehypeStringify = require('rehype-stringify')
 const rehypeAutolinkHeadings = require('rehype-autolink-headings')
+const remarkEmoji = require('remark-emoji')
 const rehypeHighlightJs = require('rehype-highlight')
-const rehypeSlug = require('rehype-slug')
 
 export async function renderToHtmlAsync({
   title,
@@ -21,7 +23,7 @@ export async function renderToHtmlAsync({
 }): Promise<string> {
   const htmlTemplate = await readFrontendLibFileAsync('index.html')
   const html = htmlTemplate
-    .replace(/__CSS__/, await readFrontendLibFileAsync('style.css'))
+    .replace(/\/\*__CSS__\*\//, await readFrontendLibFileAsync('style.css'))
     .replace(/__JS__/, await readFrontendLibFileAsync('script.js'))
     .replace(/__TITLE__/, title === null ? '' : title)
     .replace(/__CONTENT__/, await renderMarkdownToHtmlAsync(content))
@@ -38,6 +40,8 @@ async function renderMarkdownToHtmlAsync(content: string): Promise<string> {
   return new Promise(function (resolve, reject) {
     unified()
       .use(remarkParse)
+      .use(remarkGfm)
+      .use(remarkEmoji)
       .use(remarkToRehype)
       .use(rehypeSlug)
       .use(rehypeAutolinkHeadings)

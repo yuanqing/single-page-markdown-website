@@ -1,0 +1,75 @@
+.toc-toggle-button {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: var(--z-index-1);
+  background-color: var(--color-bg);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+
+  .toc-visible & {
+    right: var(--size-4); // so that scrollbar peeks through
+    box-shadow: none;
+
+    &:before {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: var(--size-4);
+      display: block;
+      height: 1px;
+      background-color: var(--color-fg-5);
+      content: '';
+    }
+  }
+
+  &__button {
+    position: relative;
+    z-index: var(--z-index-2);
+    padding: var(--toggle-button-padding);
+    color: var(--color-fg-2);
+    border-radius: 0;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: none;
+      border: 2px solid var(--color-fg-4);
+      border-radius: var(--border-radius);
+      content: '';
+    }
+
+    &:focus {
+      outline: none;
+
+      &:before {
+        display: block;
+      }
+    }
+  }
+
+  &__menu,
+  &__close {
+    width: var(--toggle-button-svg-height);
+    height: var(--toggle-button-svg-height);
+  }
+
+  &__menu {
+    display: block;
+
+    .toc-visible & {
+      display: none;
+    }
+  }
+
+  &__close {
+    display: none;
+
+    .toc-visible & {
+      display: block;
+    }
+  }
+}

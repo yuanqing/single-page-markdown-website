@@ -1,0 +1,139 @@
+.content {
+  padding: var(--scroll-margin-top) var(--size-4) 0 var(--size-4);
+  font-weight: 400;
+  font-size: var(--size-4);
+  line-height: var(--size-6);
+  overflow-wrap: break-word;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-weight: var(--font-weight-bold);
+  }
+  h1 {
+    margin-top: var(--size-9);
+    font-size: var(--size-9);
+    line-height: var(--size-12);
+    letter-spacing: -0.03125rem;
+  }
+  h2 {
+    margin-top: var(--size-7);
+    font-size: var(--size-7);
+    line-height: var(--size-10);
+    letter-spacing: -0.03125rem;
+  }
+  h3 {
+    margin-top: var(--size-5);
+    font-size: var(--size-5);
+    line-height: var(--size-8);
+  }
+  h4 {
+    margin-top: var(--size-4);
+    font-size: var(--size-4);
+  }
+  h5 {
+    margin-top: var(--size-4);
+    font-weight: bold;
+    font-size: var(--size-4);
+  }
+  h6 {
+    margin-top: var(--size-4);
+    color: var(--color-fg-2);
+    font-size: var(--size-3);
+    font-style: italic;
+  }
+
+  a {
+    color: currentColor;
+    text-decoration: underline;
+    text-underline-offset: 0.1875rem;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  p,
+  ul,
+  ol {
+    margin-top: var(--size-2);
+
+    p,
+    ul,
+    ol {
+      margin-top: 0;
+    }
+  }
+
+  li {
+    position: relative;
+    padding-left: var(--size-7);
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+    }
+  }
+
+  ul li:before {
+    content: '○';
+  }
+
+  ol {
+    counter-reset: count;
+  }
+  ol li {
+    counter-increment: count;
+
+    &:before {
+      content: counter(count);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  blockquote {
+    position: relative;
+    padding-left: var(--size-7);
+    color: var(--color-fg-3);
+
+    &:before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      display: block;
+      width: 0.25rem;
+      background-color: var(--color-fg-4);
+      border-radius: 0.125rem;
+      content: '';
+    }
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    margin: auto;
+  }
+
+  code {
+    padding: 0.1875rem 0.25rem;
+    color: var(--color-fg-2);
+    font-family: 'Menlo', monospace;
+    background-color: var(--color-fg-5);
+    border-radius: var(--border-radius);
+  }
+  pre code {
+    display: block;
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .content ul li:before {
+    border-width: 2px;
+  }
+}

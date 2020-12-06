@@ -44,6 +44,10 @@
     }
   }
 
+  > .toc__inner > ul > li:first-child > a:before {
+    display: none;
+  }
+
   li a {
     padding-left: calc(1 * var(--size-4));
   }

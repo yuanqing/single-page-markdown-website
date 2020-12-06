@@ -3,7 +3,10 @@
   font-weight: var(--font-weight-regular);
   font-size: var(--size-4);
   line-height: var(--size-6);
-  overflow-wrap: break-word;
+
+  > :not(pre) {
+    overflow-wrap: break-word;
+  }
 
   h1,
   h2,

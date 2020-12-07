@@ -1,96 +1,78 @@
 /*
-Docco style used in http://jashkenas.github.com/docco/ converted by Simon Madine (@thingsinjars)
+Description: Srcery dark color scheme for highlight.js
+Author: Chen Bin <chen.bin@gmail.com>
+Website: https://srcery-colors.github.io/
+Date: 2020-04-06
 */
 
 .hljs {
   display: block;
   padding: 0.5em;
   overflow-x: auto;
-  color: #000;
+  color: #fce8c3;
+  background: #1c1b19;
 }
 
-.hljs-comment,
-.hljs-quote {
-  color: #408080;
-  font-style: italic;
+.hljs-strong,
+.hljs-emphasis {
+  color: #918175;
 }
 
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-literal,
-.hljs-subst {
-  color: #954121;
-}
-
-.hljs-number {
-  color: #40a070;
-}
-
-.hljs-string,
-.hljs-doctag {
-  color: #219161;
-}
-
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-section,
-.hljs-type {
-  color: #19469d;
-}
-
-.hljs-params {
-  color: #00f;
-}
-
-.hljs-title {
-  color: #458;
-  font-weight: bold;
-}
-
-.hljs-tag,
-.hljs-name,
-.hljs-attribute {
-  color: #000080;
-  font-weight: normal;
-}
-
-.hljs-variable,
-.hljs-template-variable {
-  color: #008080;
-}
-
+.hljs-bullet,
+.hljs-quote,
+.hljs-link,
+.hljs-number,
 .hljs-regexp,
-.hljs-link {
-  color: #b68;
+.hljs-literal {
+  color: #ff5c8f;
 }
 
-.hljs-symbol,
-.hljs-bullet {
-  color: #990073;
-}
-
-.hljs-built_in,
-.hljs-builtin-name {
-  color: #0086b3;
-}
-
-.hljs-meta {
-  color: #999;
-  font-weight: bold;
-}
-
-.hljs-deletion {
-  background: #fdd;
-}
-
-.hljs-addition {
-  background: #dfd;
+.hljs-code,
+.hljs-selector-class {
+  color: #68a8e4;
 }
 
 .hljs-emphasis {
   font-style: italic;
 }
 
-.hljs-strong {
-  font-weight: bold;
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-section,
+.hljs-attribute,
+.hljs-variable {
+  color: #ef2f27;
+}
+
+.hljs-name,
+.hljs-title {
+  color: #fbb829;
+}
+
+.hljs-type,
+.hljs-params {
+  color: #0aaeb3;
+}
+
+.hljs-string {
+  color: #98bc37;
+}
+
+.hljs-subst,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-symbol,
+.hljs-selector-id,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-addition {
+  color: #c07abe;
+}
+
+.hljs-comment,
+.hljs-deletion,
+.hljs-meta {
+  color: #918175;
 }

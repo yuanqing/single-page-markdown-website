@@ -5,8 +5,11 @@
   --color-fg-2: #333;
   --color-fg-3: #7f7f7f;
   --color-fg-4: #ccc;
-  --color-fg-5: #eee;
-  --color-accent: #ffeb00;
+  --color-fg-5: #f4f4f4;
+  --color-focus-bg: #fee81e;
+  --color-focus-fg: #000;
+  --color-selection-bg: rgba(0, 0, 0, 0.99);
+  --color-selection-fg: #fff;
   --font-weight-regular: 400;
   --font-weight-bold: 700;
   --font-family: 'Inter', sans-serif;
@@ -33,4 +36,17 @@
   --toggle-button-padding: 1rem;
   --toggle-button-height: 3.5rem;
   --scroll-margin-top: 4.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #000;
+    --color-fg-1: #fff;
+    --color-fg-2: #ccc;
+    --color-fg-3: #7f7f7f;
+    --color-fg-4: #333;
+    --color-fg-5: #202020;
+    --color-selection-bg: rgba(255, 255, 255, 0.99);
+    --color-selection-fg: #000;
+  }
 }

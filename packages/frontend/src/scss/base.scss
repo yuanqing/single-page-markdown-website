@@ -15,7 +15,11 @@ body {
 }
 
 ::selection {
-  background-color: var(--color-accent);
+  color: var(--color-selection-fg);
+  background-color: var(--color-selection-bg);
+}
+img::selection {
+  background-color: var(--color-bg);
 }
 
 @media (min-width: $screen-md) {

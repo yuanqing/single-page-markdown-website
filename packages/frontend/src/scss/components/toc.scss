@@ -6,6 +6,8 @@
   left: 0;
   display: none;
   overflow-y: auto;
+  font-size: var(--size-4);
+  line-height: var(--size-6);
   background-color: var(--color-bg);
   pointer-events: none;
 
@@ -20,11 +22,16 @@
     padding-top: var(--size-4);
     padding-right: var(--size-4);
     padding-bottom: var(--size-4);
-    color: var(--color-fg-2);
+    color: var(--color-fg-3);
     overflow-wrap: break-word;
 
+    &:hover {
+      background-color: var(--color-fg-5);
+    }
+
     &:focus {
-      background-color: var(--color-accent);
+      color: var(--color-focus-fg);
+      background-color: var(--color-focus-bg);
       outline: 0;
     }
 
@@ -68,13 +75,36 @@
   }
 }
 
+@media (min-width: $screen-md) {
+  .toc {
+    line-height: var(--size-5);
+
+    a {
+      padding-top: var(--size-3);
+      padding-bottom: var(--size-3);
+    }
+  }
+}
+
+@media (min-width: $screen-lg) {
+  .toc {
+    font-size: var(--size-3);
+    line-height: var(--size-4);
+
+    a {
+      padding-top: var(--size-2);
+      padding-bottom: var(--size-2);
+    }
+  }
+}
+
 @media (min-width: $screen-xl) {
   .toc {
     top: 0;
     right: auto;
     display: block;
     width: var(--size-64);
-    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    border-right: 1px solid var(--color-fg-5);
     pointer-events: auto;
 
     .--toc-visible & {

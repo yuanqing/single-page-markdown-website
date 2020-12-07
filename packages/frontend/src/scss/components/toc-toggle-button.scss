@@ -15,8 +15,9 @@
     cursor: pointer;
 
     &:focus {
-      background-color: var(--color-accent);
-      outline: none;
+      color: var(--color-focus-fg);
+      background-color: var(--color-focus-bg);
+      outline: 0;
     }
   }
 

@@ -46,7 +46,17 @@ async function renderMarkdownToHtmlAsync(content: string): Promise<string> {
       .use(remarkEmoji)
       .use(remarkToRehype)
       .use(rehypeSlug)
-      .use(rehypeAutolinkHeadings)
+      .use(rehypeAutolinkHeadings, {
+        content: {
+          type: 'text',
+          value: '#'
+        },
+        properties: {
+          ariaHidden: true,
+          class: 'header-link',
+          tabIndex: -1
+        }
+      })
       .use(rehypeHighlightJs)
       .use(rehypeStringify)
       .process(content, function (error, file) {

@@ -12,15 +12,8 @@ export async function buildAsync(
   globs: Array<string>,
   options: Options
 ): Promise<void> {
-  if (globs.length === 0) {
-    throw new Error('Need a Markdown file or glob')
-  }
   const files = await readMarkdownFilesAsync(globs)
-  const content = files
-    .map(function ({ content }) {
-      return content
-    })
-    .join('\n\n')
+  const content = files.join('\n\n')
   const toc = await createMarkdownTocAsync(content, options.hiddenTocHeadings)
   const html = await renderToHtmlAsync({ content, title: options.title, toc })
   const htmlFilePath = path.join(options.outputDirectory, outputHtmlFileName)

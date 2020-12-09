@@ -30,8 +30,7 @@
     }
 
     &:focus {
-      color: var(--color-focus-fg);
-      background-color: var(--color-focus-bg);
+      background-color: var(--color-fg-4);
       outline: 0;
     }
 
@@ -72,6 +71,10 @@
   }
   li li li li li li a {
     padding-left: calc(6 * var(--size-4));
+  }
+
+  code {
+    font-family: var(--font-family-code);
   }
 }
 

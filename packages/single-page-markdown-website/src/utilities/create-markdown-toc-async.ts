@@ -3,6 +3,7 @@ import * as unist from 'unist'
 
 const mdastUtilToc = require('mdast-util-toc')
 const remarkParse = require('remark-parse')
+const remarkStripBadges = require('remark-strip-badges')
 const remarkStringify = require('remark-stringify')
 
 export async function createMarkdownTocAsync(
@@ -12,6 +13,7 @@ export async function createMarkdownTocAsync(
   return new Promise(function (resolve, reject) {
     unified()
       .use(remarkParse)
+      .use(remarkStripBadges)
       .use(remarkToc, { hiddenTocHeadings })
       .use(remarkStringify)
       .process(content, function (error, file) {

@@ -1,43 +1,56 @@
 import * as fs from 'fs-extra'
 import * as globby from 'globby'
-import * as grayMatter from 'gray-matter'
+import * as path from 'path'
+import * as unified from 'unified'
+import * as unist from 'unist'
+import * as vfile from 'vfile'
 
-import { MarkdownFile } from '../types'
+const remarkParse = require('remark-parse')
+const stringify = require('remark-stringify')
 
 export async function readMarkdownFilesAsync(
   globs: Array<string>
-): Promise<Array<MarkdownFile>> {
+): Promise<Array<string>> {
+  const result: Array<string> = []
   const filePaths = await globby(globs)
-  const files = await readFilesAsync(filePaths)
-  return files
-    .map(function (file) {
-      const { content, data } = grayMatter(file.content)
-      return {
-        content,
-        filePath: file.filePath,
-        weight: typeof data.weight === 'undefined' ? -1 : data.weight
-      }
-    })
-    .sort(sortMarkdownFilesComparator)
-}
-
-async function readFilesAsync(
-  filePaths: Array<string>
-): Promise<Array<{ filePath: string; content: string }>> {
-  return Promise.all(
-    filePaths.map(async function (filePath) {
-      return {
-        content: await fs.readFile(filePath, 'utf8'),
-        filePath
-      }
-    })
-  )
-}
-
-function sortMarkdownFilesComparator(a: MarkdownFile, b: MarkdownFile): number {
-  const weightCompareResult = a.weight - b.weight
-  if (weightCompareResult === 0) {
-    return a.filePath.localeCompare(b.filePath)
+  for (const filePath of filePaths) {
+    result.push(await readMarkdownFileAsync(filePath))
   }
-  return weightCompareResult
+  return result
+}
+
+async function readMarkdownFileAsync(filePath: string) {
+  const value = await fs.readFile(filePath, 'utf8')
+  const vFile = await unified()
+    .use(remarkParse)
+    .use(remarkTransclude)
+    .use(stringify)
+    .process(vfile({ contents: value, path: filePath }))
+  return vFile.toString()
+}
+
+const remarkTransclude: unified.Plugin<[]> = function () {
+  return async function (node: unist.Node, file: vfile.VFile) {
+    let result: Array<unist.Node> = []
+    for (const childNode of (node as unist.Parent)
+      .children as Array<unist.Parent>) {
+      if (
+        childNode.type === 'paragraph' &&
+        childNode.children.length === 1 &&
+        childNode.children[0].type === 'text'
+      ) {
+        const value = childNode.children[0].value as string
+        if (value[0] === '/') {
+          const directory = path.dirname(file.path as string)
+          const glob = path.join(directory, value.slice(1))
+          const markdown = await readMarkdownFilesAsync([glob])
+          const tree = unified().use(remarkParse).parse(markdown.join('\n'))
+          result = result.concat((tree as unist.Parent).children)
+          continue
+        }
+      }
+      result.push(childNode)
+    }
+    node.children = result
+  }
 }

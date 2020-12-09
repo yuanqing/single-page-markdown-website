@@ -20,7 +20,7 @@
     "lint": "eslint 'src/**/*.ts'",
     "prepublishOnly": "yarn run build",
     "test": "tap 'src/**/__tests__/**/*.ts' --coverage-report html --coverage-report text --jobs-auto --no-browser --reporter terse",
-    "watch": "yarn run clean && chokidar --command 'cd sandbox && ts-node ../src/cli.ts \"*.md\"' --initial --silent '../frontend/lib/**/*' 'src/**/*.ts'"
+    "watch": "yarn run clean && chokidar --command 'cd sandbox && ts-node ../src/cli.ts docs/index.md' --initial --silent '../frontend/lib/**/*' 'src/**/*.ts'"
   },
   "dependencies": {
     "@single-page-markdown-website/frontend": "*",
@@ -28,7 +28,6 @@
     "find-up": "^5.0.0",
     "fs-extra": "^9.0.1",
     "globby": "^11.0.1",
-    "gray-matter": "^4.0.2",
     "html-minifier": "^4.0.0",
     "mdast-util-toc": "^5.1.0",
     "rehype-autolink-headings": "^5.0.1",
@@ -40,6 +39,8 @@
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.0.0",
     "remark-stringify": "^9.0.0",
-    "unified": "^9.2.0"
+    "remark-strip-badges": "^5.0.0",
+    "unified": "^9.2.0",
+    "vfile": "^4.2.1"
   }
 }

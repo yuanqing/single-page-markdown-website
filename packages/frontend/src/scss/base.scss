@@ -22,14 +22,48 @@ img::selection {
   background-color: var(--color-fg-1);
 }
 
-@media (min-width: $screen-md) {
+@media (min-width: $breakpoint-md) {
+  html {
+    font-size: 18px;
+  }
+  .--toc-visible {
+    position: static;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
   html {
     font-size: 20px;
   }
 }
 
-@media (min-width: $screen-lg) {
+@media (min-width: $breakpoint-xl) {
   html {
     font-size: 24px;
   }
 }
+
+/* DEBUG */
+// html {
+//   background-color: #000;
+// }
+// @media (min-width: $breakpoint-md) {
+//   body {
+//     background-color: rgba(255, 0, 0, 0.3);
+//   }
+// }
+// @media (min-width: $breakpoint-lg) {
+//   body {
+//     background-color: rgba(0, 255, 0, 0.3);
+//   }
+// }
+// @media (min-width: $breakpoint-xl) {
+//   body {
+//     background-color: rgba(0, 0, 255, 0.3);
+//   }
+// }
+// @media (min-width: $breakpoint-xxl) {
+//   body {
+//     background-color: rgba(255, 0, 255, 0.3);
+//   }
+// }

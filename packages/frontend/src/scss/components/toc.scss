@@ -1,122 +1,102 @@
 .toc {
   position: fixed;
-  top: var(--toggle-button-height);
+  top: var(--button-height);
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: var(--z-index-1);
   display: none;
+  padding-bottom: var(--size-6);
   overflow-y: auto;
-  font-size: var(--size-4);
-  line-height: var(--size-6);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-md);
   background-color: var(--color-bg);
   pointer-events: none;
-
-  .--toc-visible & {
-    display: block;
-    pointer-events: auto;
-  }
-
-  a {
-    position: relative;
-    display: block;
-    padding-top: var(--size-4);
-    padding-right: var(--size-4);
-    padding-bottom: var(--size-4);
-    color: var(--color-fg-3);
-    overflow-wrap: break-word;
-
-    &:hover {
-      background-color: var(--color-fg-5);
-    }
-
-    &:focus {
-      background-color: var(--color-fg-4);
-      outline: 0;
-    }
-
-    &:before {
-      position: absolute;
-      top: 0;
-      right: var(--size-4);
-      left: var(--size-4);
-      display: block;
-      height: 1px;
-      background-color: var(--color-fg-5);
-      content: '';
-    }
-
-    &:focus:before {
-      display: none;
-    }
-  }
-
-  > ul > li:first-child > a:before {
-    display: none;
-  }
-
-  li a {
-    padding-left: calc(1 * var(--size-4));
-  }
-  li li a {
-    padding-left: calc(2 * var(--size-4));
-  }
-  li li li a {
-    padding-left: calc(3 * var(--size-4));
-  }
-  li li li li a {
-    padding-left: calc(4 * var(--size-4));
-  }
-  li li li li li a {
-    padding-left: calc(5 * var(--size-4));
-  }
-  li li li li li li a {
-    padding-left: calc(6 * var(--size-4));
-  }
-
-  code {
-    font-family: var(--font-family-code);
-  }
 }
 
-@media (min-width: $screen-md) {
-  .toc {
-    line-height: var(--size-5);
-
-    a {
-      padding-top: var(--size-3);
-      padding-bottom: var(--size-3);
-    }
-  }
+.--toc-visible .toc {
+  display: block;
+  pointer-events: auto;
 }
 
-@media (min-width: $screen-lg) {
-  .toc {
-    font-size: var(--size-3);
-    line-height: var(--size-4);
-
-    a {
-      padding-top: var(--size-2);
-      padding-bottom: var(--size-2);
-    }
-  }
+.toc a {
+  position: relative;
+  display: block;
+  padding: var(--size-2) var(--size-4);
+  color: var(--color-fg-3);
+  overflow-wrap: break-word;
+}
+.toc a:not(.toc__item--active):hover {
+  color: var(--color-fg-2);
+}
+.toc a:focus {
+  color: var(--color-fg-1);
+  outline: 0;
+}
+.toc a:focus-visible {
+  color: var(--color-focus-keyboard-fg);
+  background-color: var(--color-focus-keyboard-bg);
+}
+.toc .toc__item--active {
+  color: var(--color-fg-1);
+  background-color: #111;
 }
 
-@media (min-width: $screen-xl) {
+.toc > ul > li > a {
+  margin-top: var(--size-2);
+}
+.toc li li a {
+  padding-left: var(--size-8);
+}
+.toc li li li a {
+  padding-left: var(--size-12);
+}
+.toc li li li li a {
+  padding-left: var(--size-16);
+}
+.toc li li li li li a {
+  padding-left: var(--size-20);
+}
+.toc li li li li li li a {
+  padding-left: var(--size-24);
+}
+
+.toc code {
+  font-size: 90%;
+  font-family: var(--font-family-code);
+}
+
+@media (min-width: $breakpoint-md) {
   .toc {
-    top: 0;
     right: auto;
+    width: var(--toc-width);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+    background-color: transparent;
+  }
+
+  .toc:before {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
     display: block;
-    width: var(--size-64);
+    width: var(--toc-width);
+    background-color: var(--color-bg);
     border-right: 1px solid var(--color-fg-5);
-    pointer-events: auto;
+    content: '';
+  }
+}
 
-    .--toc-visible & {
-      display: block;
-    }
+@media (min-width: $breakpoint-lg) {
+  .toc a {
+    padding-top: var(--size-1);
+    padding-bottom: var(--size-1);
+  }
+}
 
-    a:before {
-      right: 0;
-      left: 0;
-    }
+@media (min-width: $breakpoint-xl) {
+  .toc {
+    width: var(--toc-width);
   }
 }

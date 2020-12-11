@@ -47,9 +47,19 @@ async function renderMarkdownToHtmlAsync(content: string): Promise<string> {
       .use(remarkToRehype)
       .use(rehypeSlug)
       .use(rehypeAutolinkHeadings, {
+        behavior: 'append',
         content: {
-          type: 'text',
-          value: '#'
+          children: [
+            {
+              type: 'text',
+              value: '#'
+            }
+          ],
+          properties: {
+            class: 'header-link__text'
+          },
+          tagName: 'span',
+          type: 'element'
         },
         properties: {
           ariaHidden: true,

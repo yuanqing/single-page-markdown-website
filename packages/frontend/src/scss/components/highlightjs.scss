@@ -1,78 +1,71 @@
-/*
-Description: Srcery dark color scheme for highlight.js
-Author: Chen Bin <chen.bin@gmail.com>
-Website: https://srcery-colors.github.io/
-Date: 2020-04-06
-*/
-
 .hljs {
-  display: block;
-  padding: 0.5em;
-  overflow-x: auto;
-  color: #fce8c3;
-  background: #1c1b19;
+  color: var(--color-fg-2);
 }
 
-.hljs-strong,
+:root {
+  --color-red: #ff7b72;
+  --color-green: #aff5b4;
+  --color-purple: #d1a8ff;
+  --color-blue: #a5d6ff;
+}
+
+.hljs-strong {
+  font-weight: var(--font-weight-bold);
+}
 .hljs-emphasis {
-  color: #918175;
+  font-style: italic;
 }
 
+.hljs-name,
+.hljs-title,
 .hljs-bullet,
 .hljs-quote,
 .hljs-link,
 .hljs-number,
 .hljs-regexp,
 .hljs-literal {
-  color: #ff5c8f;
+  color: var(--color-green); // green
 }
 
-.hljs-code,
-.hljs-selector-class {
-  color: #68a8e4;
-}
-
-.hljs-emphasis {
-  font-style: italic;
-}
-
+.hljs-tag .hljs-name, // html
+.hljs-selector-id, // css
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
 .hljs-keyword,
-.hljs-selector-tag,
 .hljs-section,
-.hljs-attribute,
+.hljs-attr,
 .hljs-variable {
-  color: #ef2f27;
+  color: var(--color-red);
 }
 
-.hljs-name,
-.hljs-title {
-  color: #fbb829;
+.hljs-tag .hljs-attr, // html
+.hljs-selector-tag, // css
+.hljs-name {
+  color: var(--color-purple); // purple
 }
 
-.hljs-type,
-.hljs-params {
-  color: #0aaeb3;
-}
-
-.hljs-string {
-  color: #98bc37;
-}
-
+.hljs-string,
 .hljs-subst,
 .hljs-built_in,
 .hljs-builtin-name,
 .hljs-symbol,
-.hljs-selector-id,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
+.hljs-attribute,
 .hljs-template-tag,
-.hljs-template-variable,
-.hljs-addition {
-  color: #c07abe;
+.hljs-template-variable {
+  color: var(--color-blue);
 }
 
 .hljs-comment,
-.hljs-deletion,
 .hljs-meta {
-  color: #918175;
+  color: var(--color-fg-3);
+}
+
+.hljs-deletion {
+  color: #ffdcd7;
+  background-color: #67060c;
+}
+.hljs-addition {
+  color: #aff5b4;
+  background-color: #033a16;
 }

@@ -4,28 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>__TITLE__</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap&text=__GLYPHS__" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <style>/*__CSS__*/</style>
   </head>
   <body>
     <main class="content">
-      <div class="content__inner">
-      __CONTENT__
-    </div>
-  </main>
-    <div class="toc-toggle-button">
-      <button class="toc-toggle-button__button" data-js="toc-toggle-button">
-        <svg viewBox="0 0 24 24" class="toc-toggle-button__menu">
-          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M3.75 5.25c-.41421 0-.75.33579-.75.75s.33579.75.75.75h16.5c.4142 0 .75-.33579.75-.75s-.3358-.75-.75-.75H3.75zM3 12c0-.4142.33579-.75.75-.75h16.5c.4142 0 .75.3358.75.75s-.3358.75-.75.75H3.75c-.41421 0-.75-.3358-.75-.75zm0 6c0-.4142.33579-.75.75-.75h16.5c.4142 0 .75.3358.75.75s-.3358.75-.75.75H3.75c-.41421 0-.75-.3358-.75-.75z" />
-        </svg>
-        <svg viewBox="0 0 24 24" class="toc-toggle-button__close">
-          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M5.78033 4.71967c-.29289-.29289-.76777-.29289-1.06066 0s-.29289.76777 0 1.06066L10.9393 12l-6.21963 6.2197c-.29289.2929-.29289.7677 0 1.0606.29289.2929.76777.2929 1.06066 0L12 13.0607l6.2197 6.2196c.2929.2929.7677.2929 1.0606 0 .2929-.2929.2929-.7677 0-1.0606L13.0607 12l6.2196-6.21967c.2929-.29289.2929-.76777 0-1.06066s-.7677-.29289-1.0606 0L12 10.9393 5.78033 4.71967z" />
-        </svg>
-      </button>
-    </div>
+      <div class="content__inner" data-js="content">__CONTENT__</div>
+    </main>
+    <button class="toc-toggle-button" data-js="toc-toggle-button">
+      <svg viewBox="0 0 16 16" class="toc-toggle-button__svg toc-toggle-button__menu">
+        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M0 2.75C0 2.33579.335786 2 .75 2h14.5c.4142 0 .75.33579.75.75s-.3358.75-.75.75H.75C.335786 3.5 0 3.16421 0 2.75zM0 8c0-.41421.335786-.75.75-.75h14.5c.4142 0 .75.33579.75.75s-.3358.75-.75.75H.75C.335786 8.75 0 8.41421 0 8zm.75 4.5c-.414214 0-.75.3358-.75.75s.335786.75.75.75h14.5c.4142 0 .75-.3358.75-.75s-.3358-.75-.75-.75H.75z" />
+      </svg>
+      <svg viewBox="0 0 16 16" class="toc-toggle-button__svg toc-toggle-button__close">
+        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M1.28033.21967c-.292893-.2928933-.767767-.2928933-1.06066 0-.2928933.292893-.2928933.767767 0 1.06066L6.93934 8 .21967 14.7197c-.2928933.2929-.2928933.7677 0 1.0606.292893.2929.767767.2929 1.06066 0L8 9.06066l6.7197 6.71964c.2929.2929.7677.2929 1.0606 0 .2929-.2929.2929-.7677 0-1.0606L9.06066 8l6.71964-6.71967c.2929-.292893.2929-.767767 0-1.06066-.2929-.2928933-.7677-.2928933-1.0606 0L8 6.93934 1.28033.21967z" />
+      </svg>
+    </button>
     <aside class="toc" data-js="toc">__TOC__</aside>
     <script>__JS__</script>
   </body>

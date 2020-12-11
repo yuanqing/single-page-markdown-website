@@ -1,31 +1,27 @@
+import { BREAKPOINT_XXL } from './breakpoints'
+import { setUpToc } from './utilities/set-up-toc'
+import { setUpTocToggleButton } from './utilities/set-up-toggle-button'
+
 function main(): void {
-  setUpToc({
-    tocSelector: '[data-js="toc"]',
-    tocVisibleClassName: '--toc-visible',
-    toggleButtonSelector: '[data-js="toc-toggle-button"]'
+  const tocVisibleClassName = '--toc-visible'
+  const tocItemActiveClassName = 'toc__item--active'
+
+  const tocElement = document.querySelector('[data-js="toc"]') as Element
+  const toggleButtonElement = document.querySelector(
+    '[data-js="toc-toggle-button"]'
+  ) as Element
+  const contentElement = document.querySelector(
+    '[data-js="content"]'
+  ) as Element
+
+  setUpTocToggleButton(toggleButtonElement, tocElement, {
+    breakpoint: BREAKPOINT_XXL,
+    tocVisibleClassName
+  })
+  setUpToc(tocElement, contentElement, {
+    breakpoint: BREAKPOINT_XXL,
+    tocItemActiveClassName,
+    tocVisibleClassName
   })
 }
 main()
-
-function setUpToc(options: {
-  tocSelector: string
-  tocVisibleClassName: string
-  toggleButtonSelector: string
-}): void {
-  const toggleButtonElement = document.querySelector(
-    options.toggleButtonSelector
-  )
-  if (toggleButtonElement === null) {
-    throw new Error(`Could not find ${options.toggleButtonSelector}`)
-  }
-  const tocElement = document.querySelector(options.tocSelector)
-  if (tocElement === null) {
-    throw new Error(`Could not find ${options.tocSelector}`)
-  }
-  toggleButtonElement.addEventListener('click', function () {
-    document.body.classList.toggle(options.tocVisibleClassName)
-  })
-  tocElement.addEventListener('click', function () {
-    document.body.classList.remove(options.tocVisibleClassName)
-  })
-}

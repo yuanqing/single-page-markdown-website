@@ -89,6 +89,7 @@
 }
 .content a:not(.header-link):focus {
   color: var(--color-focus-keyboard-fg);
+  text-decoration: none;
   background-color: var(--color-focus-keyboard-bg);
   outline: 0;
 }

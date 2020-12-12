@@ -26,7 +26,7 @@
   color: var(--color-fg-3);
   overflow-wrap: break-word;
 }
-.toc a:not(.toc__item--active):hover {
+.toc a:hover {
   color: var(--color-fg-2);
 }
 .toc a:focus {
@@ -37,7 +37,8 @@
   color: var(--color-focus-keyboard-fg);
   background-color: var(--color-focus-keyboard-bg);
 }
-.toc .toc__item--active {
+.toc .toc__item--active,
+.toc .toc__item--active a:hover {
   color: var(--color-fg-1);
   background-color: var(--color-fg-5);
 }

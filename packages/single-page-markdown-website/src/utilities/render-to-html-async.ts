@@ -43,7 +43,9 @@ async function renderMarkdownToHtmlAsync(content: string): Promise<string> {
       .use(remarkParse)
       .use(remarkGfm)
       .use(remarkEmoji)
-      .use(remarkToRehype)
+      .use(remarkToRehype, {
+        allowDangerousHtml: true
+      })
       .use(rehypeSlug)
       .use(rehypeAutolinkHeadings, {
         behavior: 'append',
@@ -67,7 +69,9 @@ async function renderMarkdownToHtmlAsync(content: string): Promise<string> {
         }
       })
       .use(rehypeHighlightJs)
-      .use(rehypeStringify)
+      .use(rehypeStringify, {
+        allowDangerousHtml: true
+      })
       .process(content, function (error, file) {
         if (error) {
           reject(error)

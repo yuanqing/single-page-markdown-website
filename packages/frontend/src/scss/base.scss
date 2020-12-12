@@ -11,7 +11,7 @@ body {
 }
 
 .--menu-visible {
-  position: fixed;
+  overflow: hidden;
 }
 
 ::selection {
@@ -27,7 +27,7 @@ img::selection {
     font-size: 18px;
   }
   .--menu-visible {
-    position: static;
+    overflow: visible;
   }
 }
 

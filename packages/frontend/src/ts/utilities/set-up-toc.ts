@@ -1,5 +1,6 @@
 export function setUpToc(
   tocElement: Element,
+  toggleButtonElement: Element,
   contentElement: Element,
   options: {
     breakpoint: number
@@ -13,14 +14,18 @@ export function setUpToc(
     }
   })
   const elements = [...contentElement.children]
-  updateActiveTocItemOnScroll(elements, tocElement, {
+  updateActiveTocItemOnScroll(elements, tocElement, toggleButtonElement, {
     tocItemActiveClassName: options.tocItemActiveClassName
   })
+  if (window.innerWidth >= options.breakpoint) {
+    document.body.classList.add(options.tocVisibleClassName)
+  }
 }
 
 function updateActiveTocItemOnScroll(
   elements: Array<Element>,
   tocElement: Element,
+  toggleButtonElement: Element,
   options: {
     tocItemActiveClassName: string
   }
@@ -66,9 +71,11 @@ function updateActiveTocItemOnScroll(
       onChange(id, previousId)
     }
   }
+  const toggleButtonElementHeight = (toggleButtonElement as HTMLElement)
+    .offsetHeight
   const observer = new IntersectionObserver(callback, {
     root: null,
-    rootMargin: '0px',
+    rootMargin: `-${toggleButtonElementHeight}px 0px 0px 0px`,
     threshold: 1
   })
   for (const heading of elements) {

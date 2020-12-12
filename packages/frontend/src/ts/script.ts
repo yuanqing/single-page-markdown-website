@@ -3,12 +3,12 @@ import { setUpToc } from './utilities/set-up-toc'
 import { setUpTocToggleButton } from './utilities/set-up-toggle-button'
 
 function main(): void {
-  const tocVisibleClassName = '--toc-visible'
-  const tocItemActiveClassName = 'toc__item--active'
+  const tocVisibleClassName = '--menu-visible'
+  const tocItemActiveClassName = 'menu__item--active'
 
   const tocElement = document.querySelector('[data-js="toc"]') as Element
   const toggleButtonElement = document.querySelector(
-    '[data-js="toc-toggle-button"]'
+    '[data-js="menu-toggle-button"]'
   ) as Element
   const contentElement = document.querySelector(
     '[data-js="content"]'
@@ -18,7 +18,7 @@ function main(): void {
     breakpoint: BREAKPOINT_XXL,
     tocVisibleClassName
   })
-  setUpToc(tocElement, contentElement, {
+  setUpToc(tocElement, toggleButtonElement, contentElement, {
     breakpoint: BREAKPOINT_XXL,
     tocItemActiveClassName,
     tocVisibleClassName

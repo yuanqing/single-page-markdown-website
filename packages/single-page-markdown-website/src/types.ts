@@ -6,6 +6,12 @@ export interface Config {
   title: null | string
   description: null | string
   hideToc: boolean
+  links: Array<Link>
+}
+
+export interface Link {
+  text: string
+  url: string
 }
 
 export type MarkdownFile = {

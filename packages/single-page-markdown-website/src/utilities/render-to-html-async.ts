@@ -1,5 +1,4 @@
 import { minify } from 'html-minifier'
-import * as mustache from 'mustache'
 import * as rehypeSlug from 'rehype-slug'
 import * as rehypeStringify from 'rehype-stringify'
 import * as remarkGfm from 'remark-gfm'
@@ -7,6 +6,9 @@ import * as remarkParse from 'remark-parse'
 import * as remarkToRehype from 'remark-rehype'
 import * as unified from 'unified'
 
+import lodashTemplate = require('lodash.template')
+
+import { Link } from '../types'
 import { readFrontendLibFileAsync } from './read-frontend-lib-file-async'
 
 const rehypeAutolinkHeadings = require('rehype-autolink-headings')
@@ -14,19 +16,25 @@ const remarkEmoji = require('remark-emoji')
 const rehypeHighlightJs = require('rehype-highlight')
 
 export async function renderToHtmlAsync({
-  title,
   content,
+  description,
+  links,
+  title,
   toc
 }: {
-  title: null | string
   content: string
+  description: null | string
+  title: null | string
+  links: Array<Link>
   toc: null | string
 }): Promise<string> {
   const htmlTemplate = await readFrontendLibFileAsync('index.html')
-  const html = mustache.render(htmlTemplate, {
+  const html = lodashTemplate(htmlTemplate)({
     content: await renderMarkdownToHtmlAsync(content),
     css: await readFrontendLibFileAsync('style.css'),
-    js: toc === null ? null : await readFrontendLibFileAsync('script.js'),
+    description,
+    js: await readFrontendLibFileAsync('script.js'),
+    links,
     title,
     toc: toc === null ? null : await renderMarkdownToHtmlAsync(toc)
   })

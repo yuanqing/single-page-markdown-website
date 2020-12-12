@@ -1,7 +1,8 @@
 @import '../breakpoints';
 
 .content {
-  padding: var(--button-height) var(--size-3) var(--size-16) var(--size-3);
+  padding: calc(var(--button-height) + var(--size-4)) var(--size-4)
+    var(--size-16) var(--size-4);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-md);
   line-height: var(--line-height-md);
@@ -52,7 +53,7 @@
   font-style: italic;
 }
 .content [id] {
-  scroll-margin-top: var(--button-height);
+  scroll-margin-top: calc(var(--button-height) + var(--size-4));
 }
 
 .header-link {
@@ -160,8 +161,8 @@
   content: '';
 }
 
-.content p img {
-  display: block;
+.content img {
+  display: inline-block;
   max-width: 100%;
 }
 
@@ -182,28 +183,14 @@
 }
 
 @media (min-width: $breakpoint-md) {
-  .content {
-    padding-right: var(--size-14);
-    padding-left: var(--size-14);
-  }
   .content__inner {
     max-width: 64ch;
     margin: 0 auto;
   }
-  .content [id] {
-    scroll-margin-top: var(--size-3);
-  }
-}
-
-@media (min-width: $breakpoint-lg) {
-  .content {
-    padding-right: var(--size-20);
-    padding-left: var(--size-20);
-  }
 }
 
 @media (min-width: $breakpoint-xxl) {
-  .--toc-visible .content {
+  .--menu-visible .content {
     margin-left: var(--toc-width);
   }
 }

@@ -4,8 +4,10 @@ import * as path from 'path'
 import { Config } from '../types'
 
 const configKey = 'single-page-markdown-website'
+
 const defaultConfig = {
-  hiddenTocHeadings: [] as Array<string>,
+  description: null,
+  hideToc: false,
   title: null
 }
 
@@ -15,9 +17,17 @@ export async function readConfigAsync(): Promise<Config> {
     return defaultConfig
   }
   const packageJson = require(packageJsonFilePath)
-  const config = packageJson[configKey]
-  if (typeof config === 'undefined') {
-    return defaultConfig
+  const packageJsonConfig = {
+    description:
+      typeof packageJson.description === 'undefined'
+        ? null
+        : packageJson.description,
+    title: typeof packageJson.name === 'undefined' ? null : packageJson.name
   }
-  return config
+  const config = packageJson[configKey]
+  return {
+    ...defaultConfig,
+    ...packageJsonConfig,
+    ...(typeof config === 'undefined' ? {} : config)
+  }
 }

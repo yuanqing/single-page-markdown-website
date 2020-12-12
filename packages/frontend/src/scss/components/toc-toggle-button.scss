@@ -8,7 +8,7 @@
   padding: var(--button-padding);
   color: var(--color-fg-3);
   background-color: var(--color-bg);
-  border-bottom: 1px solid var(--color-fg-5);
+  border-bottom: 1px solid var(--color-fg-4);
   cursor: pointer;
 }
 .toc-toggle-button:hover {
@@ -47,6 +47,6 @@
 
   .--toc-visible .toc-toggle-button {
     width: var(--toc-width);
-    border-bottom: 1px solid var(--color-fg-5);
+    border-bottom: 1px solid var(--color-fg-4);
   }
 }

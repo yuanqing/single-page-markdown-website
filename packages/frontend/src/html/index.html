@@ -3,22 +3,29 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>__TITLE__</title>
-    <style>/*__CSS__*/</style>
+    {{#description}}
+      <meta name="description" content="{{description}}">
+    {{/description}}
+    <title>{{#title}}{{title}}{{/title}}</title>
+    <style>{{{css}}}</style>
   </head>
   <body>
     <main class="content">
-      <div class="content__inner" data-js="content">__CONTENT__</div>
+      <div class="content__inner" data-js="content">{{{content}}}</div>
     </main>
-    <button class="toc-toggle-button" data-js="toc-toggle-button">
-      <svg viewBox="0 0 16 16" class="toc-toggle-button__svg toc-toggle-button__menu">
-        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M0 2.75C0 2.33579.335786 2 .75 2h14.5c.4142 0 .75.33579.75.75s-.3358.75-.75.75H.75C.335786 3.5 0 3.16421 0 2.75zM0 8c0-.41421.335786-.75.75-.75h14.5c.4142 0 .75.33579.75.75s-.3358.75-.75.75H.75C.335786 8.75 0 8.41421 0 8zm.75 4.5c-.414214 0-.75.3358-.75.75s.335786.75.75.75h14.5c.4142 0 .75-.3358.75-.75s-.3358-.75-.75-.75H.75z" />
-      </svg>
-      <svg viewBox="0 0 16 16" class="toc-toggle-button__svg toc-toggle-button__close">
-        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M1.28033.21967c-.292893-.2928933-.767767-.2928933-1.06066 0-.2928933.292893-.2928933.767767 0 1.06066L6.93934 8 .21967 14.7197c-.2928933.2929-.2928933.7677 0 1.0606.292893.2929.767767.2929 1.06066 0L8 9.06066l6.7197 6.71964c.2929.2929.7677.2929 1.0606 0 .2929-.2929.2929-.7677 0-1.0606L9.06066 8l6.71964-6.71967c.2929-.292893.2929-.767767 0-1.06066-.2929-.2928933-.7677-.2928933-1.0606 0L8 6.93934 1.28033.21967z" />
-      </svg>
-    </button>
-    <aside class="toc" data-js="toc">__TOC__</aside>
-    <script>__JS__</script>
+    {{#toc}}
+      <button class="toc-toggle-button" data-js="toc-toggle-button">
+        <svg viewBox="0 0 16 16" class="toc-toggle-button__svg toc-toggle-button__menu">
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M0 2.75C0 2.33579.335786 2 .75 2h14.5c.4142 0 .75.33579.75.75s-.3358.75-.75.75H.75C.335786 3.5 0 3.16421 0 2.75zM0 8c0-.41421.335786-.75.75-.75h14.5c.4142 0 .75.33579.75.75s-.3358.75-.75.75H.75C.335786 8.75 0 8.41421 0 8zm.75 4.5c-.414214 0-.75.3358-.75.75s.335786.75.75.75h14.5c.4142 0 .75-.3358.75-.75s-.3358-.75-.75-.75H.75z" />
+        </svg>
+        <svg viewBox="0 0 16 16" class="toc-toggle-button__svg toc-toggle-button__close">
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M1.28033.21967c-.292893-.2928933-.767767-.2928933-1.06066 0-.2928933.292893-.2928933.767767 0 1.06066L6.93934 8 .21967 14.7197c-.2928933.2929-.2928933.7677 0 1.0606.292893.2929.767767.2929 1.06066 0L8 9.06066l6.7197 6.71964c.2929.2929.7677.2929 1.0606 0 .2929-.2929.2929-.7677 0-1.0606L9.06066 8l6.71964-6.71967c.2929-.292893.2929-.767767 0-1.06066-.2929-.2928933-.7677-.2928933-1.0606 0L8 6.93934 1.28033.21967z" />
+        </svg>
+      </button>
+      <aside class="toc" data-js="toc">{{{toc}}}</aside>
+    {{/toc}}
+    {{#js}}
+      <script>{{{js}}}</script>
+    {{/js}}
   </body>
 </html>

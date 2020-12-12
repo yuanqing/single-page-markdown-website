@@ -14,7 +14,8 @@ export async function buildAsync(
 ): Promise<void> {
   const files = await readMarkdownFilesAsync(globs)
   const content = files.join('\n\n')
-  const toc = await createMarkdownTocAsync(content, options.hiddenTocHeadings)
+  const toc =
+    options.hideToc === true ? null : await createMarkdownTocAsync(content)
   const html = await renderToHtmlAsync({ content, title: options.title, toc })
   const htmlFilePath = path.join(options.outputDirectory, outputHtmlFileName)
   await fs.outputFile(htmlFilePath, html)

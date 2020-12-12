@@ -13,31 +13,34 @@ export function setUpToc(
     }
   })
   const elements = [...contentElement.children]
-  observeTocActiveIdChange(
-    elements,
-    function (id: string, previousId: null | string): void {
-      if (previousId !== null) {
-        const element = tocElement.querySelector(
-          `[href="#${previousId}"]`
-        ) as Element
-        if (element !== null) {
-          element.classList.remove(options.tocItemActiveClassName)
-        }
-      }
-      const element = tocElement.querySelector(`[href="#${id}"]`)
-      if (element !== null) {
-        element.classList.add(options.tocItemActiveClassName)
-      }
-    }
-  )
+  updateActiveTocItemOnScroll(elements, tocElement, {
+    tocItemActiveClassName: options.tocItemActiveClassName
+  })
 }
 
-function observeTocActiveIdChange(
+function updateActiveTocItemOnScroll(
   elements: Array<Element>,
-  onChange: (id: string, previousId: null | string) => void
+  tocElement: Element,
+  options: {
+    tocItemActiveClassName: string
+  }
 ) {
   const activeIndexes: { [key: string]: number } = {}
   let activeIndex = -1
+  function onChange(id: string, previousId: null | string): void {
+    if (previousId !== null) {
+      const element = tocElement.querySelector(
+        `[href="#${previousId}"]`
+      ) as Element
+      if (element !== null) {
+        element.classList.remove(options.tocItemActiveClassName)
+      }
+    }
+    const element = tocElement.querySelector(`[href="#${id}"]`)
+    if (element !== null) {
+      element.classList.add(options.tocItemActiveClassName)
+    }
+  }
   const callback: IntersectionObserverCallback = function (entries) {
     const changedIndexes: { [key: string]: boolean } = {}
     for (const entry of entries) {

@@ -7,35 +7,30 @@ const remarkStripBadges = require('remark-strip-badges')
 const remarkStringify = require('remark-stringify')
 
 export async function createMarkdownTocAsync(
-  content: string,
-  hiddenTocHeadings: Array<string>
-): Promise<string> {
+  content: string
+): Promise<null | string> {
   return new Promise(function (resolve, reject) {
     unified()
       .use(remarkParse)
       .use(remarkStripBadges)
-      .use(remarkToc, { hiddenTocHeadings })
+      .use(remarkToc)
       .use(remarkStringify)
       .process(content, function (error, file) {
         if (error) {
           reject(error)
           return
         }
-        resolve(file.toString())
+        const result = file.toString()
+        resolve(result === '' ? null : result)
       })
   })
 }
 
-type RemarkTocOptions = { hiddenTocHeadings: Array<string> }
-
-const remarkToc: unified.Plugin<[RemarkTocOptions]> = function ({
-  hiddenTocHeadings
-}: RemarkTocOptions) {
+const remarkToc: unified.Plugin<[]> = function () {
   return function (node: unist.Node) {
     const { map } = mdastUtilToc(node, {
-      skip: hiddenTocHeadings.join('|'),
       tight: true
     })
-    node.children = [map]
+    node.children = map === null ? [] : [map]
   }
 }

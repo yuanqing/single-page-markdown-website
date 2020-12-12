@@ -3,8 +3,9 @@ export interface Options extends Config {
 }
 
 export interface Config {
-  hiddenTocHeadings: Array<string>
   title: null | string
+  description: null | string
+  hideToc: boolean
 }
 
 export type MarkdownFile = {

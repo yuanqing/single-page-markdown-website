@@ -1,4 +1,5 @@
 import { minify } from 'html-minifier'
+import * as mustache from 'mustache'
 import * as rehypeSlug from 'rehype-slug'
 import * as rehypeStringify from 'rehype-stringify'
 import * as remarkGfm from 'remark-gfm'
@@ -6,7 +7,6 @@ import * as remarkParse from 'remark-parse'
 import * as remarkToRehype from 'remark-rehype'
 import * as unified from 'unified'
 
-import { glyphs } from './glyphs'
 import { readFrontendLibFileAsync } from './read-frontend-lib-file-async'
 
 const rehypeAutolinkHeadings = require('rehype-autolink-headings')
@@ -20,17 +20,16 @@ export async function renderToHtmlAsync({
 }: {
   title: null | string
   content: string
-  toc: string
+  toc: null | string
 }): Promise<string> {
   const htmlTemplate = await readFrontendLibFileAsync('index.html')
-  const html = htmlTemplate
-    .replace(/\/\*__CSS__\*\//, await readFrontendLibFileAsync('style.css'))
-    .replace(/__JS__/, await readFrontendLibFileAsync('script.js'))
-    .replace(/__GLYPHS__/, glyphs.join(''))
-    .replace(/__TITLE__/, title === null ? '' : title)
-    .replace(/__CONTENT__/, await renderMarkdownToHtmlAsync(content))
-    .replace(/__TOC__/, await renderMarkdownToHtmlAsync(toc))
-    .trim()
+  const html = mustache.render(htmlTemplate, {
+    content: await renderMarkdownToHtmlAsync(content),
+    css: await readFrontendLibFileAsync('style.css'),
+    js: toc === null ? null : await readFrontendLibFileAsync('script.js'),
+    title,
+    toc: toc === null ? null : await renderMarkdownToHtmlAsync(toc)
+  })
   return minify(html, {
     collapseWhitespace: true,
     minifyJS: true,

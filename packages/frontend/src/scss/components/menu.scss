@@ -47,7 +47,7 @@
   color: var(--color-fg-1);
   background-color: var(--color-fg-5);
 }
-.menu .menu__links a:after {
+.menu .menu__links [target='_blank']:after {
   content: ' ↗';
 }
 

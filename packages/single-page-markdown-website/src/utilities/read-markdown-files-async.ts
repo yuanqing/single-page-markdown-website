@@ -63,7 +63,10 @@ const remarkReplaceLocalImageFilePaths: unified.Plugin<
   return function (node: unist.Node, file: vfile.VFile) {
     const directory = path.dirname(file.path as string)
     function createNewFilePath(imageSrc: string) {
-      const originalFilePath = path.resolve(directory, imageSrc)
+      const originalFilePath = path.join(
+        imageSrc[0] === '/' ? process.cwd() : directory,
+        imageSrc
+      )
       const newFilePath = resolveNewFilePath(
         imageSrc,
         Object.values(options.images)

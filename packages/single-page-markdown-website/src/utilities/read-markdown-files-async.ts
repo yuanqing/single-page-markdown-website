@@ -17,6 +17,9 @@ export async function readMarkdownFilesAsync(
 ): Promise<{ files: Array<string>; images: Images }> {
   const files: Array<string> = []
   const filePaths = await globby(globs)
+  if (filePaths.length === 0) {
+    throw new Error(`No files found for: ${globs.join(', ')}`)
+  }
   for (const filePath of filePaths) {
     const { fileContent, fileImages } = await readMarkdownFileAsync(
       filePath,

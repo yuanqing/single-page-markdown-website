@@ -3,7 +3,7 @@ import * as path from 'path'
 
 import { Config } from '../types'
 
-const configKey = 'single-page-markdown-website'
+const configKey = require('../../package.json').name
 
 const defaultConfig = {
   description: null,

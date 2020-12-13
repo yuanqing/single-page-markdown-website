@@ -19,7 +19,7 @@
     "fix": "eslint --fix 'src/**/*.ts'",
     "lint": "eslint 'src/**/*.ts'",
     "prepublishOnly": "yarn run build",
-    "start": "cd sandbox && ts-node ../src/cli.ts docs/index.md",
+    "start": "cd sandbox && ts-node ../src/cli.ts docs/test.md",
     "test": "tap 'src/**/__tests__/**/*.ts' --coverage-report html --coverage-report text --jobs-auto --no-browser --reporter terse",
     "watch": "yarn run clean && chokidar --command 'yarn start' --initial --silent '../frontend/lib/**/*' 'src/**/*.ts'"
   },
@@ -31,8 +31,10 @@
     "fs-extra": "^9.0.1",
     "globby": "^11.0.1",
     "html-minifier": "^4.0.0",
+    "is-url": "^1.2.4",
     "kleur": "^4.1.3",
     "lodash.template": "^4.5.0",
+    "mdast-util-from-markdown": "^0.8.4",
     "mdast-util-toc": "^5.1.0",
     "rehype-autolink-headings": "^5.0.1",
     "rehype-highlight": "^4.0.0",
@@ -45,6 +47,7 @@
     "remark-stringify": "^9.0.1",
     "remark-strip-badges": "^5.0.0",
     "unified": "^9.2.0",
+    "unist-util-visit": "^2.0.3",
     "vfile": "^4.2.1"
   }
 }

@@ -8,26 +8,27 @@ import * as unified from 'unified'
 
 import lodashTemplate = require('lodash.template')
 
-import { Link } from '../types'
+import { Link } from '../../types'
 import { readFrontendLibFileAsync } from './read-frontend-lib-file-async'
 
 const rehypeAutolinkHeadings = require('rehype-autolink-headings')
 const remarkEmoji = require('remark-emoji')
 const rehypeHighlightJs = require('rehype-highlight')
 
-export async function renderToHtmlAsync({
-  content,
-  description,
-  links,
-  title,
-  toc
-}: {
-  content: string
-  description: null | string
-  title: null | string
-  links: Array<Link>
-  toc: null | string
-}): Promise<string> {
+export async function renderToHtmlAsync(
+  content: string,
+  {
+    description,
+    links,
+    title,
+    toc
+  }: {
+    description: null | string
+    title: null | string
+    links: Array<Link>
+    toc: null | string
+  }
+): Promise<string> {
   const htmlTemplate = await readFrontendLibFileAsync('index.html')
   const html = lodashTemplate(htmlTemplate)({
     content: await renderMarkdownToHtmlAsync(content),

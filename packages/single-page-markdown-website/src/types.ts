@@ -19,3 +19,7 @@ export type MarkdownFile = {
   filePath: string
   weight: number
 }
+
+export type Images = {
+  [key: string]: string
+}

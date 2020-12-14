@@ -43,10 +43,6 @@
 }
 
 @media (min-width: $breakpoint-md) {
-  .sidebar-toggle-button__button {
-    border-right: 1px solid var(--color-fg-4);
-  }
-
   .sidebar-toggle-button--links-only .sidebar-toggle-button__button {
     visibility: hidden;
   }

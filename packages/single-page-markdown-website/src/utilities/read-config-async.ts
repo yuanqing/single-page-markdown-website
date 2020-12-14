@@ -7,9 +7,10 @@ const configKey = require('../../package.json').name
 
 const defaultConfig = {
   description: null,
-  hideToc: false,
   links: [],
-  title: null
+  sections: true,
+  title: null,
+  toc: true
 }
 
 export async function readConfigAsync(): Promise<Config> {

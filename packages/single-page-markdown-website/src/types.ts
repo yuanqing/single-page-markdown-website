@@ -5,7 +5,8 @@ export interface Options extends Config {
 export interface Config {
   title: null | string
   description: null | string
-  hideToc: boolean
+  toc: boolean
+  sections: boolean
   links: Array<Link>
 }
 

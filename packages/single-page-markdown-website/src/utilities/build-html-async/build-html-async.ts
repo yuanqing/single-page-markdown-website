@@ -11,13 +11,16 @@ export async function buildHtmlAsync(
   content: string,
   options: Options
 ): Promise<void> {
-  const sections = await createMarkdownTocAsync(content, {
-    topLevelHeadingsOnly: true
-  })
+  const sections =
+    options.sections === true
+      ? await createMarkdownTocAsync(content, {
+          topLevelHeadingsOnly: true
+        })
+      : null
   const toc =
-    options.hideToc === true
-      ? null
-      : await createMarkdownTocAsync(content, { topLevelHeadingsOnly: false })
+    options.toc === true
+      ? await createMarkdownTocAsync(content, { topLevelHeadingsOnly: false })
+      : null
   const html = await renderToHtmlAsync(content, {
     description: options.description,
     links: options.links,

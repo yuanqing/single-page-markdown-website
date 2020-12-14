@@ -1,12 +1,13 @@
-export function setUpTocToggleButton(
-  toggleButtonElement: Element,
-  tocElement: Element,
-  options: { breakpoint: number; tocVisibleClassName: string }
-): void {
+export function setUpSidebarToggleButton(options: {
+  sidebarToggleButtonElement: Element
+  menuElement: Element
+  breakpoint: number
+  tocVisibleClassName: string
+}): void {
   function toggleTocVisibility() {
     document.body.classList.toggle(options.tocVisibleClassName)
   }
-  toggleButtonElement.addEventListener('click', function () {
+  options.sidebarToggleButtonElement.addEventListener('click', function () {
     toggleTocVisibility()
   })
   window.addEventListener('keydown', function (event: KeyboardEvent) {
@@ -23,7 +24,10 @@ export function setUpTocToggleButton(
     }
     let element: null | HTMLElement = event.target as HTMLElement
     while (element !== null && element !== document.body) {
-      if (element === tocElement || element === toggleButtonElement) {
+      if (
+        element === options.menuElement ||
+        element === options.sidebarToggleButtonElement
+      ) {
         return
       }
       element = element.parentElement

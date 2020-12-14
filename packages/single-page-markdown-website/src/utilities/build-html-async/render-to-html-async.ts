@@ -20,12 +20,14 @@ export async function renderToHtmlAsync(
   {
     description,
     links,
+    sections,
     title,
     toc
   }: {
     description: null | string
     title: null | string
     links: Array<Link>
+    sections: null | string
     toc: null | string
   }
 ): Promise<string> {
@@ -36,6 +38,8 @@ export async function renderToHtmlAsync(
     description,
     js: await readFrontendLibFileAsync('script.js'),
     links,
+    sections:
+      sections === null ? null : await renderMarkdownToHtmlAsync(sections),
     title,
     toc: toc === null ? null : await renderMarkdownToHtmlAsync(toc)
   })

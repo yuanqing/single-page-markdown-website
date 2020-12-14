@@ -10,7 +10,7 @@ body {
   background-color: var(--color-bg);
 }
 
-.--menu-visible {
+.--sidebar-visible {
   overflow: hidden;
 }
 
@@ -26,7 +26,7 @@ img::selection {
   html {
     font-size: 18px;
   }
-  .--menu-visible {
+  .--sidebar-visible {
     overflow: visible;
   }
 }

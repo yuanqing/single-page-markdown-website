@@ -1,26 +1,35 @@
 import { BREAKPOINT_XXL } from './breakpoints'
-import { setUpToc } from './utilities/set-up-toc'
-import { setUpTocToggleButton } from './utilities/set-up-toggle-button'
+import { setUpMenu } from './utilities/set-up-menu'
+import { setUpSidebarToggleButton } from './utilities/set-up-sidebar-toggle-button'
+
+const tocVisibleClassName = '--sidebar-visible'
+const menuItemActiveClassName = 'menu__item--active'
 
 function main(): void {
-  const tocVisibleClassName = '--menu-visible'
-  const tocItemActiveClassName = 'menu__item--active'
-
+  const sectionsElement = document.querySelector(
+    '[data-js="sections"]'
+  ) as Element
   const tocElement = document.querySelector('[data-js="toc"]') as Element
-  const toggleButtonElement = document.querySelector(
-    '[data-js="menu-toggle-button"]'
+
+  const sidebarToggleButtonElement = document.querySelector(
+    '[data-js="sidebar-toggle-button"]'
   ) as Element
   const contentElement = document.querySelector(
     '[data-js="content"]'
   ) as Element
-
-  setUpTocToggleButton(toggleButtonElement, tocElement, {
+  setUpSidebarToggleButton({
     breakpoint: BREAKPOINT_XXL,
+    menuElement: tocElement,
+    sidebarToggleButtonElement,
     tocVisibleClassName
   })
-  setUpToc(tocElement, toggleButtonElement, contentElement, {
+  setUpMenu({
     breakpoint: BREAKPOINT_XXL,
-    tocItemActiveClassName,
+    contentElement,
+    menuItemActiveClassName,
+    sectionsElement,
+    sidebarToggleButtonElement,
+    tocElement,
     tocVisibleClassName
   })
 }

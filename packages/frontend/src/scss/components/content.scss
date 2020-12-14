@@ -190,7 +190,7 @@
 }
 
 @media (min-width: $breakpoint-xxl) {
-  .--menu-visible .content {
+  .--sidebar-visible .content {
     margin-left: var(--toc-width);
   }
 }

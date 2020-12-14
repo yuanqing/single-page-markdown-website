@@ -11,13 +11,13 @@
   background-color: var(--color-bg);
 }
 
-.--menu-visible .menu {
+.--sidebar-visible .menu {
   display: block;
 }
 
-.menu__links {
+.menu__wrapper {
   padding: var(--size-2) 0;
-  border-bottom: 1px solid var(--color-fg-4);
+  border-bottom: 1px solid red;
 }
 
 .menu__toc {
@@ -47,7 +47,7 @@
   color: var(--color-fg-1);
   background-color: var(--color-fg-5);
 }
-.menu .menu__links [target='_blank']:after {
+.menu .menu__wrapper [target='_blank']:after {
   content: ' ↗';
 }
 
@@ -82,24 +82,42 @@
     background-color: transparent;
   }
 
-  .menu__links {
+  .menu__wrapper {
     position: fixed;
     top: 0;
     right: 0;
+    left: var(--button-height);
     z-index: var(--z-index-2);
     display: flex;
     padding: 0;
+    overflow-x: auto;
     border-bottom: 0;
   }
-  .menu .menu__links a {
+  .menu__wrapper > ul:first-child {
+    flex-grow: 1;
+  }
+
+  .menu__wrapper > ul {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: flex-end;
+  }
+
+  .menu .menu__wrapper a {
     padding: calc((var(--button-height) - var(--line-height-sm)) / 2)
       var(--size-2);
+    white-space: nowrap;
   }
-  .menu .menu__links li:first-child a {
+  .menu .menu__wrapper ul:first-child li:first-child a {
     padding-left: var(--size-4);
   }
-  .menu .menu__links li:last-child a {
+  .menu .menu__wrapper ul:last-child li:last-child a {
     padding-right: var(--size-4);
+  }
+
+  .menu .menu__wrapper .menu__item--active,
+  .menu .menu__wrapper .menu__item--active:hover {
+    background-color: transparent;
   }
 
   .menu__toc {
@@ -113,7 +131,7 @@
     background-color: var(--color-bg);
     border-right: 1px solid var(--color-fg-4);
   }
-  .--menu-visible .menu__toc {
+  .--sidebar-visible .menu__toc {
     display: block;
   }
 }

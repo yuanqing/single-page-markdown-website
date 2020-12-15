@@ -28,20 +28,24 @@
       </div>
       <div class="menu" data-js="menu">
         <% if (sections !== null || links.length > 0) { %>
-          <div class="menu__top-bar" data-js="top-bar">
+          <div class="menu__top-bar">
             <% if (sections !== null) { %>
-              <%= sections %>
+              <div class="menu__sections" data-js="sections">
+                <%= sections %>
+              </div>
             <% } %>
             <% if (links.length > 0) { %>
-              <ul>
-                <% links.forEach(function (link) { %>
-                  <% if (link.url[0] !== '#') { %>
-                    <li><a href="<%= link.url %>" target="_blank"><%= link.text %></a></li>
-                  <% } else { %>
-                    <li><a href="<%= link.url %>"><%= link.text %></a></li>
-                  <% } %>
-                <% }) %>
-              </ul>
+              <div class="menu__links">
+                <ul>
+                  <% links.forEach(function (link) { %>
+                    <% if (link.url[0] !== '#') { %>
+                      <li><a href="<%= link.url %>" target="_blank"><%= link.text %></a></li>
+                    <% } else { %>
+                      <li><a href="<%= link.url %>"><%= link.text %></a></li>
+                    <% } %>
+                  <% }) %>
+                </ul>
+              </div>
             <% } %>
           </div>
         <% } %>

@@ -7,7 +7,7 @@ const menuItemActiveClassName = 'menu__item--active'
 
 function main(): void {
   const menuElement = document.querySelector('[data-js="menu"]') as Element
-  const mainMenuElement = document.querySelector('[data-js="top-bar"]')
+  const sectionsElement = document.querySelector('[data-js="sections"]')
   const tocElement = document.querySelector('[data-js="toc"]')
   const menuToggleButtonElement = document.querySelector(
     '[data-js="menu-toggle-button"]'
@@ -25,11 +25,11 @@ function main(): void {
   setUpMenu({
     breakpoint: BREAKPOINT_XXL,
     contentElement,
-    mainMenuElement,
     menuElement,
     menuItemActiveClassName,
     menuToggleButtonElement,
     menuVisibleClassName,
+    sectionsElement,
     tocElement
   })
 }

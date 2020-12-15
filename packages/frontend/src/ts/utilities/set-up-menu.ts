@@ -1,7 +1,7 @@
 export function setUpMenu(options: {
   breakpoint: number
   contentElement: Element
-  mainMenuElement: null | Element
+  sectionsElement: null | Element
   menuElement: Element
   menuItemActiveClassName: string
   menuToggleButtonElement: Element
@@ -19,7 +19,7 @@ export function setUpMenu(options: {
     // flag to stop the intersection observer `callback`.
     stopIntersectionObserver = true
     const id = href.slice(1)
-    if (options.mainMenuElement !== null) {
+    if (options.sectionsElement !== null) {
       const sectionIndex = findIdElementIndex({
         contentElements,
         element: options.contentElement.querySelector(
@@ -32,7 +32,7 @@ export function setUpMenu(options: {
       ) as string
       updateActiveItemElement({
         className: options.menuItemActiveClassName,
-        element: options.mainMenuElement,
+        element: options.sectionsElement,
         id: sectionId
       })
     }
@@ -85,10 +85,10 @@ export function setUpMenu(options: {
       const sectionId = contentElements[sectionIndex].getAttribute(
         'id'
       ) as string
-      if (options.mainMenuElement !== null) {
+      if (options.sectionsElement !== null) {
         updateActiveItemElement({
           className: options.menuItemActiveClassName,
-          element: options.mainMenuElement,
+          element: options.sectionsElement,
           id: sectionId
         })
       }

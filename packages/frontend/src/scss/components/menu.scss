@@ -18,6 +18,9 @@
 .menu__top-bar {
   padding: var(--size-2) 0;
 }
+.menu__sections {
+  display: none;
+}
 
 .menu__toc {
   padding: var(--size-2) 0;
@@ -96,17 +99,24 @@
     overflow-x: auto;
     border-bottom: 0;
   }
-  .menu__top-bar > ul:first-child {
+
+  .menu__sections:first-child,
+  .menu__links:first-child {
     flex-grow: 1;
   }
 
-  .menu__top-bar > ul {
+  .menu__sections {
+    display: block;
+  }
+
+  .menu__sections ul,
+  .menu__links ul {
     display: flex;
     flex-shrink: 0;
     justify-content: flex-end;
   }
 
-  .menu .menu__top-bar a {
+  .menu__top-bar a {
     padding: calc((var(--button-height) - var(--line-height-sm)) / 2)
       var(--size-2);
     white-space: nowrap;

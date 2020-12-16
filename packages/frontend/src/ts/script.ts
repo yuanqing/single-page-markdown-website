@@ -6,14 +6,12 @@ const menuVisibleClassName = '--menu-visible'
 const menuItemActiveClassName = 'menu__item--active'
 
 function main(): void {
-  const menuElement = document.querySelector('[data-js="menu"]') as Element
-  const sectionsElement = document.querySelector('[data-js="sections"]')
-  const tocElement = document.querySelector('[data-js="toc"]')
-  const menuToggleButtonElement = document.querySelector(
-    '[data-js="menu-toggle-button"]'
-  ) as Element
   const contentElement = document.querySelector(
     '[data-js="content"]'
+  ) as Element
+  const menuElement = document.querySelector('[data-js="menu"]') as Element
+  const menuToggleButtonElement = document.querySelector(
+    '[data-js="menu-toggle-button"]'
   ) as Element
 
   setUpMenuToggleButton({
@@ -23,14 +21,9 @@ function main(): void {
     menuVisibleClassName
   })
   setUpMenu({
-    breakpoint: BREAKPOINT_XXL,
     contentElement,
-    menuElement,
-    menuItemActiveClassName,
-    menuToggleButtonElement,
-    menuVisibleClassName,
-    sectionsElement,
-    tocElement
+    menuActiveItemClassName: menuItemActiveClassName,
+    menuElement
   })
 }
 main()

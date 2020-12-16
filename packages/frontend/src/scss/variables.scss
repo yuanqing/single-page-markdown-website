@@ -2,10 +2,18 @@
   --border-radius: 0.25rem;
   --color-bg: #fff;
   --color-fg-1: #000;
-  --color-fg-2: #333;
+  --color-fg-2: #404040;
   --color-fg-3: #7f7f7f;
-  --color-fg-4: #ccc;
+  --color-fg-4: #e2e2e2;
   --color-fg-5: #f4f4f4;
+  --color-fg-6: #fbfbfb;
+  --color-blue-1: #3171d8;
+  --color-green-1: #178a6a;
+  --color-green-2: #033a16;
+  --color-purple-1: #7c4fa9;
+  --color-red-1: #d23b44;
+  --color-red-2: #67060c;
+  --color-yellow-1: #935c25;
   --color-focus-keyboard-bg: #fee81e;
   --color-focus-keyboard-fg: #000;
   --color-selection-bg: rgba(0, 0, 0, 0.99);
@@ -51,10 +59,18 @@
   :root {
     --color-bg: #000;
     --color-fg-1: #fff;
-    --color-fg-2: #ccc;
+    --color-fg-2: #bfbfbf;
     --color-fg-3: #7f7f7f;
-    --color-fg-4: #222;
-    --color-fg-5: #111;
+    --color-fg-4: #2f2f2f;
+    --color-fg-5: #1a1a1a;
+    --color-fg-6: #121212;
+    --color-blue-1: #7ad0da;
+    --color-green-1: #96dca5;
+    --color-green-2: #033a16;
+    --color-purple-1: #8ca7ff;
+    --color-red-1: #f57d8f;
+    --color-red-2: #67060c;
+    --color-yellow-1: #d6c599;
     --color-selection-bg: rgba(255, 255, 255, 0.99);
     --color-selection-fg: #000;
   }

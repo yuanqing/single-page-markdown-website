@@ -50,6 +50,13 @@
 .menu .menu__item--active,
 .menu .menu__item--active:hover {
   color: var(--color-fg-1);
+}
+
+.menu .menu__toc a:focus {
+  background-color: var(--color-fg-6);
+}
+.menu .menu__toc .menu__item--active,
+.menu .menu__toc .menu__item--active:hover {
   background-color: var(--color-fg-5);
 }
 

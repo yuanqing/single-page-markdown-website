@@ -24,9 +24,9 @@
     monospace;
   --font-weight-regular: normal;
   --font-weight-bold: bold;
-  --font-size-sm: 0.875rem;
+  --font-size-sm: 0.8rem;
   --font-size-md: 1rem;
-  --line-height-sm: 1.25rem;
+  --line-height-sm: 1.125rem;
   --line-height-md: 1.5rem;
   --size-1: 0.25rem;
   --size-2: 0.5rem;
@@ -50,7 +50,8 @@
   --button-svg-height: 1rem;
   --button-padding: 1rem;
   --button-height: 3rem;
-  --toc-width: 20rem;
+  --toc-min-width: 8rem;
+  --toc-max-width: 16rem;
   --z-index-1: 1;
   --z-index-2: 2;
 }

@@ -61,7 +61,7 @@
   padding: 0 var(--size-3);
   color: var(--color-fg-3);
   font-weight: var(--font-weight-bold);
-  font-size: var(--size-4);
+  font-size: var(--font-size-md);
 }
 .header-link:hover {
   color: var(--color-fg-2);
@@ -191,7 +191,7 @@
 
 @media (min-width: $breakpoint-xxl) {
   .--menu-visible .content {
-    margin-left: var(--toc-width);
+    margin-left: var(--toc-max-width);
   }
 }
 

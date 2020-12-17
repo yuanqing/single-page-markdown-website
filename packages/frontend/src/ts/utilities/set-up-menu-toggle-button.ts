@@ -1,7 +1,7 @@
 export function setUpMenuToggleButton(options: {
   breakpoint: number
-  menuElement: Element
-  menuToggleButtonElement: Element
+  menuElement: HTMLElement
+  menuToggleButtonElement: HTMLElement
   menuVisibleClassName: string
 }): void {
   function toggleTocVisibility() {
@@ -17,7 +17,9 @@ export function setUpMenuToggleButton(options: {
   })
   window.addEventListener('click', function (event: Event) {
     if (
-      document.body.classList.contains(options.menuVisibleClassName) === false
+      document.body.classList.contains(options.menuVisibleClassName) ===
+        false ||
+      window.innerWidth >= options.breakpoint
     ) {
       return
     }
@@ -28,14 +30,11 @@ export function setUpMenuToggleButton(options: {
     ) {
       return
     }
-    if (options.menuElement.contains(element) === true) {
-      const maintainMenuVisibility = window.innerWidth >= options.breakpoint
-      if (
-        element.getAttribute('href') !== null &&
-        maintainMenuVisibility === true
-      ) {
-        return
-      }
+    if (
+      options.menuElement.contains(element) === true &&
+      element.getAttribute('href') !== null
+    ) {
+      return
     }
     toggleTocVisibility()
   })

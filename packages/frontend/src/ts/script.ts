@@ -1,13 +1,13 @@
-import { BREAKPOINT_XXL } from './breakpoints'
 import { setUpMenu } from './utilities/set-up-menu'
 import { setUpMenuToggleButton } from './utilities/set-up-menu-toggle-button'
 
-const menuVisibleClassName = '--menu-visible'
+const breakpoint = 1600
 const menuItemActiveClassName = 'menu__item--active'
+const menuVisibleClassName = '--menu-visible'
 
 function main(): void {
   setUpMenuToggleButton({
-    breakpoint: BREAKPOINT_XXL,
+    breakpoint,
     menuElement: document.querySelector('[data-js="menu"]') as HTMLElement,
     menuToggleButtonElement: document.querySelector(
       '[data-js="menu-toggle-button"]'

@@ -18,9 +18,6 @@
 .menu__top-bar {
   padding: var(--size-2) 0;
 }
-.menu__sections {
-  display: none;
-}
 
 .menu__toc {
   padding: var(--size-2) 0;
@@ -101,10 +98,6 @@
   .menu__sections:first-child,
   .menu__links:first-child {
     flex-grow: 1;
-  }
-
-  .menu__sections {
-    display: block;
   }
 
   .menu__sections ul,

@@ -1,3 +1,5 @@
+import { findParentElement } from './find-parent-element'
+
 export function setUpMenu(options: {
   contentElement: HTMLElement
   activeClassName: string
@@ -34,8 +36,14 @@ export function setUpMenu(options: {
 
   function handleClick(event: Event) {
     const element = event.target as HTMLElement
-    const href = resolveHref(element)
-    if (href !== null) {
+    const parentElement = findParentElement(
+      element,
+      function (element: HTMLElement) {
+        return element.getAttribute('href') !== null
+      }
+    )
+    if (parentElement !== null) {
+      const href = parentElement.getAttribute('href') as string
       const id = href.slice(1)
       updateActiveItems(id)
       stop = true
@@ -71,18 +79,6 @@ export function setUpMenu(options: {
     return
   }
   updateActiveItems(hash.slice(1))
-}
-
-function resolveHref(element: null | HTMLElement): null | string {
-  let href = null
-  while (element !== null) {
-    href = element.getAttribute('href')
-    if (href !== null) {
-      break
-    }
-    element = element.parentElement
-  }
-  return href
 }
 
 function resolveSectionId(options: {

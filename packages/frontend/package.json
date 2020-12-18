@@ -27,6 +27,7 @@
     "lint": "concurrently --raw 'yarn run lint-scss' 'yarn run lint-ts'",
     "lint-scss": "stylelint 'src/**/*.scss'",
     "lint-ts": "eslint webpack.config.js 'src/**/*.ts'",
+    "prepublishOnly": "yarn run build",
     "watch": "yarn run clean && concurrently --raw 'yarn run watch-html' 'yarn run watch-scss' 'yarn run watch-ts'",
     "watch-html": "chokidar --command 'yarn run build-html' --initial --silent 'src/html/**/*.html'",
     "watch-scss": "chokidar --command 'yarn run build-scss' --initial --silent 'src/scss/**/*.scss'",

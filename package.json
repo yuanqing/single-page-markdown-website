@@ -6,7 +6,7 @@
     "fix": "lerna run --parallel fix",
     "lint": "lerna run --parallel lint",
     "postinstall": "yarn run build",
-    "publish": "yarn run build && lerna publish from-package",
+    "publish": "lerna publish from-package",
     "reset": "yarn run clean && lerna clean --yes && rimraf node_modules yarn.lock && yarn install",
     "test": "lerna run test",
     "version": "lerna version"

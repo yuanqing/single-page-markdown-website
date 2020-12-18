@@ -14,16 +14,17 @@ function main(): void {
     ) as HTMLElement,
     menuVisibleClassName
   })
-  const sectionsElement = document.querySelector(
-    '[data-js="sections"]'
-  ) as HTMLElement
+  const tocElement = document.querySelector('[data-js="toc"]')
+  if (tocElement === null) {
+    return
+  }
   setUpMenu({
     activeClassName: menuItemActiveClassName,
     contentElement: document.querySelector(
       '[data-js="content"]'
     ) as HTMLElement,
-    sectionsElement,
-    tocElement: document.querySelector('[data-js="toc"]') as HTMLElement
+    sectionsElement: document.querySelector('[data-js="sections"]'),
+    tocElement: tocElement as HTMLElement
   })
 }
 main()

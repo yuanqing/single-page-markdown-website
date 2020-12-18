@@ -46,6 +46,11 @@ const remarkExtractToc: unified.Plugin<[RemarkExtractTocOptions]> = function (
         maxDepth: 1,
         tight: true
       })
+      if (map === null) {
+        node.children = []
+        delete node.position
+        return
+      }
       node.children = [map]
       delete node.position
       return

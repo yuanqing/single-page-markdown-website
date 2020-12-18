@@ -2,8 +2,8 @@ export function setUpMenu(options: {
   contentElement: HTMLElement
   activeClassName: string
   tocElement: HTMLElement
-  sectionsElement: HTMLElement
-}) {
+  sectionsElement: null | HTMLElement
+}): void {
   let stop = false
 
   function updateActiveItems(id: string) {
@@ -12,6 +12,9 @@ export function setUpMenu(options: {
       element: options.tocElement,
       id
     })
+    if (options.sectionsElement === null) {
+      return
+    }
     for (const tagName of ['H1', 'H2']) {
       const sectionId = resolveSectionId({
         contentElement: options.contentElement,
@@ -56,8 +59,10 @@ export function setUpMenu(options: {
   }
 
   options.contentElement.addEventListener('click', handleClick)
-  options.sectionsElement.addEventListener('click', handleClick)
   options.tocElement.addEventListener('click', handleClick)
+  if (options.sectionsElement !== null) {
+    options.sectionsElement.addEventListener('click', handleClick)
+  }
   window.addEventListener('scroll', handleScroll)
 
   const hash = window.location.hash

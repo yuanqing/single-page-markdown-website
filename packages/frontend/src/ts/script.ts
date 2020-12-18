@@ -14,14 +14,15 @@ function main(): void {
     ) as HTMLElement,
     menuVisibleClassName
   })
+  const sectionsElement = document.querySelector(
+    '[data-js="sections"]'
+  ) as HTMLElement
   setUpMenu({
     activeClassName: menuItemActiveClassName,
     contentElement: document.querySelector(
       '[data-js="content"]'
     ) as HTMLElement,
-    sectionsElement: document.querySelector(
-      '[data-js="sections"]'
-    ) as HTMLElement,
+    sectionsElement,
     tocElement: document.querySelector('[data-js="toc"]') as HTMLElement
   })
 }

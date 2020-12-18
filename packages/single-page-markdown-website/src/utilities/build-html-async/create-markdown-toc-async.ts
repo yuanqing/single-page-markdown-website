@@ -8,12 +8,12 @@ const remarkStripBadges = require('remark-strip-badges')
 
 export async function createMarkdownTocAsync(
   content: string,
-  options: { topLevelHeadingsOnly: boolean }
+  options: { sections: boolean }
 ): Promise<null | string> {
   const file = await unified()
     .use(remarkParse)
     .use(remarkStripBadges)
-    .use(remarkExtractToc, options)
+    .use(remarkExtractToc, { sections: options.sections })
     .use(remarkStringify)
     .process(content)
   const result = file.toString()
@@ -21,7 +21,7 @@ export async function createMarkdownTocAsync(
 }
 
 type RemarkExtractTocOptions = {
-  topLevelHeadingsOnly: boolean
+  sections: boolean
 }
 
 const remarkExtractToc: unified.Plugin<[RemarkExtractTocOptions]> = function (
@@ -29,9 +29,47 @@ const remarkExtractToc: unified.Plugin<[RemarkExtractTocOptions]> = function (
 ) {
   return function (node: unist.Node) {
     const { map } = mdastUtilToc(node, {
-      maxDepth: options.topLevelHeadingsOnly === true ? 1 : 6,
       tight: true
     })
-    node.children = map === null ? [] : [map]
+    if (map === null) {
+      node.children = []
+      delete node.position
+      return
+    }
+    if (options.sections === false) {
+      node.children = [map]
+      delete node.position
+      return
+    }
+    if ((map.children as Array<unist.Node>).length > 1) {
+      const { map } = mdastUtilToc(node, {
+        maxDepth: 1,
+        tight: true
+      })
+      node.children = [map]
+      delete node.position
+      return
+    }
+    const result: Array<unist.Node> = []
+    for (const node of map.children[0].children) {
+      if (node.type === 'list') {
+        for (const child of node.children) {
+          result.push({
+            children: [child.children[0]],
+            spread: false,
+            type: 'listItem'
+          })
+        }
+      }
+    }
+    node.children = [
+      {
+        children: result,
+        ordered: false,
+        spread: false,
+        type: 'list'
+      }
+    ]
+    delete node.position
   }
 }

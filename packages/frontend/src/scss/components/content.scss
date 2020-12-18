@@ -16,7 +16,8 @@
 .content h2,
 .content h3,
 .content h4,
-.content h5 {
+.content h5,
+.content h6 {
   font-weight: var(--font-weight-bold);
 }
 .content h1 {
@@ -58,7 +59,7 @@
 
 .header-link {
   display: inline-block;
-  padding: 0 var(--size-3);
+  padding: 0 var(--size-4);
   color: var(--color-fg-3);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-md);
@@ -203,6 +204,7 @@
   .content h5,
   .content h6 {
     position: relative;
+    display: block;
     margin-left: calc(-1 * var(--size-9));
     padding-left: var(--size-9);
   }
@@ -211,6 +213,8 @@
     top: 0;
     bottom: 0;
     left: 0;
+    display: block;
+    padding: 0 var(--size-3);
     opacity: 0;
   }
   .content h1:hover .header-link,

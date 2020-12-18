@@ -12,17 +12,26 @@ export function setUpMenu(options: {
       element: options.tocElement,
       id
     })
-    const sectionId = resolveSectionId(options.contentElement, id)
-    updateActiveItem({
-      activeClassName: options.activeClassName,
-      element: options.sectionsElement,
-      id: sectionId
-    })
+    for (const tagName of ['H1', 'H2']) {
+      const sectionId = resolveSectionId({
+        contentElement: options.contentElement,
+        id,
+        tagName
+      })
+      const result = updateActiveItem({
+        activeClassName: options.activeClassName,
+        element: options.sectionsElement,
+        id: sectionId
+      })
+      if (result === true) {
+        break
+      }
+    }
   }
 
   function handleClick(event: Event) {
     const element = event.target as HTMLElement
-    const href = element.getAttribute('href')
+    const href = resolveHref(element)
     if (href !== null) {
       const id = href.slice(1)
       updateActiveItems(id)
@@ -46,8 +55,9 @@ export function setUpMenu(options: {
     }
   }
 
-  options.tocElement.addEventListener('click', handleClick)
+  options.contentElement.addEventListener('click', handleClick)
   options.sectionsElement.addEventListener('click', handleClick)
+  options.tocElement.addEventListener('click', handleClick)
   window.addEventListener('scroll', handleScroll)
 
   const hash = window.location.hash
@@ -58,18 +68,40 @@ export function setUpMenu(options: {
   updateActiveItems(hash.slice(1))
 }
 
-function resolveSectionId(contentElement: HTMLElement, id: string): string {
-  const children = [...contentElement.children] as Array<HTMLElement>
+function resolveHref(element: null | HTMLElement): null | string {
+  let href = null
+  while (element !== null) {
+    href = element.getAttribute('href')
+    if (href !== null) {
+      break
+    }
+    element = element.parentElement
+  }
+  return href
+}
+
+function resolveSectionId(options: {
+  contentElement: HTMLElement
+  id: string
+  tagName: string
+}): null | string {
+  const children = [...options.contentElement.children] as Array<HTMLElement>
   const index = children.findIndex(function (element: HTMLElement) {
-    return element.getAttribute('id') === id
+    return element.getAttribute('id') === options.id
   })
-  const sectionElement = children
+  const element = children
     .slice(0, index + 1)
     .reverse()
     .find(function (element: HTMLElement) {
-      return element.tagName === 'H1'
+      return element.tagName === options.tagName
+    })
+  if (typeof element === 'undefined') {
+    const firstHeaderElement = children.find(function (element: HTMLElement) {
+      return element.tagName === options.tagName
     }) as HTMLElement
-  return sectionElement.getAttribute('id') as string
+    return firstHeaderElement.getAttribute('id') as string
+  }
+  return element.getAttribute('id') as string
 }
 
 function computeElementsOffsetTop(
@@ -95,17 +127,22 @@ function computeElementsOffsetTop(
 
 function updateActiveItem(options: {
   element: HTMLElement
-  id: string
+  id: null | string
   activeClassName: string
-}) {
+}): boolean {
   const previousActiveElement = options.element.querySelector(
     `.${options.activeClassName}`
   )
   if (previousActiveElement !== null) {
     previousActiveElement.classList.remove(options.activeClassName)
   }
-  const activeElement = options.element.querySelector(
-    `[href="#${options.id}"]`
-  ) as HTMLElement
-  activeElement.classList.add(options.activeClassName)
+  if (options.id === null) {
+    return false
+  }
+  const activeElement = options.element.querySelector(`[href="#${options.id}"]`)
+  if (activeElement !== null) {
+    activeElement.classList.add(options.activeClassName)
+    return true
+  }
+  return false
 }

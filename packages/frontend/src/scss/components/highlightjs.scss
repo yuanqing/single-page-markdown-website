@@ -18,11 +18,11 @@
 .hljs-bullet,
 .hljs-quote,
 .hljs-link {
-  color: var(--color-purple-1);
+  color: var(--color-purple);
 }
 
 .hljs-number {
-  color: var(--color-yellow-1); // yellow
+  color: var(--color-orange); // yellow
 }
 
 .hljs-tag .hljs-name, // html
@@ -32,7 +32,7 @@
 .hljs-section,
 .hljs-attr,
 .hljs-variable {
-  color: var(--color-red-1);
+  color: var(--color-red);
 }
 
 .hljs-selector-attr,
@@ -40,7 +40,7 @@
 .hljs-regexp,
 .hljs-name,
 .hljs-literal {
-  color: var(--color-green-1);
+  color: var(--color-green);
 }
 
 .hljs-string,
@@ -50,7 +50,7 @@
 .hljs-attribute,
 .hljs-template-tag,
 .hljs-template-variable {
-  color: var(--color-blue-1);
+  color: var(--color-blue);
 }
 
 .hljs-comment,
@@ -59,10 +59,10 @@
 }
 
 .hljs-deletion {
-  color: var(--color-red-1);
-  background-color: var(--color-red-2);
+  color: var(--color-deletion-fg);
+  background-color: var(--color-deletion-bg);
 }
 .hljs-addition {
-  color: var(--color-green-1);
-  background-color: var(--color-green-2);
+  color: var(--color-addition-fg);
+  background-color: var(--color-addition-bg);
 }

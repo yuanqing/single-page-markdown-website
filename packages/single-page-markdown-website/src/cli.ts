@@ -30,7 +30,7 @@ const commandConfig = {
       aliases: ['w'],
       default: false,
       description:
-        'Whether to rebuild the site on changes to the Markdown files.',
+        "Whether to rebuild the site on changes to the Markdown files. Defaults to 'false'.",
       name: 'watch',
       type: 'BOOLEAN'
     }

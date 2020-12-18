@@ -1,8 +1,16 @@
 {
   "name": "single-page-markdown-website",
   "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "Create a single page website from a directory of Markdown files",
+  "keywords": [
+    "docs",
+    "documentation",
+    "html",
+    "markdown",
+    "page",
+    "static",
+    "static-site-generator"
+  ],
   "author": "Yuan Qing Lim",
   "license": "MIT",
   "repository": {

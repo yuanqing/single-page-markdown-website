@@ -4,8 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "description": "",
-  "keywords": [],
+  "description": "Frontend for Single Page Markdown Website",
   "author": "Yuan Qing Lim",
   "license": "MIT",
   "repository": {

@@ -10,7 +10,7 @@ const outputHtmlFileName = 'index.html'
 export async function buildHtmlAsync(
   content: string,
   options: Options
-): Promise<void> {
+): Promise<string> {
   const sections =
     options.sections === false
       ? null
@@ -30,4 +30,5 @@ export async function buildHtmlAsync(
   })
   const htmlFilePath = path.join(options.outputDirectory, outputHtmlFileName)
   await fs.outputFile(htmlFilePath, html)
+  return htmlFilePath
 }

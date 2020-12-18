@@ -1,5 +1,6 @@
 export interface Options extends Config {
   outputDirectory: string
+  open: boolean
 }
 
 export interface Config {

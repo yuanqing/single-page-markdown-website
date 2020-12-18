@@ -2,6 +2,7 @@
 
 import { createCli } from '@yuanqing/cli'
 import * as chokidar from 'chokidar'
+import * as open from 'open'
 
 import { buildAsync } from './build-async'
 import { Options } from './types'
@@ -17,7 +18,7 @@ const cliConfig = {
 
 const commandConfig = {
   description: `${packageJson.description}.`,
-  examples: ['', "'*.md'", "'*.md' --output dist", "'*.md' --watch"],
+  examples: ['', "'*.md'", '--open', '--output dist', '--watch'],
   options: [
     {
       aliases: ['o'],
@@ -27,18 +28,27 @@ const commandConfig = {
       type: 'STRING'
     },
     {
+      aliases: ['p'],
+      default: false,
+      description:
+        "Open the generated site in a web browser. Defaults to 'false'.",
+      name: 'open',
+      type: 'BOOLEAN'
+    },
+    {
       aliases: ['w'],
       default: false,
       description:
-        "Whether to rebuild the site on changes to the Markdown files. Defaults to 'false'.",
+        "Watch for changes and rebuild the site. Defaults to 'false'.",
       name: 'watch',
       type: 'BOOLEAN'
     }
   ],
   positionals: [
     {
-      default: '*.md',
-      description: "One or more globs of Markdown files. Defaults to '*.md'.",
+      default: 'README.md',
+      description:
+        "One or more globs of Markdown files. Defaults to 'README.md'.",
       name: 'files',
       type: 'STRING'
     }
@@ -51,20 +61,27 @@ async function main() {
     if (typeof result !== 'undefined') {
       const { positionals, options, remainder } = result
       const globPatterns = [positionals.files as string, ...remainder]
+      let opened = false
       async function buildCommandAsync() {
         log.info('Building...')
         const config = await readConfigAsync()
-        await buildAsync(globPatterns, {
+        const htmlFilePath = await buildAsync(globPatterns, {
           outputDirectory: options.output,
           ...config
         } as Options)
+        if (options.open === true && opened === false) {
+          await open(htmlFilePath)
+          opened = true
+        }
         log.success('Done')
       }
       if (options.watch === false) {
         await buildCommandAsync()
         return
       }
-      const watcher = chokidar.watch([...globPatterns, 'package.json'])
+      const watcher = chokidar.watch([...globPatterns, './'], {
+        ignored: [options.output, 'node_modules']
+      })
       async function onChangeAsync() {
         await buildCommandAsync()
         log.info('Watching...')

@@ -6,10 +6,11 @@ import { readMarkdownFilesAsync } from './utilities/read-markdown-files-async'
 export async function buildAsync(
   globs: Array<string>,
   options: Options
-): Promise<void> {
+): Promise<string> {
   const { files, images } = await readMarkdownFilesAsync(globs)
-  await buildHtmlAsync(files.join('\n\n'), options)
+  const htmlFilePath = await buildHtmlAsync(files.join('\n\n'), options)
   await copyImageFilesAsync(images, {
     outputDirectory: options.outputDirectory
   })
+  return htmlFilePath
 }

@@ -41,7 +41,7 @@ Configuration is via the **`"single-page-markdown-website"`** key of your `packa
 
 ### Options
 
-Single Page Markdown Website works without configuration out of the box; all configuration options are optional.
+*Single Page Markdown Website works without configuration out of the box; all configuration options are optional.*
 
 #### `"title"`
 
@@ -85,6 +85,45 @@ A list of links to add to the menu.
 
 - Defaults to `[{ text: 'GitHub', url: packageJson.homepage }]`
 
+## Tips
+
+### Embedding files
+
+Use the following syntax to embed the contents of a local file `foo.md` in your Markdown:
+
+```
+
+./foo.md
+
+```
+
+An empty line is required immediately before and after the file path.
+
+- If the `./` prefix is used, the file path is resolved relative to the current Markdown file.
+- If the `/` prefix is used, the file path is resolved relative to the current working directory (ie. `process.cwd()`).
+
+You can also specify a glob to embed multiple files:
+
+```
+
+./bar/*.md
+
+```
+
+### Deploying to GitHub Pages
+
+Deploy your single page website to [GitHub Pages](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) via one of the following two ways:
+
+1. Commit the `./build` directory and push your changes. Then, set the `./build` directory as the publishing source in your GitHub repository settings.
+
+2. Use the [`gh-pages`](https://github.com/tschaub/gh-pages) CLI to deploy the `./build` directory to the `gh-pages` branch:
+
+    ```sh
+    $ npx gh-pages --dist build
+    ```
+
+    Then, set the `gh-pages` branch as the publishing source in your GitHub repository settings.
+
 ## CLI
 
 <!-- ``` markdown-interpolate: ts-node --project packages/single-page-markdown-website/tsconfig.json packages/single-page-markdown-website/src/cli.ts --help -->
@@ -116,42 +155,6 @@ A list of links to add to the menu.
 
 ```
 <!-- ``` end -->
-
-## Tips
-
-### Embedding files
-
-Use the following syntax to embed the contents of a local file `foo.md` in your Markdown:
-
-```
-
-./foo.md
-
-```
-
-Note the `./` prefix and the empty lines immediately before and after. The path is resolved relative to the current file.
-
-You can also use a glob to embed multiple files:
-
-```
-
-./bar/*.md
-
-```
-
-### Deploying to GitHub Pages
-
-To host your single page website on [GitHub Pages](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site), either:
-
-1. Commit and push the `./build` directory. Then, set the `./build` directory as the publishing source in your GitHub repository settings.
-
-2. Use the [`gh-pages`](https://github.com/tschaub/gh-pages) CLI to deploy the `./build` directory:
-
-    ```sh
-    $ npx gh-pages --dist build
-    ```
-
-    Then, set the `gh-pages` branch as the publishing source in your GitHub repository settings.
 
 ## License
 

@@ -155,4 +155,4 @@ To host your single page website on [GitHub Pages](https://docs.github.com/en/fr
 
 ## License
 
-MIT
+[MIT](/LICENSE.md)

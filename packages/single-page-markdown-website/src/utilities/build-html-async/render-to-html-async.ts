@@ -81,7 +81,9 @@ async function renderMarkdownToHtmlAsync(content: string): Promise<string> {
           tabIndex: -1
         }
       })
-      .use(rehypeHighlightJs)
+      .use(rehypeHighlightJs, {
+        subset: false
+      })
       .use(rehypeStringify, {
         allowDangerousHtml: true
       })

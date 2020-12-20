@@ -169,7 +169,7 @@
 }
 
 .content code {
-  color: var(--color-fg-2);
+  padding: var(--size-1);
   font-size: 90%;
   font-family: var(--font-family-code);
   background-color: var(--color-fg-5);
@@ -179,6 +179,7 @@
   display: block;
   padding: var(--size-4);
   overflow-x: auto;
+  color: var(--color-fg-2);
 }
 
 .content strong {

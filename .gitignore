@@ -6,3 +6,4 @@ lib/
 node_modules/
 sandbox/
 *.log
+packages/single-page-markdown-website/README.md

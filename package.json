@@ -3,6 +3,7 @@
   "scripts": {
     "build": "lerna run build --scope @single-page-markdown-website/frontend && lerna run build --scope single-page-markdown-website",
     "clean": "lerna run --parallel clean && rimraf '*.log'",
+    "docs": "markdown-interpolate README.md",
     "fix": "lerna run --parallel fix",
     "lint": "lerna run --parallel lint",
     "postinstall": "yarn run build",
@@ -26,6 +27,7 @@
     "husky": "^4.3.6",
     "lerna": "^3.22.1",
     "lint-staged": "^10.5.3",
+    "markdown-interpolate": "^0.0.7",
     "mkdirp": "^1.0.4",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",

@@ -31,7 +31,7 @@ const commandConfig = {
       aliases: ['p'],
       default: false,
       description:
-        "Open the generated site in a web browser. Defaults to 'false'.",
+        "Whether to open the generated page in the default web browser. Defaults to 'false'.",
       name: 'open',
       type: 'BOOLEAN'
     },
@@ -39,7 +39,7 @@ const commandConfig = {
       aliases: ['w'],
       default: false,
       description:
-        "Watch for changes and rebuild the site. Defaults to 'false'.",
+        "Whether to watch for changes and regenerate the page. Defaults to 'false'.",
       name: 'watch',
       type: 'BOOLEAN'
     }

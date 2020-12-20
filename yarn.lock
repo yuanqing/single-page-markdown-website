@@ -1598,10 +1598,10 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@yuanqing/cli@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@yuanqing/cli/-/cli-0.0.7.tgz#43dd33eef23b94c2bf0a63f1aba42b691d92735a"
-  integrity sha512-cWqvCwJu3vCt266D7NeRPmIzq9m5zdZ6G4sh+fzbsf9kvmoQbQQP9kvk8g0/4ffUaHZGW1Rzd/FfG1ymI/g5ZQ==
+"@yuanqing/cli@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@yuanqing/cli/-/cli-0.0.9.tgz#4e575b413ee13ab0e722301d8cefb759a7e68c15"
+  integrity sha512-yTLEkYElNyz+Q3TQn9vL/Bx4bymJMdKxZTgFwSEUKN0yGi7JgQwyVJBObPyG447uPTJOm4c9qtAoEPhQ0YCN4w==
 
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"

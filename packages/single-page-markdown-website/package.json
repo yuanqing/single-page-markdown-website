@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@single-page-markdown-website/frontend": "*",
-    "@yuanqing/cli": "^0.0.7",
+    "@yuanqing/cli": "^0.0.9",
     "chokidar": "^3.4.3",
     "find-up": "^5.0.0",
     "fs-extra": "^9.0.1",

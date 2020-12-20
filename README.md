@@ -121,21 +121,29 @@ A list of links to add to the menu.
 
 ### Embedding files
 
-Use the following syntax to embed a local file `bar.md` in your Markdown:
+Use the following syntax to embed the contents of a local file `foo.md` in your Markdown:
 
 ```
 
-./bar.md
+./foo.md
 
 ```
 
-Note the `./` prefix and the empty lines immediately before and after. The path is resolved relative to the directory containing the current file.
+Note the `./` prefix and the empty lines immediately before and after. The path is resolved relative to the current file.
+
+You can also use a glob to embed multiple files:
+
+```
+
+./bar/*.md
+
+```
 
 ### Deploying to GitHub Pages
 
 To host your single page website on [GitHub Pages](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site), either:
 
-1. Commit and push the `./build` directory. Then, set the `build` directory as the publishing source in your GitHub repository settings.
+1. Commit and push the `./build` directory. Then, set the `./build` directory as the publishing source in your GitHub repository settings.
 
 2. Use the [`gh-pages`](https://github.com/tschaub/gh-pages) CLI to deploy the `./build` directory:
 

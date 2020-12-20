@@ -99,6 +99,7 @@
   background-color: transparent;
 }
 
+.content__inner > blockquote,
 .content__inner > p,
 .content__inner > ul,
 .content__inner > ol {
@@ -168,6 +169,7 @@
 }
 
 .content code {
+  color: var(--color-fg-2);
   font-size: 90%;
   font-family: var(--font-family-code);
   background-color: var(--color-fg-5);

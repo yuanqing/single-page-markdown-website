@@ -1,6 +1,6 @@
-# Single Page Markdown Website [![npm Version](https://img.shields.io/npm/v/single-page-markdown-website?cacheSeconds=1800)](https://www.npmjs.com/package/single-page-markdown-website) [![build](https://github.com/yuanqing/single-page-markdown-website/workflows/build/badge.svg)](https://github.com/yuanqing/single-page-markdown-website/actions?query=workflow%3Abuild)
+# Single-Page Markdown Website [![npm Version](https://img.shields.io/npm/v/single-page-markdown-website?cacheSeconds=1800)](https://www.npmjs.com/package/single-page-markdown-website) [![build](https://github.com/yuanqing/single-page-markdown-website/workflows/build/badge.svg)](https://github.com/yuanqing/single-page-markdown-website/actions?query=workflow%3Abuild)
 
-> Create a single page website from one or more Markdown files
+> Create a single-page website from one or more Markdown files
 
 ## Quick start
 
@@ -12,7 +12,7 @@ $ npx single-page-markdown-website '*.md' --open
 
 The above command does the following:
 
-- Concatenates the given globs of Markdown files (`'*.md'`) and renders the result as a single page website to `build/index.html`.
+- Concatenates the given globs of Markdown files (`'*.md'`) and renders the result as a single-page website to `build/index.html`.
 - Copies any referenced local image files to the `build/images` directory.
 - Opens the rendered page in your default web browser (because of the `--open` flag).
 
@@ -20,13 +20,13 @@ The above command does the following:
 
 Configuration is via the **`"single-page-markdown-website"`** key of your `package.json` file.
 
-### Example
+*Single-Page Markdown Website works without configuration out of the box; all configuration options are optional.*
 
 ```json
 {
   "single-page-markdown-website": {
-    "title": "Single Page Markdown Website",
-    "description": "Create a single page website from one or more Markdown files",
+    "title": "Single-Page Markdown Website",
+    "description": "Create a single-page website from one or more Markdown files",
     "toc": true,
     "sections": true,
     "links": [
@@ -39,11 +39,7 @@ Configuration is via the **`"single-page-markdown-website"`** key of your `packa
 }
 ```
 
-### Options
-
-*Single Page Markdown Website works without configuration out of the box; all configuration options are optional.*
-
-#### `"title"`
+### `"title"`
 
 (*`string`*)
 
@@ -51,7 +47,7 @@ The title of the page.
 
 - Defaults to `packageJson.name`
 
-#### `"description"`
+### `"description"`
 
 (*`string`*)
 
@@ -59,7 +55,7 @@ The `meta` description of the page.
 
 - Defaults to `packageJson.description`
 
-#### `"toc"`
+### `"toc"`
 
 (*`boolean`*)
 
@@ -67,7 +63,7 @@ Whether to render a Table of Contents.
 
 - Defaults to `true`
 
-#### `"sections"`
+### `"sections"`
 
 (*`boolean`*)
 
@@ -77,7 +73,7 @@ Whether to render section shortcuts in the menu.
 
 Sections are the level-one headers (`# `) in the Markdown. If there is only one level-one header, then sections are the level-two headers (`## `).
 
-#### `"links"`
+### `"links"`
 
 (*`Array<{ text: string, url: string }>`*)
 
@@ -112,7 +108,7 @@ You can also specify a glob to embed multiple files:
 
 ### Deploying to GitHub Pages
 
-Deploy your single page website to [GitHub Pages](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) via one of the following two ways:
+Deploy your single-page website to [GitHub Pages](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) via one of the following two ways:
 
 1. Commit the `./build` directory and push your changes. Then, set the `./build` directory as the publishing source in your GitHub repository settings.
 
@@ -129,7 +125,7 @@ Deploy your single page website to [GitHub Pages](https://docs.github.com/en/fre
 <!-- ``` markdown-interpolate: ts-node --project packages/single-page-markdown-website/tsconfig.json packages/single-page-markdown-website/src/cli.ts --help -->
 ```
 
-  Create a single page website from one or more Markdown files.
+  Create a single-page website from one or more Markdown files.
 
   Usage:
     $ single-page-markdown-website <files> [options]

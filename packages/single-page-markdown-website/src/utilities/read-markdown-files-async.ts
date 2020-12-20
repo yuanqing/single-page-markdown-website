@@ -114,8 +114,9 @@ const remarkTransclude: unified.Plugin<[]> = function () {
         childNode.children[0].type === 'text'
       ) {
         const value = childNode.children[0].value as string
-        if (value.indexOf('./') === 0) {
-          const directory = path.dirname(file.path as string)
+        if (value.indexOf('./') === 0 || value[0] === '/') {
+          const directory =
+            value[0] === '/' ? process.cwd() : path.dirname(file.path as string)
           const glob = path.join(directory, value.slice(1))
           const { files, images } = await readMarkdownFilesAsync(
             [glob],

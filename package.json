@@ -1,5 +1,6 @@
 {
   "private": true,
+  "homepage": "https://github.com/yuanqing/single-page-markdown-website",
   "scripts": {
     "build": "lerna run build --scope @single-page-markdown-website/frontend && lerna run build --scope single-page-markdown-website",
     "clean": "lerna run --parallel clean && rimraf '*.log'",

@@ -26,7 +26,7 @@ Configuration is via the **`"single-page-markdown-website"`** key of your `packa
 {
   "single-page-markdown-website": {
     "title": "Single Page Markdown Website",
-    "description": "Create a single page website from a directory of Markdown files",
+    "description": "Create a single page website from one or more Markdown files",
     "toc": true,
     "sections": true,
     "links": [

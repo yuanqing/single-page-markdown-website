@@ -21,6 +21,9 @@
   "files": [
     "lib"
   ],
+  "bin": {
+    "single-page-markdown-website": "lib/cli.js"
+  },
   "scripts": {
     "build": "yarn run clean && tsc",
     "clean": "rimraf '*.log' .nyc_output coverage lib",

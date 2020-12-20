@@ -52,7 +52,7 @@ async function readMarkdownFileAsync(
 }
 
 // Naive regex to parse out the `src` attribute from `img` elements in raw HTML
-const imageElementSrcRegex = /(<img src=)(["'])(.+)\2/
+const imageElementSrcRegex = /(<img src=)"([^"]+)"/g
 
 type RemarkReplaceLocalImageFilePaths = {
   images: Images
@@ -86,9 +86,12 @@ const remarkReplaceLocalImageFilePaths: unified.Plugin<
       const html = node.value as string
       node.value = html.replace(
         imageElementSrcRegex,
-        function (_, prefix, quote, imageSrc) {
+        function (match, prefix, imageSrc) {
+          if (isUrl(imageSrc) === true) {
+            return match
+          }
           const filePath = createNewFilePath(imageSrc)
-          return `${prefix}${quote}${filePath}${quote}`
+          return `${prefix}"${filePath}"`
         }
       )
     })

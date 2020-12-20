@@ -1,4 +1,4 @@
-# Single Page Markdown Website
+# Single Page Markdown Website [![npm Version](https://img.shields.io/npm/v/single-page-markdown-website?cacheSeconds=1800)](https://www.npmjs.com/package/single-page-markdown-website) [![build](https://github.com/yuanqing/single-page-markdown-website/workflows/build/badge.svg)](https://github.com/yuanqing/single-page-markdown-website/actions?query=workflow%3Abuild)
 
 > Create a single page website from one or more Markdown files
 
@@ -108,7 +108,7 @@ A list of links to add to the menu.
                    Defaults to 'false'.
 
   Examples:
-    $ single-page-markdown-website 
+    $ single-page-markdown-website
     $ single-page-markdown-website '*.md'
     $ single-page-markdown-website --open
     $ single-page-markdown-website --output dist

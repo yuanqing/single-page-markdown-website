@@ -1,6 +1,10 @@
-# Single-Page Markdown Website [![npm Version](https://img.shields.io/npm/v/single-page-markdown-website?cacheSeconds=1800)](https://www.npmjs.com/package/single-page-markdown-website) [![build](https://github.com/yuanqing/single-page-markdown-website/workflows/build/badge.svg)](https://github.com/yuanqing/single-page-markdown-website/actions?query=workflow%3Abuild)
+![Single-Page Markdown Website](https://github.com/yuanqing/single-page-markdown-website/tree/master/media/single-page-markdown-website.svg)
+
+[![npm Version](https://img.shields.io/npm/v/single-page-markdown-website?cacheSeconds=1800)](https://www.npmjs.com/package/single-page-markdown-website) [![build](https://github.com/yuanqing/single-page-markdown-website/workflows/build/badge.svg)](https://github.com/yuanqing/single-page-markdown-website/actions?query=workflow%3Abuild)
 
 > Create a nice single-page website from one or more Markdown files
+
+# Features
 
 - Zero configuration
 - Render a table of contents, shortcuts to the top-level sections, and custom links
@@ -8,7 +12,7 @@
 - Responsive
 - Dark mode support
 
-## Quick start
+# Quick start
 
 *Requires [Node.js](https://nodejs.org).*
 
@@ -22,7 +26,7 @@ The above command does the following:
 - Copies any local image file referenced in the Markdown to `build/images`.
 - Opens the rendered page in your default web browser.
 
-## Configuration
+# Configuration
 
 Configuration is via the **`"single-page-markdown-website"`** key of your `package.json` file.
 
@@ -45,7 +49,7 @@ Configuration is via the **`"single-page-markdown-website"`** key of your `packa
 }
 ```
 
-### `"title"`
+## `"title"`
 
 (*`string`*)
 
@@ -53,7 +57,7 @@ The title of the page.
 
 - Defaults to `packageJson.name`
 
-### `"description"`
+## `"description"`
 
 (*`string`*)
 
@@ -61,7 +65,7 @@ The `meta` description of the page.
 
 - Defaults to `packageJson.description`
 
-### `"toc"`
+## `"toc"`
 
 (*`boolean`*)
 
@@ -69,7 +73,7 @@ Whether to render a Table of Contents.
 
 - Defaults to `true`
 
-### `"sections"`
+## `"sections"`
 
 (*`boolean`*)
 
@@ -77,9 +81,9 @@ Whether to render section shortcuts in the menu.
 
 - Defaults to `true`
 
-Sections are the level-one headers (`# `) in the Markdown. If there is only one level-one header, then sections are the level-two headers (`## `).
+Sections are the level-one headers (`# `) in the Markdown. If there is only one level-one header, then sections are the level-two headers (`# `).
 
-### `"links"`
+## `"links"`
 
 (*`Array<{ text: string, url: string }>`*)
 
@@ -87,9 +91,9 @@ A list of links to add to the menu.
 
 - Defaults to `[{ text: 'GitHub', url: packageJson.homepage }]`
 
-## Tips
+# Tips
 
-### Including files
+## Including files
 
 Use the following syntax to include the entire contents of a local file `foo.md` in your Markdown:
 
@@ -112,7 +116,7 @@ You can also specify a glob to include multiple files:
 
 ```
 
-### Deploying to GitHub Pages
+## Deploying to GitHub Pages
 
 Deploy your single-page website to [GitHub Pages](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) via one of the following two ways:
 
@@ -126,7 +130,7 @@ Deploy your single-page website to [GitHub Pages](https://docs.github.com/en/fre
 
     Then, set the `gh-pages` branch as the publishing source in your GitHub repository settings.
 
-## CLI
+# CLI
 
 <!-- ``` markdown-interpolate: ts-node --project packages/single-page-markdown-website/tsconfig.json packages/single-page-markdown-website/src/cli.ts --help -->
 ```
@@ -158,6 +162,6 @@ Deploy your single-page website to [GitHub Pages](https://docs.github.com/en/fre
 ```
 <!-- ``` end -->
 
-## License
+# License
 
 [MIT](/LICENSE.md)

@@ -1,4 +1,4 @@
-![Single-Page Markdown Website](https://github.com/yuanqing/single-page-markdown-website/tree/master/media/single-page-markdown-website.svg)
+![Single-Page Markdown Website](https://raw.githubusercontent.com/yuanqing/single-page-markdown-website/master/media/single-page-markdown-website.svg)
 
 [![npm Version](https://img.shields.io/npm/v/single-page-markdown-website?cacheSeconds=1800)](https://www.npmjs.com/package/single-page-markdown-website) [![build](https://github.com/yuanqing/single-page-markdown-website/workflows/build/badge.svg)](https://github.com/yuanqing/single-page-markdown-website/actions?query=workflow%3Abuild)
 

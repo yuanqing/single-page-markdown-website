@@ -164,4 +164,4 @@ Deploy your single-page website to [GitHub Pages](https://docs.github.com/en/fre
 
 # License
 
-[MIT](/LICENSE.md)
+[MIT](https://github.com/yuanqing/single-page-markdown-website/blob/master/LICENSE.md)

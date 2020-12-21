@@ -29,7 +29,7 @@
     "clean": "rimraf '*.log' .nyc_output coverage lib",
     "fix": "eslint --fix 'src/**/*.ts'",
     "lint": "eslint 'src/**/*.ts'",
-    "prepublishOnly": "yarn run build && cpy ../../README.md README.md",
+    "prepublishOnly": "yarn run build && cpy ../../README.md ./",
     "start": "cd sandbox && ts-node ../src/cli.ts docs/index.md",
     "test": "tap 'src/**/__tests__/**/*.ts' --coverage-report html --coverage-report text --jobs-auto --no-browser --reporter terse",
     "watch": "yarn run clean && chokidar --command 'yarn start' --initial --silent '../frontend/lib/**/*' 'src/**/*.ts'"

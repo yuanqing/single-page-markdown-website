@@ -1,6 +1,6 @@
 # Single-Page Markdown Website [![npm Version](https://img.shields.io/npm/v/single-page-markdown-website?cacheSeconds=1800)](https://www.npmjs.com/package/single-page-markdown-website) [![build](https://github.com/yuanqing/single-page-markdown-website/workflows/build/badge.svg)](https://github.com/yuanqing/single-page-markdown-website/actions?query=workflow%3Abuild)
 
-> Create a single-page website from one or more Markdown files
+> Create a nice single-page website from one or more Markdown files
 
 ## Quick start
 
@@ -13,8 +13,8 @@ $ npx single-page-markdown-website '*.md' --open
 The above command does the following:
 
 - Concatenates the given globs of Markdown files (`'*.md'`) and renders the result as a single-page website to `build/index.html`.
-- Copies any referenced local image files to the `build/images` directory.
-- Opens the rendered page in your default web browser (because of the `--open` flag).
+- Copies any local image file referenced in the Markdown to `build/images`.
+- Opens the rendered page in your default web browser.
 
 ## Configuration
 
@@ -83,9 +83,9 @@ A list of links to add to the menu.
 
 ## Tips
 
-### Embedding files
+### Including files
 
-Use the following syntax to embed the contents of a local file `foo.md` in your Markdown:
+Use the following syntax to include the entire contents of a local file `foo.md` in your Markdown:
 
 ```
 
@@ -93,12 +93,12 @@ Use the following syntax to embed the contents of a local file `foo.md` in your 
 
 ```
 
-An empty line is required immediately before and after the file path.
+Note that an empty line is required immediately before and after the file path.
 
-- If the `./` prefix is used, the file path is resolved relative to the current Markdown file.
-- If the `/` prefix is used, the file path is resolved relative to the current working directory (ie. `process.cwd()`).
+- If the `./` prefix is used, then the file path is resolved relative to the current Markdown file.
+- If the `/` prefix is used, then the file path is resolved relative to the current working directory (ie. `process.cwd()`).
 
-You can also specify a glob to embed multiple files:
+You can also specify a glob to include multiple files:
 
 ```
 
@@ -125,7 +125,7 @@ Deploy your single-page website to [GitHub Pages](https://docs.github.com/en/fre
 <!-- ``` markdown-interpolate: ts-node --project packages/single-page-markdown-website/tsconfig.json packages/single-page-markdown-website/src/cli.ts --help -->
 ```
 
-  Create a single-page website from one or more Markdown files.
+  Create a nice single-page website from one or more Markdown files.
 
   Usage:
     $ single-page-markdown-website <files> [options]

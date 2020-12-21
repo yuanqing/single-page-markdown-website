@@ -1,7 +1,7 @@
 {
   "name": "single-page-markdown-website",
   "version": "0.0.3",
-  "description": "Create a single-page website from one or more Markdown files",
+  "description": "Create a nice single-page website from one or more Markdown files",
   "keywords": [
     "docs",
     "documentation",

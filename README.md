@@ -2,6 +2,12 @@
 
 > Create a nice single-page website from one or more Markdown files
 
+- Zero configuration
+- Render a table of contents, shortcuts to the top-level sections, and custom links
+- Include the contents of other files using a special syntax
+- Responsive
+- Dark mode support
+
 ## Quick start
 
 *Requires [Node.js](https://nodejs.org).*

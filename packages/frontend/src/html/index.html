@@ -1,14 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <% if (description !== null) { %>
-      <meta name="description" content="<%- description %>">
-    <% } %>
     <% if (title !== null) { %>
       <title><%- title %></title>
+      <meta property="og:title" content="<%- title %>">
+      <meta name="twitter:title" content="<%- title %>">
     <% } %>
+    <% if (description !== null) { %>
+      <meta name="description" content="<%- description %>">
+      <meta property="og:description" content="<%- description %>">
+      <meta name="twitter:description" content="<%- description %>">
+    <% } %>
+    <% if (shareImage !== null) { %>
+      <meta property="og:image" content="<%- shareImage %>">
+      <meta name="twitter:image" content="<%- shareImage %>">
+      <meta name="twitter:card" content="summary_large_image">
+    <% } %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style><%= css %></style>
   </head>
   <body>

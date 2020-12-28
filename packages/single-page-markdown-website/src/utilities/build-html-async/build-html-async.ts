@@ -25,6 +25,7 @@ export async function buildHtmlAsync(
     description: options.description,
     links: options.links,
     sections,
+    shareImage: options.shareImage,
     title: options.title,
     toc
   })

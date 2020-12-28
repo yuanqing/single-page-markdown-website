@@ -19,7 +19,6 @@
   "devDependencies": {
     "@types/fs-extra": "^9.0.5",
     "@types/html-minifier": "^4.0.0",
-    "@types/is-url": "^1.2.28",
     "@types/lodash.template": "^4.5.0",
     "@types/node": "^14.14.14",
     "@types/tap": "^14.10.1",
@@ -66,7 +65,8 @@
   "prettier": "eslint-config-yuanqing/prettier",
   "single-page-markdown-website": {
     "title": "Single-Page Markdown Website",
-    "description": "Create a nice single-page website from one or more Markdown files"
+    "description": "Create a nice single-page website from one or more Markdown files",
+    "shareImage": "media/share.png"
   },
   "stylelint": {
     "extends": "stylelint-config-yuanqing"

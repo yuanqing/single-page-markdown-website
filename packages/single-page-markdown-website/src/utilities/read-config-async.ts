@@ -9,6 +9,7 @@ const defaultConfig = {
   description: null,
   links: [],
   sections: true,
+  shareImage: null,
   title: null,
   toc: true
 }

@@ -66,13 +66,13 @@
     "baseUrl": "https://yuanqing.github.io/single-page-markdown-website/",
     "title": "Single-Page Markdown Website",
     "description": "Create a nice single-page website from one or more Markdown files",
-    "socialMediaPreviewImage": "media/share.png",
     "links": [
       {
         "text": "GitHub",
         "url": "https://github.com/yuanqing/single-page-markdown-website"
       }
-    ]
+    ],
+    "socialMediaPreviewImage": "media/share.png"
   },
   "stylelint": {
     "extends": "stylelint-config-yuanqing"

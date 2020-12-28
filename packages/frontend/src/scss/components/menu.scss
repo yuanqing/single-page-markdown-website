@@ -18,6 +18,9 @@
 .menu__top-bar {
   padding: var(--size-2) 0;
 }
+.menu__sections {
+  display: none;
+}
 
 .menu__toc {
   padding: var(--size-2) 0;
@@ -93,6 +96,10 @@
     padding: 0;
     overflow-x: auto;
     border-bottom: 0;
+  }
+
+  .menu__sections {
+    display: block;
   }
 
   .menu__sections:first-child,

@@ -43,7 +43,7 @@ export async function renderToHtmlAsync(
     title,
     toc: toc === null ? null : await renderMarkdownToHtmlAsync(toc)
   })
-  return minify(html, { removeTagWhitespace: true })
+  return minify(html, { collapseWhitespace: true, removeTagWhitespace: true })
 }
 
 async function renderMarkdownToHtmlAsync(content: string): Promise<string> {

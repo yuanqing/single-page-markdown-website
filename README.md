@@ -40,13 +40,13 @@ Configuration is via the **`"single-page-markdown-website"`** key of your `packa
     "description": "Create a nice single-page website from one or more Markdown files",
     "toc": true,
     "sections": true,
-    "socialMediaPreviewImage": "media/share.png",
     "links": [
       {
         "text": "GitHub",
         "url": "https://github.com/yuanqing/single-page-markdown-website"
       }
-    ]
+    ],
+    "socialMediaPreviewImage": "media/share.png"
   }
 }
 ```

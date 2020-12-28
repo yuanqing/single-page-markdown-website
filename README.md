@@ -91,12 +91,6 @@ Whether to render section shortcuts in the menu.
 
 Sections are the level-one headers (`# `) in the Markdown. If there is only one level-one header, then sections are the level-two headers (`# `).
 
-## `"socialMediaPreviewImage"`
-
-(*`string`*)
-
-The URL or file path of the social media preview image to use for the website.
-
 ## `"links"`
 
 (*`Array<{ text: string, url: string }>`*)
@@ -104,6 +98,12 @@ The URL or file path of the social media preview image to use for the website.
 A list of links to add to the menu.
 
 - Defaults to `[{ text: 'GitHub', url: packageJson.homepage }]`
+
+## `"socialMediaPreviewImage"`
+
+(*`string`*)
+
+The URL or file path of the social media preview image to use for the website.
 
 # Tips
 

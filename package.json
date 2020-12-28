@@ -64,6 +64,9 @@
     ]
   },
   "prettier": "eslint-config-yuanqing/prettier",
+  "single-page-markdown-website": {
+    "title": "Single-Page Markdown Website"
+  },
   "stylelint": {
     "extends": "stylelint-config-yuanqing"
   },

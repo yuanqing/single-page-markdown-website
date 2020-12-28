@@ -6,6 +6,7 @@ import { Config } from '../types'
 const configKey = require('../../package.json').name
 
 const defaultConfig = {
+  baseUrl: null,
   description: null,
   links: [],
   sections: true,
@@ -21,6 +22,8 @@ export async function readConfigAsync(): Promise<Config> {
   }
   const packageJson = JSON.parse(await fs.readFile(packageJsonFilePath, 'utf8'))
   const packageJsonConfig = {
+    baseUrl:
+      typeof packageJson.homepage === 'undefined' ? null : packageJson.homepage,
     description:
       typeof packageJson.description === 'undefined'
         ? null

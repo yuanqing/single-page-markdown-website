@@ -4,6 +4,7 @@ export interface Options extends Config {
 }
 
 export interface Config {
+  baseUrl: null | string
   title: null | string
   description: null | string
   toc: boolean

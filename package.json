@@ -1,6 +1,5 @@
 {
   "private": true,
-  "homepage": "https://github.com/yuanqing/single-page-markdown-website",
   "scripts": {
     "build": "lerna run build --scope @single-page-markdown-website/frontend && lerna run build --scope single-page-markdown-website",
     "clean": "lerna run --parallel clean && yarn run website-clean && rimraf '*.log'",
@@ -64,9 +63,16 @@
   },
   "prettier": "eslint-config-yuanqing/prettier",
   "single-page-markdown-website": {
+    "baseUrl": "https://yuanqing.github.io/single-page-markdown-website/",
     "title": "Single-Page Markdown Website",
     "description": "Create a nice single-page website from one or more Markdown files",
-    "shareImage": "media/share.png"
+    "shareImage": "media/share.png",
+    "links": [
+      {
+        "text": "GitHub",
+        "url": "https://github.com/yuanqing/single-page-markdown-website"
+      }
+    ]
   },
   "stylelint": {
     "extends": "stylelint-config-yuanqing"

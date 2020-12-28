@@ -17,7 +17,12 @@ export async function buildAsync(
       Object.values(images)
     )
     images[options.shareImage] = shareImageFilePath
-    options.shareImage = shareImageFilePath
+    options.shareImage = [
+      options.baseUrl === null ? '' : options.baseUrl,
+      shareImageFilePath
+    ]
+      .join('/')
+      .replace(/(?<!:)\/+/g, '/')
   }
   await copyImageFilesAsync(images, {
     outputDirectory: options.outputDirectory

@@ -8,7 +8,7 @@ export function setUpMenu(options: {
 }): void {
   let stop = false
 
-  function updateActiveItems(id: string) {
+  function updateActiveItems(id: null | string) {
     updateActiveItem({
       activeClassName: options.activeClassName,
       element: options.tocElement,
@@ -64,6 +64,8 @@ export function setUpMenu(options: {
         return
       }
     }
+    // Unset all active items
+    updateActiveItems(null)
   }
 
   options.contentElement.addEventListener('click', handleClick)
@@ -83,9 +85,12 @@ export function setUpMenu(options: {
 
 function resolveSectionId(options: {
   contentElement: HTMLElement
-  id: string
+  id: null | string
   tagName: string
 }): null | string {
+  if (options.id === null) {
+    return null
+  }
   const children = [...options.contentElement.children] as Array<HTMLElement>
   const index = children.findIndex(function (element: HTMLElement) {
     return element.getAttribute('id') === options.id

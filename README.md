@@ -35,10 +35,12 @@ Configuration is via the **`"single-page-markdown-website"`** key of your `packa
 ```json
 {
   "single-page-markdown-website": {
+    "baseUrl": "https://yuanqing.github.io/single-page-markdown-website/",
     "title": "Single-Page Markdown Website",
-    "description": "Create a single-page website from one or more Markdown files",
+    "description": "Create a nice single-page website from one or more Markdown files",
     "toc": true,
     "sections": true,
+    "socialMediaPreviewImage": "media/share.png",
     "links": [
       {
         "text": "GitHub",
@@ -48,6 +50,12 @@ Configuration is via the **`"single-page-markdown-website"`** key of your `packa
   }
 }
 ```
+
+## `"baseUrl"`
+
+(*`string`*)
+
+The base URL of the single-page website.
 
 ## `"title"`
 
@@ -82,6 +90,12 @@ Whether to render section shortcuts in the menu.
 - Defaults to `true`
 
 Sections are the level-one headers (`# `) in the Markdown. If there is only one level-one header, then sections are the level-two headers (`# `).
+
+## `"socialMediaPreviewImage"`
+
+(*`string`*)
+
+The URL or file path of the social media preview image to use for the website.
 
 ## `"links"`
 

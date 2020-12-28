@@ -66,7 +66,7 @@
     "baseUrl": "https://yuanqing.github.io/single-page-markdown-website/",
     "title": "Single-Page Markdown Website",
     "description": "Create a nice single-page website from one or more Markdown files",
-    "shareImage": "media/share.png",
+    "socialMediaPreviewImage": "media/share.png",
     "links": [
       {
         "text": "GitHub",

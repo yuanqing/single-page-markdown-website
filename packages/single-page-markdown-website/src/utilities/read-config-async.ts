@@ -10,7 +10,7 @@ const defaultConfig = {
   description: null,
   links: [],
   sections: true,
-  shareImage: null,
+  socialMediaPreviewImage: null,
   title: null,
   toc: true
 }
@@ -22,8 +22,6 @@ export async function readConfigAsync(): Promise<Config> {
   }
   const packageJson = JSON.parse(await fs.readFile(packageJsonFilePath, 'utf8'))
   const packageJsonConfig = {
-    baseUrl:
-      typeof packageJson.homepage === 'undefined' ? null : packageJson.homepage,
     description:
       typeof packageJson.description === 'undefined'
         ? null

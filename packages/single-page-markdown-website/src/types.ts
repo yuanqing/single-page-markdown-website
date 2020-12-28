@@ -10,7 +10,7 @@ export interface Config {
   toc: boolean
   sections: boolean
   links: Array<Link>
-  shareImage: null | string
+  socialMediaPreviewImage: null | string
 }
 
 export interface Link {

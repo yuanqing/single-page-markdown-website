@@ -11,15 +11,18 @@ export async function buildAsync(
   options: Options
 ): Promise<string> {
   const { files, images } = await readMarkdownFilesAsync(globs)
-  if (options.shareImage !== null && isUrl(options.shareImage) === false) {
-    const shareImageFilePath = resolveNewImageFilePath(
-      options.shareImage,
+  if (
+    options.socialMediaPreviewImage !== null &&
+    isUrl(options.socialMediaPreviewImage) === false
+  ) {
+    const socialMediaPreviewImageFilePath = resolveNewImageFilePath(
+      options.socialMediaPreviewImage,
       Object.values(images)
     )
-    images[options.shareImage] = shareImageFilePath
-    options.shareImage = [
+    images[options.socialMediaPreviewImage] = socialMediaPreviewImageFilePath
+    options.socialMediaPreviewImage = [
       options.baseUrl === null ? '' : options.baseUrl,
-      shareImageFilePath
+      socialMediaPreviewImageFilePath
     ]
       .join('/')
       .replace(/(?<!:)\/+/g, '/')

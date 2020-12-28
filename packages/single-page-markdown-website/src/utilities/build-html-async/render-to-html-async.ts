@@ -21,7 +21,7 @@ export async function renderToHtmlAsync(
     description,
     links,
     sections,
-    shareImage,
+    socialMediaPreviewImage,
     title,
     toc
   }: {
@@ -29,7 +29,7 @@ export async function renderToHtmlAsync(
     title: null | string
     links: Array<Link>
     sections: null | string
-    shareImage: null | string
+    socialMediaPreviewImage: null | string
     toc: null | string
   }
 ): Promise<string> {
@@ -42,7 +42,7 @@ export async function renderToHtmlAsync(
     links,
     sections:
       sections === null ? null : await renderMarkdownToHtmlAsync(sections),
-    shareImage,
+    socialMediaPreviewImage,
     title,
     toc: toc === null ? null : await renderMarkdownToHtmlAsync(toc)
   })

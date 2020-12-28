@@ -65,7 +65,8 @@
   },
   "prettier": "eslint-config-yuanqing/prettier",
   "single-page-markdown-website": {
-    "title": "Single-Page Markdown Website"
+    "title": "Single-Page Markdown Website",
+    "description": "Create a nice single-page website from one or more Markdown files"
   },
   "stylelint": {
     "extends": "stylelint-config-yuanqing"

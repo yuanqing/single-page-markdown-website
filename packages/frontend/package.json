@@ -31,6 +31,6 @@
     "watch": "yarn run clean && concurrently --raw 'yarn run watch-html' 'yarn run watch-scss' 'yarn run watch-ts'",
     "watch-html": "chokidar --command 'yarn run build-html' --initial --silent 'src/html/**/*.html'",
     "watch-scss": "chokidar --command 'yarn run build-scss' --initial --silent 'src/scss/**/*.scss'",
-    "watch-ts": "chokidar --command 'webpack' --initial --silent 'src/ts/**/*.ts'"
+    "watch-ts": "chokidar --command 'webpack --mode development' --initial --silent 'src/ts/**/*.ts'"
   }
 }

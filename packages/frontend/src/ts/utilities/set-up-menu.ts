@@ -125,9 +125,7 @@ function computeElementsOffsetTop(
     const percentage = element.offsetTop / document.body.scrollHeight
     result.push({ id, percentage })
   }
-  if (elements[0].offsetTop < window.innerHeight) {
-    result[0].percentage = 0
-  }
+  result[0].percentage = 0
   return result.reverse()
 }
 

@@ -13,7 +13,8 @@
     "version": "lerna version",
     "website-build": "yarn run website-clean && yarn run docs && ts-node --project tsconfig.shared.json packages/single-page-markdown-website/src/cli.ts README.md",
     "website-clean": "rimraf build",
-    "website-deploy": "yarn run website-build && gh-pages --dist build"
+    "website-deploy": "yarn run website-build && gh-pages --dist build",
+    "website-watch": "chokidar --command 'yarn run website-build' --initial --silent 'packages/*/lib/**/*'"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.5",

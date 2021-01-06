@@ -1,24 +1,24 @@
 import { findParentElement } from './find-parent-element'
 
-export function setUpMenuToggleButton(options: {
-  breakpoint: number
+const breakpoint = 1600
+
+type MenuToggleButtonOptions = {
   menuElement: HTMLElement
   menuToggleButtonElement: HTMLElement
   menuVisibleClassName: string
-}): void {
-  function toggleTocVisibility() {
+}
+
+export function setUpMenuToggleButton(options: MenuToggleButtonOptions): void {
+  function handleMenuToggleButtonClick() {
     document.body.classList.toggle(options.menuVisibleClassName)
   }
-  options.menuToggleButtonElement.addEventListener('click', function () {
-    toggleTocVisibility()
-  })
-  window.addEventListener('keydown', function (event: KeyboardEvent) {
-    if (event.key === 'Escape') {
-      toggleTocVisibility()
-    }
-  })
-  options.menuElement.addEventListener('click', function (event: Event) {
-    if (window.innerWidth >= options.breakpoint) {
+  options.menuToggleButtonElement.addEventListener(
+    'click',
+    handleMenuToggleButtonClick
+  )
+
+  function handleMenuClick(event: Event) {
+    if (window.innerWidth >= breakpoint) {
       return
     }
     if (
@@ -37,9 +37,11 @@ export function setUpMenuToggleButton(options: {
     if (parentElement === null) {
       return
     }
-    toggleTocVisibility()
-  })
-  window.addEventListener('click', function (event: Event) {
+    handleMenuToggleButtonClick()
+  }
+  options.menuElement.addEventListener('click', handleMenuClick)
+
+  function handleWindowClick(event: Event) {
     // Exit if menu is already hidden
     if (
       document.body.classList.contains(options.menuVisibleClassName) === false
@@ -47,7 +49,7 @@ export function setUpMenuToggleButton(options: {
       return
     }
     // Exit on big screens
-    if (window.innerWidth >= options.breakpoint) {
+    if (window.innerWidth >= breakpoint) {
       return
     }
     const element = event.target as HTMLElement
@@ -65,6 +67,14 @@ export function setUpMenuToggleButton(options: {
     if (parentElement !== null) {
       return
     }
-    toggleTocVisibility()
-  })
+    handleMenuToggleButtonClick()
+  }
+  window.addEventListener('click', handleWindowClick)
+
+  function handleWindowKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      handleMenuToggleButtonClick()
+    }
+  }
+  window.addEventListener('keydown', handleWindowKeyDown)
 }

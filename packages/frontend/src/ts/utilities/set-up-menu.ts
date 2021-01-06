@@ -1,37 +1,39 @@
 import { findParentElement } from './find-parent-element'
 
-export function setUpMenu(options: {
+const topOffset = 100 // offset from top edge of window in which to activate menu items
+
+type MenuOptions = {
   contentElement: HTMLElement
   activeClassName: string
   tocElement: HTMLElement
   sectionsElement: null | HTMLElement
-}): void {
-  let stop = false
+}
 
-  function updateActiveItems(id: null | string) {
-    updateActiveItem({
-      activeClassName: options.activeClassName,
-      element: options.tocElement,
-      id
+export function setUpMenu(options: MenuOptions): void {
+  let stopHandleScroll = false
+  let elementsOffsetTop = computeElementsOffsetTop(options.contentElement)
+
+  function scrollToElement(id: string) {
+    const elementOffsetTop = elementsOffsetTop.find(function (element) {
+      return element.id === id
     })
-    if (options.sectionsElement === null) {
+    if (typeof elementOffsetTop === 'undefined') {
       return
     }
-    for (const tagName of ['H1', 'H2']) {
-      const sectionId = resolveSectionId({
-        contentElement: options.contentElement,
-        id,
-        tagName
-      })
-      const result = updateActiveItem({
-        activeClassName: options.activeClassName,
-        element: options.sectionsElement,
-        id: sectionId
-      })
-      if (result === true) {
-        break
-      }
+    stopHandleScroll = true // exit early from `handleWindowScroll`
+    window.scroll(0, elementOffsetTop.offsetTop)
+    stopHandleScroll = false
+  }
+
+  function updateBasedOnLocationHash() {
+    const hash = window.location.hash
+    if (hash === '') {
+      handleWindowScroll() // Update the active item
+      return
     }
+    const id = hash.slice(1)
+    scrollToElement(id)
+    updateActiveItems(options, id)
   }
 
   function handleClick(event: Event) {
@@ -42,45 +44,141 @@ export function setUpMenu(options: {
         return element.getAttribute('href') !== null
       }
     )
-    if (parentElement !== null) {
-      const href = parentElement.getAttribute('href') as string
-      const id = href.slice(1)
-      updateActiveItems(id)
-      stop = true
-    }
-  }
-
-  function handleScroll() {
-    if (stop === true) {
-      stop = false
+    if (parentElement === null) {
       return
     }
-    const scrollPercentage =
-      window.scrollY / (document.body.scrollHeight - window.innerHeight)
-    const elementsOffsetTop = computeElementsOffsetTop(options.contentElement)
-    for (const elementOffsetTop of elementsOffsetTop) {
-      if (scrollPercentage >= elementOffsetTop.percentage) {
-        updateActiveItems(elementOffsetTop.id)
-        return
-      }
+    const href = parentElement.getAttribute('href') as string
+    if (href[0] !== '#') {
+      // Exit if not an internal link
+      return
     }
-    // Unset all active items
-    updateActiveItems(null)
+    event.preventDefault()
+    const id = href.slice(1)
+    scrollToElement(id)
+    updateActiveItems(options, id)
+    history.pushState(null, '', href)
   }
-
   options.contentElement.addEventListener('click', handleClick)
   options.tocElement.addEventListener('click', handleClick)
   if (options.sectionsElement !== null) {
     options.sectionsElement.addEventListener('click', handleClick)
   }
-  window.addEventListener('scroll', handleScroll)
 
-  const hash = window.location.hash
-  if (hash === '') {
-    handleScroll()
+  function handleWindowPopState(event: Event) {
+    event.preventDefault()
+    updateBasedOnLocationHash()
+  }
+  window.addEventListener('popstate', handleWindowPopState)
+
+  function handleWindowResize() {
+    // Recalculate `elementsOffsetTop`
+    elementsOffsetTop = computeElementsOffsetTop(options.contentElement)
+  }
+  window.addEventListener('resize', handleWindowResize)
+
+  function handleWindowScroll() {
+    if (stopHandleScroll === true) {
+      return
+    }
+    for (const element of elementsOffsetTop) {
+      if (window.scrollY >= element.offsetTop) {
+        updateActiveItems(options, element.id)
+        return
+      }
+    }
+    // Unset all active items
+    updateActiveItems(options, null)
+  }
+  window.addEventListener('scroll', handleWindowScroll)
+
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual' // https://developer.mozilla.org/en-US/docs/Web/API/History/scrollRestoration
+  }
+  updateBasedOnLocationHash()
+}
+
+function computeElementsOffsetTop(
+  contentElement: HTMLElement
+): Array<{
+  id: string
+  offsetTop: number
+}> {
+  const elements = contentElement.querySelectorAll(
+    '[id]'
+  ) as NodeListOf<HTMLElement>
+  const result = []
+  const maxOffsetTop = document.body.scrollHeight - window.innerHeight
+  let i = -1
+  let offsetBottom = null // bottom edge of the last `element` directly _above_ the viewport when scroll is at `maxOffsetTop`
+  while (++i < elements.length) {
+    const element = elements[i]
+    const id = element.getAttribute('id') as string
+    let offsetTop = element.offsetTop - topOffset
+    if (element.offsetTop + element.offsetHeight >= maxOffsetTop) {
+      // `element` is _within_ the viewport when scroll is at `maxOffsetTop`
+      if (offsetBottom === null) {
+        const previousElement = elements[i - 1]
+        offsetBottom =
+          previousElement.offsetTop - topOffset + previousElement.offsetHeight
+      }
+      offsetTop = Math.floor(
+        offsetBottom +
+          ((element.offsetTop - offsetBottom) /
+            (document.body.scrollHeight - offsetBottom)) *
+            (document.body.scrollHeight - offsetBottom - window.innerHeight)
+      )
+    }
+    result.push({ id, offsetTop })
+  }
+  return result.reverse()
+}
+
+function updateActiveItems(options: MenuOptions, id: null | string) {
+  updateActiveItem({
+    activeClassName: options.activeClassName,
+    element: options.tocElement,
+    id
+  })
+  if (options.sectionsElement === null) {
     return
   }
-  updateActiveItems(hash.slice(1))
+  for (const tagName of ['H1', 'H2']) {
+    const sectionId = resolveSectionId({
+      contentElement: options.contentElement,
+      id,
+      tagName
+    })
+    const result = updateActiveItem({
+      activeClassName: options.activeClassName,
+      element: options.sectionsElement,
+      id: sectionId
+    })
+    if (result === true) {
+      break
+    }
+  }
+}
+
+function updateActiveItem(options: {
+  element: HTMLElement
+  id: null | string
+  activeClassName: string
+}): boolean {
+  const previousActiveElement = options.element.querySelector(
+    `.${options.activeClassName}`
+  )
+  if (previousActiveElement !== null) {
+    previousActiveElement.classList.remove(options.activeClassName)
+  }
+  if (options.id === null) {
+    return false
+  }
+  const activeElement = options.element.querySelector(`[href="#${options.id}"]`)
+  if (activeElement !== null) {
+    activeElement.classList.add(options.activeClassName)
+    return true
+  }
+  return false
 }
 
 function resolveSectionId(options: {
@@ -108,45 +206,4 @@ function resolveSectionId(options: {
     return firstHeaderElement.getAttribute('id') as string
   }
   return element.getAttribute('id') as string
-}
-
-function computeElementsOffsetTop(
-  contentElement: HTMLElement
-): Array<{
-  id: string
-  percentage: number
-}> {
-  const elements = contentElement.querySelectorAll(
-    '[id]'
-  ) as NodeListOf<HTMLElement>
-  const result = []
-  for (const element of elements) {
-    const id = element.getAttribute('id') as string
-    const percentage = element.offsetTop / document.body.scrollHeight
-    result.push({ id, percentage })
-  }
-  result[0].percentage = 0
-  return result.reverse()
-}
-
-function updateActiveItem(options: {
-  element: HTMLElement
-  id: null | string
-  activeClassName: string
-}): boolean {
-  const previousActiveElement = options.element.querySelector(
-    `.${options.activeClassName}`
-  )
-  if (previousActiveElement !== null) {
-    previousActiveElement.classList.remove(options.activeClassName)
-  }
-  if (options.id === null) {
-    return false
-  }
-  const activeElement = options.element.querySelector(`[href="#${options.id}"]`)
-  if (activeElement !== null) {
-    activeElement.classList.add(options.activeClassName)
-    return true
-  }
-  return false
 }

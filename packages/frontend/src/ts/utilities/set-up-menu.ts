@@ -11,9 +11,9 @@ type MenuOptions = {
 
 export function setUpMenu(options: MenuOptions): void {
   let stopHandleScroll = false
-  let elementsOffsetTop = computeElementsOffsetTop(options.contentElement)
 
   function scrollToElement(id: string) {
+    const elementsOffsetTop = computeElementsOffsetTop(options.contentElement)
     const elementOffsetTop = elementsOffsetTop.find(function (element) {
       return element.id === id
     })
@@ -70,16 +70,11 @@ export function setUpMenu(options: MenuOptions): void {
   }
   window.addEventListener('popstate', handleWindowPopState)
 
-  function handleWindowResize() {
-    // Recalculate `elementsOffsetTop`
-    elementsOffsetTop = computeElementsOffsetTop(options.contentElement)
-  }
-  window.addEventListener('resize', handleWindowResize)
-
   function handleWindowScroll() {
     if (stopHandleScroll === true) {
       return
     }
+    const elementsOffsetTop = computeElementsOffsetTop(options.contentElement)
     for (const element of elementsOffsetTop) {
       if (window.scrollY >= element.offsetTop) {
         updateActiveItems(options, element.id)

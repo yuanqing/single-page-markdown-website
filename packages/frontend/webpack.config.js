@@ -25,7 +25,7 @@ module.exports = function (_, argv) {
       path: path.resolve(__dirname, 'lib')
     },
     resolve: {
-      extensions: ['.ts', '.js']
+      extensions: ['.ts']
     }
   }
 }

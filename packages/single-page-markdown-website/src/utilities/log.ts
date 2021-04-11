@@ -1,17 +1,15 @@
-/* eslint-disable no-console */
-
-import { blue, bold, green, red } from 'kleur/colors'
+import { blue, green, red } from 'kleur/colors'
 
 function error(message: string): void {
-  console.log(`${red(bold('error'))} ${message}`)
+  console.error(`${red('error')} ${message}`) // eslint-disable-line no-console
 }
 
 function info(message: string): void {
-  console.log(`${blue(bold('info'))} ${message}`)
+  console.info(`${blue('info')} ${message}`) // eslint-disable-line no-console
 }
 
 function success(message: string): void {
-  console.log(`${green(bold('success'))} ${message}`)
+  console.log(`${green('success')} ${message}`) // eslint-disable-line no-console
 }
 
 export const log = {

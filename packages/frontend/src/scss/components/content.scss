@@ -172,7 +172,7 @@
 
 @media (min-width: $breakpoint-md) {
   .content__inner {
-    max-width: 64ch;
+    max-width: var(--content-max-width);
     margin: 0 auto;
   }
 }

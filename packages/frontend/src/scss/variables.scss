@@ -1,5 +1,12 @@
 :root {
+  --base-font-size-sm: 14px;
+  --base-font-size-md: 16px;
+  --base-font-size-lg: 18px;
+  --base-font-size-xl: 20px;
   --border-radius: 0.25rem;
+  --button-height: 3rem;
+  --button-padding: 1rem;
+  --button-svg-height: 1rem;
   --color-bg: #fff;
   --color-fg-1: #000;
   --color-fg-2: #404040;
@@ -20,6 +27,7 @@
   --color-focus-keyboard-fg: #000;
   --color-selection-bg: rgba(0, 0, 0, 0.99);
   --color-selection-fg: #fff;
+  --content-max-width: 72ch;
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   --font-family-code: SFMono-Regular, Consolas, 'Liberation Mono', Menlo,
@@ -28,8 +36,8 @@
   --font-weight-bold: bold;
   --font-size-sm: 0.8rem;
   --font-size-md: 1rem;
-  --line-height-sm: 1.125rem;
-  --line-height-md: 1.5rem;
+  --line-height-sm: 1.2rem;
+  --line-height-md: 1.6rem;
   --size-1: 0.25rem;
   --size-2: 0.5rem;
   --size-3: 0.75rem;
@@ -52,11 +60,8 @@
   --size-20: 5rem;
   --size-24: 6rem;
   --size-64: 16rem;
-  --button-svg-height: 1rem;
-  --button-padding: 1rem;
-  --button-height: 3rem;
-  --toc-min-width: 8rem;
   --toc-max-width: 16rem;
+  --toc-min-width: 8rem;
   --z-index-1: 1;
   --z-index-2: 2;
 }

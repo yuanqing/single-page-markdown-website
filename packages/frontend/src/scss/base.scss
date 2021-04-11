@@ -1,7 +1,7 @@
 @import './breakpoints';
 
 html {
-  font-size: 16px;
+  font-size: var(--base-font-size-sm);
 }
 
 body {
@@ -24,7 +24,7 @@ img::selection {
 
 @media (min-width: $breakpoint-md) {
   html {
-    font-size: 18px;
+    font-size: var(--base-font-size-sm);
   }
   .--menu-visible {
     overflow: visible;
@@ -33,12 +33,12 @@ img::selection {
 
 @media (min-width: $breakpoint-lg) {
   html {
-    font-size: 20px;
+    font-size: var(--base-font-size-lg);
   }
 }
 
 @media (min-width: $breakpoint-xl) {
   html {
-    font-size: 22px;
+    font-size: var(--base-font-size-xl);
   }
 }

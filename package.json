@@ -44,7 +44,7 @@
   "single-page-markdown-website": {
     "baseUrl": "https://yuanqing.github.io/single-page-markdown-website/",
     "title": "Single-Page Markdown Website",
-    "description": "Create a nice single-page website from one or more Markdown files",
+    "description": "Create a nice single-page documentation website from one or more Markdown files",
     "links": [
       {
         "text": "GitHub",

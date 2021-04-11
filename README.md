@@ -2,15 +2,15 @@
 
 [![npm Version](https://img.shields.io/npm/v/single-page-markdown-website?cacheSeconds=1800)](https://www.npmjs.com/package/single-page-markdown-website)&nbsp;[![build](https://img.shields.io/github/workflow/status/yuanqing/single-page-markdown-website/build?cacheSeconds=1800)](https://github.com/yuanqing/single-page-markdown-website/actions?query=workflow%3Abuild)
 
-> Create a nice single-page website from one or more Markdown files
+> Create a nice single-page documentation website from one or more Markdown files
 
 # Features
 
 - Zero configuration
 - Render a table of contents, shortcuts to the top-level sections, and custom links
-- Include the contents of other files using a special syntax
-- Responsive
-- Dark mode support
+- Include the contents of other Markdown files using a special syntax
+- Responsive from mobile and up
+- Dark mode
 
 # Quick start
 
@@ -37,7 +37,7 @@ Configuration is via the **`"single-page-markdown-website"`** key of your `packa
   "single-page-markdown-website": {
     "baseUrl": "https://yuanqing.github.io/single-page-markdown-website/",
     "title": "Single-Page Markdown Website",
-    "description": "Create a nice single-page website from one or more Markdown files",
+    "description": "Create a nice single-page documentation website from one or more Markdown files",
     "toc": true,
     "sections": true,
     "links": [
@@ -149,7 +149,7 @@ Deploy your single-page website to [GitHub Pages](https://docs.github.com/en/fre
 <!-- ``` markdown-interpolate: ts-node --project packages/single-page-markdown-website/tsconfig.json packages/single-page-markdown-website/src/cli.ts --help -->
 ```
 
-  Create a nice single-page website from one or more Markdown files.
+  Create a nice single-page documentation website from one or more Markdown files.
 
   Usage:
     $ single-page-markdown-website <files> [options]

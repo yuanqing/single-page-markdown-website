@@ -74,17 +74,17 @@
 
 .content hr {
   width: 100%;
-  height: 2px;
-  margin-top: var(--size-9);
+  height: 1px;
+  margin-top: var(--size-12);
+  background-color: var(--color-fg-1);
   border: 0;
-  border-top: 2px solid var(--color-fg-1);
-  border-bottom: 2px solid var(--color-fg-1);
 }
 
 .content a:not(.header-link) {
   color: currentColor;
   text-decoration: underline;
-  text-underline-offset: 0.125rem;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.1875rem;
 }
 .content a:not(.header-link):hover {
   text-decoration: none;
@@ -111,30 +111,13 @@
   position: relative;
   padding-left: var(--size-7);
 }
-.content li:not(.task-list-item):before,
-.task-list-item input {
+.content li:before {
   position: absolute;
   top: 0;
   left: 0;
   display: block;
 }
-.task-list-item input {
-  display: block;
-  color: inherit;
-  font: inherit;
-  background: none;
-  border: 0;
-  opacity: 1;
-  -webkit-appearance: none;
-}
-.task-list-item input:before {
-  display: block;
-  content: '▢';
-}
-.task-list-item input:checked:before {
-  content: '✓';
-}
-.content ul li:not(.task-list-item):before {
+.content ul li:before {
   content: '◦';
 }
 .content ol {

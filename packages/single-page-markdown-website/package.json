@@ -1,6 +1,6 @@
 {
   "name": "single-page-markdown-website",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Create a nice single-page documentation website from one or more Markdown files",
   "keywords": [
     "docs",
@@ -34,7 +34,7 @@
     "watch": "yarn run clean && chokidar --command 'yarn start' --initial --silent '../frontend/lib/**/*' 'src/**/*.ts'"
   },
   "dependencies": {
-    "@single-page-markdown-website/frontend": "^0.0.11",
+    "@single-page-markdown-website/frontend": "^0.0.12",
     "@yuanqing/cli": "^0.0.9",
     "chokidar": "^3.5.1",
     "fs-extra": "^9.1.0",

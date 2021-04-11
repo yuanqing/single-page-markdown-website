@@ -1,6 +1,6 @@
 {
   "name": "@single-page-markdown-website/frontend",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "publishConfig": {
     "access": "public"
   },
@@ -42,10 +42,10 @@
     "eslint-config-yuanqing": "^0.0.4",
     "mkdirp": "^1.0.4",
     "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
     "sass": "^1.32.8",
     "stylelint": "^13.12.0",
     "stylelint-config-yuanqing": "^0.0.1",
-    "rimraf": "^3.0.2",
     "terser-webpack-plugin": "^5.1.1",
     "ts-loader": "^8.1.0",
     "typescript": "^4.2.4",

@@ -39,12 +39,6 @@
 .menu a:hover {
   color: var(--color-fg-2);
 }
-.menu a:focus {
-  outline: 0;
-}
-.menu a:focus-visible {
-  color: var(--color-focus-keyboard-fg);
-}
 .menu .menu__item--active,
 .menu .menu__item--active:hover {
   color: var(--color-fg-1);

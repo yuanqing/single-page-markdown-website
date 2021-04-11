@@ -36,7 +36,11 @@ export function setUpMenu(options: MenuOptions): void {
     updateActiveItems(options, id)
   }
 
-  function handleClick(event: Event) {
+  function handleClick(event: MouseEvent) {
+    if (event.metaKey === true) {
+      // Exit if `cmd` key was pressed
+      return
+    }
     const element = event.target as HTMLElement
     const parentElement = findParentElement(
       element,

@@ -1,17 +1,17 @@
 /* eslint-disable no-console */
 
-import * as kleur from 'kleur'
+import { blue, bold, green, red } from 'kleur/colors'
 
 function error(message: string): void {
-  console.log(`${kleur.red().bold('error')} ${message}`)
+  console.log(`${red(bold('error'))} ${message}`)
 }
 
 function info(message: string): void {
-  console.log(`${kleur.blue().bold('info')} ${message}`)
+  console.log(`${blue(bold('info'))} ${message}`)
 }
 
 function success(message: string): void {
-  console.log(`${kleur.green().bold('success')} ${message}`)
+  console.log(`${green(bold('success'))} ${message}`)
 }
 
 export const log = {

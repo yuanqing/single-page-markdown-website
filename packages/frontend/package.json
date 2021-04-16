@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "build": "yarn run clean && concurrently --raw 'yarn run build-html' 'yarn run build-scss' 'yarn run build-ts'",
-    "build-html": "mkdirp lib && cpy src/html/index.html lib",
+    "build-html": "mkdirp lib && cp src/html/index.html lib",
     "build-scss": "sass --load-path ../../node_modules --no-source-map --stop-on-error --style compressed src/scss/style.scss lib/style.css",
     "build-ts": "webpack --mode production",
     "clean": "rm -rf '*.log' lib",
@@ -37,7 +37,6 @@
     "@types/node": "^14.14.41",
     "chokidar-cli": "^2.1.0",
     "concurrently": "^6.0.2",
-    "cpy-cli": "^3.1.1",
     "eslint": "^7.24.0",
     "eslint-config-yuanqing": "^0.0.4",
     "mkdirp": "^1.0.4",

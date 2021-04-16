@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "lerna run build --scope @single-page-markdown-website/frontend && lerna run build --scope single-page-markdown-website",
-    "clean": "lerna run --parallel clean && yarn run website-clean && rimraf '*.log'",
+    "clean": "lerna run --parallel clean && yarn run website-clean && rm -rf '*.log'",
     "docs": "markdown-interpolate README.md",
     "fix": "lerna run --parallel fix",
     "lint": "lerna run --parallel lint",

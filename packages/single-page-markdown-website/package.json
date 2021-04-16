@@ -26,7 +26,7 @@
   },
   "scripts": {
     "build": "yarn run clean && tsc",
-    "clean": "rimraf '*.log' .nyc_output coverage lib",
+    "clean": "rm -rf '*.log' .nyc_output coverage lib",
     "fix": "eslint --fix 'src/**/*.ts'",
     "lint": "eslint 'src/**/*.ts'",
     "prepublishOnly": "yarn run build && cpy ../../README.md ./",
@@ -45,7 +45,7 @@
     "lodash.template": "^4.5.0",
     "mdast-util-from-markdown": "^0.8.5",
     "mdast-util-toc": "^5.1.0",
-    "open": "^8.0.5",
+    "open": "^8.0.6",
     "rehype-autolink-headings": "^5.0.1",
     "rehype-highlight": "^4.1.0",
     "rehype-slug": "^4.0.1",
@@ -53,7 +53,7 @@
     "remark-emoji": "^2.2.0",
     "remark-gfm": "^1.0.0",
     "remark-parse": "^9.0.0",
-    "remark-rehype": "^8.0.0",
+    "remark-rehype": "^8.1.0",
     "remark-stringify": "^9.0.1",
     "remark-strip-badges": "^5.0.0",
     "unified": "^9.2.1",
@@ -61,18 +61,21 @@
     "vfile": "^4.2.1"
   },
   "devDependencies": {
-    "@types/fs-extra": "^9.0.10",
+    "@types/fs-extra": "^9.0.11",
     "@types/html-minifier": "^4.0.0",
     "@types/lodash.template": "^4.5.0",
-    "@types/node": "^14.14.37",
+    "@types/node": "^14.14.41",
     "@types/unist": "^2.0.3",
     "chokidar-cli": "^2.1.0",
     "cpy-cli": "^3.1.1",
     "eslint": "^7.24.0",
     "eslint-config-yuanqing": "^0.0.4",
     "prettier": "^2.2.1",
-    "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
-  }
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-yuanqing"
+  },
+  "prettier": "eslint-config-yuanqing/prettier"
 }

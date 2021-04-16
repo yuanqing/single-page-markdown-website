@@ -8,11 +8,11 @@
     "lint": "lerna run --parallel lint",
     "postinstall": "simple-git-hooks && yarn run build",
     "publish": "lerna publish from-package",
-    "reset": "yarn run clean && lerna clean --yes && rimraf node_modules yarn.lock && yarn install",
+    "reset": "yarn run clean && lerna clean --yes && rm -rf node_modules yarn.lock && yarn install",
     "test": "lerna run test",
     "version": "lerna version",
     "website-build": "yarn run website-clean && yarn run build && yarn run docs && ts-node --project tsconfig.shared.json packages/single-page-markdown-website/src/cli.ts README.md",
-    "website-clean": "rimraf build",
+    "website-clean": "rm -rf build",
     "website-deploy": "yarn run website-build && gh-pages --dist build",
     "website-watch": "chokidar --command 'ts-node --project tsconfig.shared.json packages/single-page-markdown-website/src/cli.ts README.md' --initial --silent 'packages/*/src/**/*'"
   },
@@ -22,12 +22,8 @@
     "lerna": "^4.0.0",
     "lint-staged": "^10.5.4",
     "markdown-interpolate": "^0.0.7",
-    "rimraf": "^3.0.2",
     "simple-git-hooks": "^2.3.1",
     "ts-node": "^9.1.1"
-  },
-  "eslintConfig": {
-    "extends": "eslint-config-yuanqing"
   },
   "lint-staged": {
     "*.ts": [
@@ -37,7 +33,6 @@
       "stylelint"
     ]
   },
-  "prettier": "eslint-config-yuanqing/prettier",
   "simple-git-hooks": {
     "pre-commit": "yarn run lint-staged"
   },
@@ -52,9 +47,6 @@
       }
     ],
     "socialMediaPreviewImage": "media/share.png"
-  },
-  "stylelint": {
-    "extends": "stylelint-config-yuanqing"
   },
   "workspaces": [
     "packages/*"

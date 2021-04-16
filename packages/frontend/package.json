@@ -20,7 +20,7 @@
     "build-html": "mkdirp lib && cpy src/html/index.html lib",
     "build-scss": "sass --load-path ../../node_modules --no-source-map --stop-on-error --style compressed src/scss/style.scss lib/style.css",
     "build-ts": "webpack --mode production",
-    "clean": "rimraf '*.log' lib",
+    "clean": "rm -rf '*.log' lib",
     "fix": "concurrently --raw 'yarn run fix-scss' 'yarn run fix-ts'",
     "fix-scss": "stylelint --fix 'src/**/*.scss'",
     "fix-ts": "eslint --fix webpack.config.js 'src/**/*.ts'",
@@ -34,22 +34,28 @@
     "watch-ts": "chokidar --command 'webpack --mode development' --initial --silent 'src/ts/**/*.ts'"
   },
   "devDependencies": {
-    "@types/node": "^14.14.37",
+    "@types/node": "^14.14.41",
     "chokidar-cli": "^2.1.0",
-    "concurrently": "^6.0.1",
+    "concurrently": "^6.0.2",
     "cpy-cli": "^3.1.1",
     "eslint": "^7.24.0",
     "eslint-config-yuanqing": "^0.0.4",
     "mkdirp": "^1.0.4",
     "prettier": "^2.2.1",
-    "rimraf": "^3.0.2",
-    "sass": "^1.32.8",
+    "sass": "^1.32.9",
     "stylelint": "^13.12.0",
     "stylelint-config-yuanqing": "^0.0.1",
     "terser-webpack-plugin": "^5.1.1",
     "ts-loader": "^8.1.0",
     "typescript": "^4.2.4",
-    "webpack": "^5.31.2",
+    "webpack": "^5.33.2",
     "webpack-cli": "^4.6.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-yuanqing"
+  },
+  "prettier": "eslint-config-yuanqing/prettier",
+  "stylelint": {
+    "extends": "stylelint-config-yuanqing"
   }
 }

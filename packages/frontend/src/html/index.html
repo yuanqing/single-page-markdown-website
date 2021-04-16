@@ -38,8 +38,9 @@
       <div class="menu" data-js="menu">
         <% if (sections !== null || links.length > 0) { %>
           <div class="menu__top-bar">
-            <% if (sections !== null) { %>
+            <% if (title !== null || sections !== null) { %>
               <div class="menu__sections" data-js="sections">
+                <div class="menu__title"><a href="#"><%- title %></a></div>
                 <%= sections %>
               </div>
             <% } %>

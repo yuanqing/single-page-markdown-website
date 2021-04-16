@@ -13,6 +13,12 @@ export function setUpMenu(options: MenuOptions): void {
   let stopHandleScroll = false
 
   function scrollToElement(id: string) {
+    if (id === '') {
+      stopHandleScroll = true // exit early from `handleWindowScroll`
+      window.scroll(0, 0)
+      stopHandleScroll = false
+      return
+    }
     const elementsOffsetTop = computeElementsOffsetTop(options.contentElement)
     const elementOffsetTop = elementsOffsetTop.find(function (element) {
       return element.id === id
@@ -60,7 +66,7 @@ export function setUpMenu(options: MenuOptions): void {
     const id = href.slice(1)
     scrollToElement(id)
     updateActiveItems(options, id)
-    history.pushState(null, '', href)
+    history.pushState(null, '', href === '#' ? window.location.pathname : href)
   }
   options.contentElement.addEventListener('click', handleClick)
   options.tocElement.addEventListener('click', handleClick)
@@ -133,12 +139,24 @@ function computeElementsOffsetTop(
 }
 
 function updateActiveItems(options: MenuOptions, id: null | string) {
+  // Update active item in `tocElement`
   updateActiveItem({
     activeClassName: options.activeClassName,
     element: options.tocElement,
     id
   })
+
   if (options.sectionsElement === null) {
+    return
+  }
+
+  // Update active item in `sectionsElement`
+  if (id === null) {
+    updateActiveItem({
+      activeClassName: options.activeClassName,
+      element: options.sectionsElement,
+      id
+    })
     return
   }
   for (const tagName of ['H1', 'H2']) {
@@ -169,10 +187,9 @@ function updateActiveItem(options: {
   if (previousActiveElement !== null) {
     previousActiveElement.classList.remove(options.activeClassName)
   }
-  if (options.id === null) {
-    return false
-  }
-  const activeElement = options.element.querySelector(`[href="#${options.id}"]`)
+  const activeElement = options.element.querySelector(
+    `[href="#${options.id === null ? '' : options.id}"]`
+  )
   if (activeElement !== null) {
     activeElement.classList.add(options.activeClassName)
     return true

@@ -18,6 +18,7 @@
 .menu__top-bar {
   padding: var(--size-2) 0;
 }
+.menu__title,
 .menu__sections {
   display: none;
 }
@@ -69,7 +70,7 @@
   font-family: var(--font-family-code);
 }
 
-@media (min-width: $breakpoint-md) {
+@media (min-width: $breakpoint-lg) {
   .menu {
     position: static;
     display: block;
@@ -91,26 +92,34 @@
     border-bottom: 0;
   }
 
+  .menu__title,
   .menu__sections {
     display: block;
   }
 
-  .menu__sections:first-child,
-  .menu__links:first-child {
+  .menu__sections {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+  .menu__title {
     flex-grow: 1;
   }
+  .menu__sections ul {
+    display: flex;
+  }
 
-  .menu__sections ul,
   .menu__links ul {
     display: flex;
-    flex-shrink: 0;
-    justify-content: flex-end;
   }
 
   .menu__top-bar a {
     padding: calc((var(--button-height) - var(--line-height-sm)) / 2)
       var(--size-2);
     white-space: nowrap;
+  }
+  .menu__title a {
+    display: inline-block;
   }
 
   .menu__toc {
@@ -131,9 +140,7 @@
   .--menu-visible .menu__toc {
     display: block;
   }
-}
 
-@media (min-width: $breakpoint-lg) {
   .menu__toc a {
     padding-top: var(--size-1);
     padding-bottom: var(--size-1);

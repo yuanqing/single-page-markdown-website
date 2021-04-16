@@ -141,7 +141,7 @@
 
 .content code {
   padding: var(--size-1);
-  font-size: 90%;
+  font-size: var(--font-size-code);
   font-family: var(--font-family-code);
   background-color: var(--color-fg-5);
   border-radius: var(--border-radius);

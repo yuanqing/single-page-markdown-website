@@ -65,7 +65,7 @@ export function setUpMenu(options: MenuOptions): void {
     event.preventDefault()
     const id = href.slice(1)
     scrollToElement(id)
-    updateActiveItems(options, id)
+    updateActiveItems(options, id === '' ? null : id)
     history.pushState(null, '', href === '#' ? window.location.pathname : href)
   }
   options.contentElement.addEventListener('click', handleClick)

@@ -24,7 +24,7 @@ img::selection {
 
 @media (min-width: $breakpoint-md) {
   html {
-    font-size: var(--base-font-size-sm);
+    font-size: var(--base-font-size-md);
   }
   .--menu-visible {
     overflow: visible;

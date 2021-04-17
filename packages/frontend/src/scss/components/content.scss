@@ -22,19 +22,20 @@
 }
 .content h1 {
   margin-top: var(--size-16);
+  margin-bottom: var(--size-4);
   font-weight: var(--font-weight-bold);
   font-size: var(--size-8);
   line-height: var(--size-10);
   letter-spacing: -0.0625rem;
 }
 .content h2 {
-  margin-top: var(--size-7);
+  margin-top: var(--size-8);
   font-size: var(--size-6);
   line-height: var(--size-9);
   letter-spacing: -0.03125rem;
 }
 .content h3 {
-  margin-top: var(--size-5);
+  margin-top: var(--size-6);
   font-size: var(--size-5);
   line-height: var(--size-8);
   letter-spacing: -0.03125rem;
@@ -84,6 +85,12 @@
 }
 .content a:not(.header-link):hover {
   text-decoration: none;
+}
+.content a:focus,
+.content a:focus code {
+  color: var(--color-bg);
+  background-color: var(--color-fg-1);
+  outline: 0;
 }
 
 .content__inner > blockquote,

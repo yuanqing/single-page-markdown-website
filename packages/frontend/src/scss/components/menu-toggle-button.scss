@@ -18,6 +18,14 @@
 .menu-toggle-button__button:hover {
   color: var(--color-fg-2);
 }
+.menu-toggle-button__button:focus {
+  outline: 0;
+}
+.menu-toggle-button__button:focus-visible {
+  color: var(--color-bg);
+  background-color: var(--color-fg-1);
+  outline: 0;
+}
 
 .menu-toggle-button__svg {
   width: var(--button-svg-height);

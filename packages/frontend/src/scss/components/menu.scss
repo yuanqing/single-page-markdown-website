@@ -40,6 +40,11 @@
 .menu a:hover {
   color: var(--color-fg-2);
 }
+.menu a:focus-visible {
+  color: var(--color-bg);
+  background-color: var(--color-fg-1);
+  outline: 0;
+}
 .menu .menu__item--active,
 .menu .menu__item--active:hover {
   color: var(--color-fg-1);

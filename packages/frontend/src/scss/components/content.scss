@@ -153,11 +153,13 @@
   background-color: var(--color-fg-5);
   border-radius: var(--border-radius);
 }
+.content pre {
+  color: var(--color-fg-2);
+}
 .content pre code {
   display: block;
   padding: var(--size-4);
   overflow-x: auto;
-  color: var(--color-fg-2);
 }
 
 .content strong {

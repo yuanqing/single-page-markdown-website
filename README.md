@@ -1,7 +1,5 @@
 ![Single-Page Markdown Website](media/single-page-markdown-website.svg)
 
-[![npm Version](https://img.shields.io/npm/v/single-page-markdown-website?cacheSeconds=1800)](https://www.npmjs.com/package/single-page-markdown-website)&nbsp;[![build](https://img.shields.io/github/workflow/status/yuanqing/single-page-markdown-website/build?cacheSeconds=1800)](https://github.com/yuanqing/single-page-markdown-website/actions?query=workflow%3Abuild)
-
 > Create a nice single-page documentation website from one or more Markdown files
 
 # Features

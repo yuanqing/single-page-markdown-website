@@ -1,6 +1,6 @@
 {
   "name": "single-page-markdown-website",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Create a nice single-page documentation website from one or more Markdown files",
   "keywords": [
     "docs",
@@ -34,7 +34,7 @@
     "watch": "yarn run clean && chokidar --command 'cd ../.. && ts-node --project tsconfig.shared.json packages/single-page-markdown-website/src/cli.ts README.md' --initial --silent '../../package.json' '../../README.md' '../frontend/lib/**/*' '../../media/**/*' 'src/**/*.ts'"
   },
   "dependencies": {
-    "@single-page-markdown-website/frontend": "^0.0.14",
+    "@single-page-markdown-website/frontend": "^0.0.15",
     "@yuanqing/cli": "^0.0.9",
     "chokidar": "^3.5.1",
     "find-up": "^5.0.0",

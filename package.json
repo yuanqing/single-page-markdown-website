@@ -11,16 +11,16 @@
     "reset": "yarn run clean && lerna clean --yes && rm -rf node_modules yarn.lock && yarn install",
     "test": "lerna run test",
     "version": "lerna version",
-    "website-build": "yarn run website-clean && yarn run build && yarn run docs && ts-node --project tsconfig.shared.json packages/single-page-markdown-website/src/cli.ts README.md",
+    "website-build": "yarn run website-clean && yarn run build && yarn run docs && node packages/single-page-markdown-website/lib/cli.js README.md",
     "website-clean": "rm -rf build",
     "website-watch": "chokidar --command 'ts-node --project tsconfig.shared.json packages/single-page-markdown-website/src/cli.ts README.md' --initial --silent 'packages/*/src/**/*'"
   },
   "devDependencies": {
     "chokidar-cli": "^2.1.0",
     "lerna": "^4.0.0",
-    "lint-staged": "^10.5.4",
+    "lint-staged": "^11.0.0",
     "markdown-interpolate": "^0.0.7",
-    "simple-git-hooks": "^2.3.1",
+    "simple-git-hooks": "^2.4.1",
     "ts-node": "^9.1.1"
   },
   "lint-staged": {
@@ -32,7 +32,8 @@
     ]
   },
   "simple-git-hooks": {
-    "pre-commit": "yarn run lint-staged"
+    "pre-commit": "yarn run lint-staged",
+    "pre-push": "yarn run build"
   },
   "single-page-markdown-website": {
     "baseUrl": "https://yuanqing.github.io/single-page-markdown-website/",

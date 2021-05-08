@@ -1,9 +1,9 @@
-import * as fs from 'fs-extra'
-import * as path from 'path'
+import fs from 'fs-extra'
+import path from 'path'
 
-import { Options } from '../../types'
-import { createMarkdownTocAsync } from './create-markdown-toc-async'
-import { renderToHtmlAsync } from './render-to-html-async'
+import { Options } from '../../types.js'
+import { createMarkdownTocAsync } from './create-markdown-toc-async.js'
+import { renderToHtmlAsync } from './render-to-html-async.js'
 
 const outputHtmlFileName = 'index.html'
 

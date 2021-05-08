@@ -1,17 +1,16 @@
-import * as fs from 'fs-extra'
-import * as globby from 'globby'
-import * as path from 'path'
-import * as remarkParse from 'remark-parse'
-import * as stringify from 'remark-stringify'
-import * as unified from 'unified'
-import * as unist from 'unist'
-import * as unistUtilVisit from 'unist-util-visit'
-import * as vfile from 'vfile'
+import fs from 'fs-extra'
+import globby from 'globby'
+import isUrl from 'is-url'
+import path from 'path'
+import remarkParse from 'remark-parse'
+import stringify from 'remark-stringify'
+import unified from 'unified'
+import unist from 'unist'
+import { visit } from 'unist-util-visit'
+import vfile from 'vfile'
 
-import { Images } from '../types'
-import { resolveNewImageFilePath } from './resolve-new-image-file-path'
-
-const isUrl = require('is-url')
+import { Images } from '../types.js'
+import { resolveNewImageFilePath } from './resolve-new-image-file-path.js'
 
 export async function readMarkdownFilesAsync(
   globs: Array<string>,
@@ -76,7 +75,7 @@ const remarkReplaceLocalImageFilePaths: unified.Plugin<
       options.images[originalFilePath] = newFilePath
       return newFilePath
     }
-    unistUtilVisit(node, ['html', 'image'], function (node) {
+    visit(node, ['html', 'image'], function (node: unist.Node) {
       if (node.type === 'image') {
         const imageSrc = node.url as string
         if (isUrl(imageSrc) === true) {

@@ -1,19 +1,17 @@
-import { minify } from 'html-minifier'
-import * as rehypeSlug from 'rehype-slug'
-import * as rehypeStringify from 'rehype-stringify'
-import * as remarkGfm from 'remark-gfm'
-import * as remarkParse from 'remark-parse'
-import * as remarkToRehype from 'remark-rehype'
-import * as unified from 'unified'
+import htmlMinifier from 'html-minifier'
+import lodashTemplate from 'lodash.template'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeHighlightJs from 'rehype-highlight'
+import rehypeSlug from 'rehype-slug'
+import rehypeStringify from 'rehype-stringify'
+import remarkEmoji from 'remark-emoji'
+import remarkGfm from 'remark-gfm'
+import remarkParse from 'remark-parse'
+import remarkToRehype from 'remark-rehype'
+import unified from 'unified'
 
-import lodashTemplate = require('lodash.template')
-
-import { Link } from '../../types'
-import { readFrontendLibFileAsync } from './read-frontend-lib-file-async'
-
-const rehypeAutolinkHeadings = require('rehype-autolink-headings')
-const remarkEmoji = require('remark-emoji')
-const rehypeHighlightJs = require('rehype-highlight')
+import { Link } from '../../types.js'
+import { readFrontendLibFileAsync } from './read-frontend-lib-file-async.js'
 
 export async function renderToHtmlAsync(
   content: string,
@@ -49,7 +47,7 @@ export async function renderToHtmlAsync(
     toc: toc === null ? null : await renderMarkdownToHtmlAsync(toc),
     version
   })
-  return minify(html, {
+  return htmlMinifier.minify(html, {
     collapseWhitespace: true,
     removeComments: true,
     removeTagWhitespace: true

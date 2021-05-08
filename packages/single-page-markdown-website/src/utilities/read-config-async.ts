@@ -1,9 +1,9 @@
-import * as fs from 'fs-extra'
-import * as path from 'path'
+import fs from 'fs-extra'
+import path from 'path'
 
-import { Config } from '../types'
+import { Config } from '../types.js'
 
-const configKey = require('../../package.json').name
+const configKey = 'single-page-markdown-website'
 
 const defaultConfig = {
   baseUrl: null,

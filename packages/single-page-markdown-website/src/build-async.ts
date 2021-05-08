@@ -1,10 +1,10 @@
-import { Options } from './types'
-import { buildHtmlAsync } from './utilities/build-html-async/build-html-async'
-import { copyImageFilesAsync } from './utilities/copy-image-files-async'
-import { readMarkdownFilesAsync } from './utilities/read-markdown-files-async'
-import { resolveNewImageFilePath } from './utilities/resolve-new-image-file-path'
+import isUrl from 'is-url'
 
-const isUrl = require('is-url')
+import { Options } from './types'
+import { buildHtmlAsync } from './utilities/build-html-async/build-html-async.js'
+import { copyImageFilesAsync } from './utilities/copy-image-files-async.js'
+import { readMarkdownFilesAsync } from './utilities/read-markdown-files-async.js'
+import { resolveNewImageFilePath } from './utilities/resolve-new-image-file-path.js'
 
 export async function buildAsync(
   globs: Array<string>,

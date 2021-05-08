@@ -1,10 +1,9 @@
-import * as mdastUtilToc from 'mdast-util-toc'
-import * as remarkParse from 'remark-parse'
-import * as remarkStringify from 'remark-stringify'
-import * as unified from 'unified'
-import * as unist from 'unist'
-
-const remarkStripBadges = require('remark-strip-badges')
+import { toc } from 'mdast-util-toc'
+import remarkParse from 'remark-parse'
+import remarkStringify from 'remark-stringify'
+import remarkStripBadges from 'remark-strip-badges'
+import unified from 'unified'
+import unist from 'unist'
 
 export async function createMarkdownTocAsync(
   content: string,
@@ -28,7 +27,7 @@ const remarkExtractToc: unified.Plugin<[RemarkExtractTocOptions]> = function (
   options: RemarkExtractTocOptions
 ) {
   return function (node: unist.Node) {
-    const { map } = mdastUtilToc(node, {
+    const { map } = toc(node, {
       tight: true
     })
     if (map === null) {
@@ -42,7 +41,7 @@ const remarkExtractToc: unified.Plugin<[RemarkExtractTocOptions]> = function (
       return
     }
     if ((map.children as Array<unist.Node>).length > 1) {
-      const { map } = mdastUtilToc(node, {
+      const { map } = toc(node, {
         maxDepth: 1,
         tight: true
       })

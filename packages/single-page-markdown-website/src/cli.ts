@@ -1,15 +1,20 @@
 #!/usr/bin/env node
 
 import { createCli } from '@yuanqing/cli'
-import * as chokidar from 'chokidar'
-import * as open from 'open'
+import chokidar from 'chokidar'
+import { readFileSync } from 'fs'
+import open from 'open'
+import { dirname, resolve } from 'path'
+import { fileURLToPath } from 'url'
 
-import { buildAsync } from './build-async'
-import { Options } from './types'
-import { log } from './utilities/log'
-import { readConfigAsync } from './utilities/read-config-async'
+import { buildAsync } from './build-async.js'
+import { Options } from './types.js'
+import { log } from './utilities/log.js'
+import { readConfigAsync } from './utilities/read-config-async.js'
 
-const packageJson = require('../package.json')
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const packageJsonFilePath = resolve(__dirname, '..', 'package.json')
+const packageJson = JSON.parse(readFileSync(packageJsonFilePath, 'utf8'))
 
 const cliConfig = {
   name: packageJson.name,

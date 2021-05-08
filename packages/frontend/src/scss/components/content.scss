@@ -1,12 +1,14 @@
 @import '../breakpoints';
 
 .content {
-  padding: var(--top-bar-height) var(--size-4) 0 var(--size-4);
+  padding: 0 var(--size-4) 0 var(--size-4);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-md);
   line-height: var(--line-height-md);
 }
-
+.content__inner {
+  padding: var(--top-bar-height) 0 var(--size-12) 0;
+}
 .content__inner > :not(pre) {
   overflow-wrap: break-word;
 }
@@ -54,6 +56,7 @@
   font-style: italic;
 }
 .content [id] {
+  background-color: rgba(0, 0, 255, 0.5);
   scroll-margin-top: var(--scroll-margin-top);
 }
 

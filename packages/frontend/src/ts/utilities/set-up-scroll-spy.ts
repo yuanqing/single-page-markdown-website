@@ -13,9 +13,40 @@ export function setUpScrollSpy(options: {
     topBarElement
   } = options
 
+  function getIdElements(): Array<HTMLElement> {
+    return [...contentElement.querySelectorAll<HTMLElement>('[id]')]
+  }
+
+  function updateContentElementPaddingBottom() {
+    // Set bottom padding on `contentElement` so that the last element with an `id` can be directly scrolled to
+    const idElements = getIdElements()
+    const element = idElements[idElements.length - 1]
+    const paddingBottom =
+      window.innerHeight -
+      (topBarElement.offsetHeight + scrollMarginTopOffset) -
+      (contentElement.offsetHeight - element.offsetTop)
+    if (paddingBottom < 0) {
+      contentElement.removeAttribute('style')
+      return
+    }
+    contentElement.style.paddingBottom = `${paddingBottom}px`
+  }
+  updateContentElementPaddingBottom()
+
+  let timeoutId: number
+  function handleWindowResize() {
+    window.clearTimeout(timeoutId)
+    timeoutId = window.setTimeout(function () {
+      updateContentElementPaddingBottom()
+    }, 200)
+  }
+  window.addEventListener('resize', handleWindowResize)
+
   function handleWindowScroll() {
+    const idElements = getIdElements()
+
     const activeId = computeActiveId({
-      contentElement,
+      idElements,
       scrollMarginTop: topBarElement.offsetHeight + scrollMarginTopOffset
     })
     updateActiveItem({
@@ -26,8 +57,7 @@ export function setUpScrollSpy(options: {
 
     const activeSectionId = computeActiveSectionId({
       activeId,
-      contentElement,
-      tagName: 'H1'
+      idElements
     })
     updateActiveItem({
       activeClassName,
@@ -39,15 +69,13 @@ export function setUpScrollSpy(options: {
 }
 
 function computeActiveId(options: {
-  contentElement: HTMLElement
+  idElements: Array<HTMLElement>
   scrollMarginTop: number
 }): null | string {
-  const { contentElement, scrollMarginTop } = options
-  const elements = [
-    ...contentElement.querySelectorAll<HTMLElement>('[id]')
-  ].reverse()
+  const { idElements, scrollMarginTop } = options
+  const reversed = idElements.slice().reverse()
   const scrollY = window.scrollY
-  for (const element of elements) {
+  for (const element of reversed) {
     if (element.offsetTop - scrollMarginTop <= scrollY) {
       return element.getAttribute('id')
     }
@@ -56,31 +84,32 @@ function computeActiveId(options: {
 }
 
 function computeActiveSectionId(options: {
-  contentElement: HTMLElement
   activeId: null | string
-  tagName: string
+  idElements: Array<HTMLElement>
 }): null | string {
-  const { contentElement, activeId, tagName } = options
+  const { idElements, activeId } = options
   if (activeId === null) {
     return null
   }
-  const children = [...contentElement.querySelectorAll<HTMLElement>('[id]')]
-  const index = children.findIndex(function (element: HTMLElement) {
+  const index = idElements.findIndex(function (element: HTMLElement) {
     return element.getAttribute('id') === activeId
   })
-  const element = children
+  const sectionIdElement = idElements
     .slice(0, index + 1)
     .reverse()
     .find(function (element: HTMLElement) {
-      return element.tagName === tagName
+      return element.tagName === 'H1'
     })
-  if (typeof element === 'undefined') {
-    const firstHeaderElement = children.find(function (element: HTMLElement) {
-      return element.tagName === tagName
-    }) as HTMLElement
-    return firstHeaderElement.getAttribute('id') as string
+  if (typeof sectionIdElement !== 'undefined') {
+    return sectionIdElement.getAttribute('id') as string
   }
-  return element.getAttribute('id') as string
+  const firstHeaderElement = idElements.find(function (element: HTMLElement) {
+    return element.tagName === 'H1'
+  })
+  if (typeof firstHeaderElement === 'undefined') {
+    return null
+  }
+  return firstHeaderElement.getAttribute('id') as string
 }
 
 function updateActiveItem(options: {

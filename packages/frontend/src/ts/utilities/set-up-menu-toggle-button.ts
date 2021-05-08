@@ -1,5 +1,5 @@
 export function setUpMenuToggleButton(options: {
-  breakpoint: number // The menu is kept visible at or beyond this breakpoint
+  breakpoint: number // The menu is kept visible at or beyond this `breakpoint`
   menuToggleButtonElement: HTMLButtonElement
   visibleClassName: string
 }): void {
@@ -15,7 +15,7 @@ export function setUpMenuToggleButton(options: {
     if (document.body.classList.contains(visibleClassName) === false) {
       return
     }
-    // Exit if at or beyond `BREAKPOINT` at which `menuElement` is kept visible
+    // Exit if at or beyond `breakpoint` at which the menu is kept visible
     if (window.innerWidth >= breakpoint) {
       return
     }

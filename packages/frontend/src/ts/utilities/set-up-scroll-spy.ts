@@ -35,6 +35,7 @@ export function setUpScrollSpy(options: {
 
   let timeoutId: number
   function handleWindowResize() {
+    // Debounce triggering `updateContentElementPaddingBottom`
     window.clearTimeout(timeoutId)
     timeoutId = window.setTimeout(function () {
       updateContentElementPaddingBottom()
@@ -87,7 +88,7 @@ function computeActiveSectionId(options: {
   activeId: null | string
   idElements: Array<HTMLElement>
 }): null | string {
-  const { idElements, activeId } = options
+  const { activeId, idElements } = options
   if (activeId === null) {
     return null
   }

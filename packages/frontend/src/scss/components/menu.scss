@@ -64,6 +64,9 @@
     font-size: var(--font-size-sm);
     line-height: var(--line-height-sm);
   }
+  .--no-toc .menu {
+    display: none;
+  }
 
   .menu__links {
     display: none;

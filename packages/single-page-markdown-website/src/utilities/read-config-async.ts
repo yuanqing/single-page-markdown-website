@@ -21,8 +21,13 @@ export async function readConfigAsync(): Promise<Config> {
   if ((await fs.pathExists(packageJsonFilePath)) === false) {
     return defaultConfig
   }
+  const lernaJsonFilePath = path.resolve(process.cwd(), 'lerna.json')
+  const lernaJson =
+    (await fs.pathExists(lernaJsonFilePath)) === true
+      ? JSON.parse(await fs.readFile(lernaJsonFilePath, 'utf8'))
+      : {}
   const packageJson = JSON.parse(await fs.readFile(packageJsonFilePath, 'utf8'))
-  const packageJsonConfig = {
+  const config = {
     description:
       typeof packageJson.description === 'undefined'
         ? null
@@ -38,14 +43,17 @@ export async function readConfigAsync(): Promise<Config> {
           ],
     title: typeof packageJson.name === 'undefined' ? null : packageJson.name,
     version:
-      typeof packageJson.version === 'undefined'
-        ? null
-        : `v${packageJson.version}`
+      typeof lernaJson.version === 'undefined'
+        ? typeof packageJson.version === 'undefined'
+          ? null
+          : `v${packageJson.version}`
+        : `v${lernaJson.version}`,
+    ...(typeof packageJson[configKey] === 'undefined'
+      ? {}
+      : packageJson[configKey])
   }
-  const config = packageJson[configKey]
   return {
     ...defaultConfig,
-    ...packageJsonConfig,
-    ...(typeof config === 'undefined' ? {} : config)
+    ...config
   }
 }

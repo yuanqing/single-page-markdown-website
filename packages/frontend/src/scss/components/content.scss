@@ -55,6 +55,7 @@
   font-size: var(--size-3);
   font-style: italic;
 }
+
 .content [id] {
   scroll-margin-top: var(--scroll-margin-top);
 }
@@ -87,8 +88,8 @@
 .content a:not(.header-link):hover {
   text-decoration: none;
 }
-.content a:focus,
-.content a:focus code {
+.content a:focus-visible,
+.content a:focus-visible code {
   color: var(--color-bg-1);
   background-color: var(--color-fg-1);
   outline: 0;
@@ -149,12 +150,14 @@
 
 .content code {
   padding: var(--size-1);
+  color: var(--color-fg-2);
   font-size: var(--font-size-code);
   font-family: var(--font-family-code);
   background-color: var(--color-bg-2);
   border-radius: var(--border-radius);
 }
 .content pre {
+  margin: var(--size-6) 0;
   color: var(--color-fg-2);
 }
 .content pre code {

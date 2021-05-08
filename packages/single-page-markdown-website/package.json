@@ -30,7 +30,7 @@
     "fix": "eslint --fix 'src/**/*.ts'",
     "lint": "eslint 'src/**/*.ts'",
     "prepublishOnly": "yarn run build && cp ../../README.md ./",
-    "watch": "yarn run clean && chokidar --command 'cd ../.. && ts-node --project tsconfig.shared.json packages/single-page-markdown-website/src/cli.ts README.md' --initial --silent '../../package.json' '../../README.md' '../frontend/lib/**/*' 'src/**/*.ts'"
+    "watch": "yarn run clean && chokidar --command 'cd ../.. && ts-node --project tsconfig.shared.json packages/single-page-markdown-website/src/cli.ts README.md' --initial --silent '../../package.json' '../../README.md' '../frontend/lib/**/*' '../../media/**/*' 'src/**/*.ts'"
   },
   "dependencies": {
     "@single-page-markdown-website/frontend": "^0.0.14",

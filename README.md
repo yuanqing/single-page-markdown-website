@@ -28,7 +28,8 @@ The above command does the following:
 
 Configuration is via the **`"single-page-markdown-website"`** key of your `package.json` file.
 
-*Single-Page Markdown Website works without configuration out of the box; all configuration options are optional.*
+- Single-Page Markdown Website works without configuration out of the box; all configuration options are optional.
+- Some configuration options default to values specified in your `package.json` or `lerna.json`.
 
 ```json
 {
@@ -51,25 +52,27 @@ Configuration is via the **`"single-page-markdown-website"`** key of your `packa
 
 ## `"baseUrl"`
 
-(*`string`*)
+(*`null`* or *`string`*)
 
 The base URL of the single-page website.
 
+- Defaults to `null`
+
 ## `"title"`
 
-(*`string`*)
+(*`null`* or *`string`*)
 
 The title of the page.
 
-- Defaults to `packageJson.name`
+- Defaults to `packageJson.name`, else `null`
 
 ## `"description"`
 
-(*`string`*)
+(*`null`* or *`string`*)
 
 The `meta` description of the page.
 
-- Defaults to `packageJson.description`
+- Defaults to `packageJson.description`, else `null`
 
 ## `"toc"`
 
@@ -83,11 +86,9 @@ Whether to render a Table of Contents.
 
 (*`boolean`*)
 
-Whether to render section shortcuts in the menu.
+Whether to render sections shortcuts in the menu. (Sections are the level-one headers (`# `) in the Markdown.)
 
 - Defaults to `true`
-
-Sections are the level-one headers (`# `) in the Markdown. If there is only one level-one header, then sections are the level-two headers (`# `).
 
 ## `"links"`
 
@@ -95,13 +96,23 @@ Sections are the level-one headers (`# `) in the Markdown. If there is only one 
 
 A list of links to add to the menu.
 
-- Defaults to `[{ text: 'GitHub', url: packageJson.homepage }]`
+- Defaults to `[{ text: 'GitHub', url: packageJson.homepage }]`, else `null`
 
 ## `"socialMediaPreviewImage"`
 
-(*`string`*)
+(*`null`* or *`string`*)
 
 The URL or file path of the social media preview image to use for the website.
+
+- Defaults to `null`
+
+## `"version"`
+
+(*`null`* or *`string`*)
+
+The version number to show beside the title.
+
+- Defaults to `v${lernaJson.version}`, else `v${packageJson.version}`, else `null`
 
 # Tips
 
@@ -144,7 +155,7 @@ Deploy your single-page website to [GitHub Pages](https://docs.github.com/en/fre
 
 # CLI
 
-<!-- ``` markdown-interpolate: ts-node --project packages/single-page-markdown-website/tsconfig.json packages/single-page-markdown-website/src/cli.ts --help -->
+<!-- ``` markdown-interpolate: node packages/single-page-markdown-website/lib/cli.js --help -->
 ```
 
   Create a nice single-page documentation website from one or more Markdown files.

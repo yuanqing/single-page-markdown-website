@@ -7,19 +7,11 @@ html {
 body {
   color: var(--color-fg-1);
   font-family: var(--font-family);
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-1);
 }
 
 .--menu-visible {
   overflow: hidden;
-}
-
-::selection {
-  color: var(--color-selection-fg);
-  background-color: var(--color-selection-bg);
-}
-img::selection {
-  background-color: var(--color-fg-1);
 }
 
 @media (min-width: $breakpoint-md) {

@@ -23,7 +23,8 @@ export async function renderToHtmlAsync(
     sections,
     socialMediaPreviewImage,
     title,
-    toc
+    toc,
+    version
   }: {
     description: null | string
     title: null | string
@@ -31,6 +32,7 @@ export async function renderToHtmlAsync(
     sections: null | string
     socialMediaPreviewImage: null | string
     toc: null | string
+    version: null | string
   }
 ): Promise<string> {
   const htmlTemplate = await readFrontendLibFileAsync('index.html')
@@ -44,7 +46,8 @@ export async function renderToHtmlAsync(
       sections === null ? null : await renderMarkdownToHtmlAsync(sections),
     socialMediaPreviewImage,
     title,
-    toc: toc === null ? null : await renderMarkdownToHtmlAsync(toc)
+    toc: toc === null ? null : await renderMarkdownToHtmlAsync(toc),
+    version
   })
   return minify(html, {
     collapseWhitespace: true,

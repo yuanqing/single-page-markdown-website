@@ -1,8 +1,7 @@
 @import '../breakpoints';
 
 .content {
-  padding: calc(var(--button-height) + var(--size-4)) var(--size-4)
-    var(--size-16) var(--size-4);
+  padding: var(--top-bar-height) var(--size-4) 0 var(--size-4);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-md);
   line-height: var(--line-height-md);
@@ -55,7 +54,7 @@
   font-style: italic;
 }
 .content [id] {
-  scroll-margin-top: calc(var(--button-height) + var(--size-4));
+  scroll-margin-top: var(--scroll-margin-top);
 }
 
 .header-link {
@@ -73,7 +72,7 @@
   width: 100%;
   height: 1px;
   margin-top: var(--size-12);
-  background-color: var(--color-fg-4);
+  background-color: var(--color-fg-5);
   border: 0;
 }
 
@@ -88,7 +87,7 @@
 }
 .content a:focus,
 .content a:focus code {
-  color: var(--color-bg);
+  color: var(--color-bg-1);
   background-color: var(--color-fg-1);
   outline: 0;
 }
@@ -137,7 +136,7 @@
   left: 2px;
   display: block;
   width: 1px;
-  background-color: var(--color-fg-4);
+  background-color: var(--color-fg-5);
   content: '';
 }
 
@@ -150,7 +149,7 @@
   padding: var(--size-1);
   font-size: var(--font-size-code);
   font-family: var(--font-family-code);
-  background-color: var(--color-fg-5);
+  background-color: var(--color-bg-2);
   border-radius: var(--border-radius);
 }
 .content pre {
@@ -175,7 +174,7 @@
 
 @media (min-width: $breakpoint-xxl) {
   .--menu-visible .content {
-    margin-left: var(--toc-max-width);
+    margin-left: var(--toc-width);
   }
 }
 

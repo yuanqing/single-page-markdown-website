@@ -11,6 +11,7 @@ export interface Config {
   sections: boolean
   links: Array<Link>
   socialMediaPreviewImage: null | string
+  version: null | string
 }
 
 export interface Link {

@@ -12,7 +12,8 @@ const defaultConfig = {
   sections: true,
   socialMediaPreviewImage: null,
   title: null,
-  toc: true
+  toc: true,
+  version: null
 }
 
 export async function readConfigAsync(): Promise<Config> {
@@ -35,7 +36,11 @@ export async function readConfigAsync(): Promise<Config> {
               url: packageJson.homepage
             }
           ],
-    title: typeof packageJson.name === 'undefined' ? null : packageJson.name
+    title: typeof packageJson.name === 'undefined' ? null : packageJson.name,
+    version:
+      typeof packageJson.version === 'undefined'
+        ? null
+        : `v${packageJson.version}`
   }
   const config = packageJson[configKey]
   return {

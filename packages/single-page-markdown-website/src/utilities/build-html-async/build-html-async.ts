@@ -27,7 +27,8 @@ export async function buildHtmlAsync(
     sections,
     socialMediaPreviewImage: options.socialMediaPreviewImage,
     title: options.title,
-    toc
+    toc,
+    version: options.version
   })
   const htmlFilePath = path.join(options.outputDirectory, outputHtmlFileName)
   await fs.outputFile(htmlFilePath, html)

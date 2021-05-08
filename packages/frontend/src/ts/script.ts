@@ -1,28 +1,24 @@
-import { setUpMenu } from './utilities/set-up-menu'
 import { setUpMenuToggleButton } from './utilities/set-up-menu-toggle-button'
-
-const menuItemActiveClassName = 'menu__item--active'
-const menuVisibleClassName = '--menu-visible'
+import { setUpScrollSpy } from './utilities/set-up-scroll-spy'
 
 function main(): void {
   setUpMenuToggleButton({
-    menuElement: document.querySelector('[data-js="menu"]') as HTMLElement,
+    breakpoint: 1600,
     menuToggleButtonElement: document.querySelector(
       '[data-js="menu-toggle-button"]'
-    ) as HTMLElement,
-    menuVisibleClassName
+    ) as HTMLButtonElement,
+    visibleClassName: '--menu-visible'
   })
-  const tocElement = document.querySelector('[data-js="toc"]')
-  if (tocElement === null) {
-    return
-  }
-  setUpMenu({
-    activeClassName: menuItemActiveClassName,
+
+  setUpScrollSpy({
+    activeClassName: '--scroll-spy-active',
     contentElement: document.querySelector(
       '[data-js="content"]'
     ) as HTMLElement,
-    sectionsElement: document.querySelector('[data-js="sections"]'),
-    tocElement: tocElement as HTMLElement
+    menuElement: document.querySelector('[data-js="menu"]') as HTMLDivElement,
+    scrollMarginTopOffset: 40,
+    topBarElement: document.querySelector('[data-js="top-bar"]') as HTMLElement
   })
 }
+
 main()

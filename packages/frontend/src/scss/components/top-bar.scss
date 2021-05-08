@@ -1,0 +1,98 @@
+.top-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: var(--z-index-1);
+  display: flex;
+  overflow-x: auto;
+  font-size: var(--font-size-md);
+  line-height: 1;
+  white-space: nowrap;
+  background-color: var(--color-bg-1);
+  border-bottom: 1px solid var(--color-fg-5);
+}
+
+.top-bar a {
+  color: var(--color-fg-3);
+}
+.top-bar a:not(.--scroll-spy-active):hover {
+  color: var(--color-fg-2);
+}
+.top-bar a:focus-visible {
+  color: var(--color-bg-1);
+  background-color: var(--color-fg-1);
+  outline: 0;
+}
+.top-bar .--scroll-spy-active {
+  color: var(--color-fg-1);
+}
+
+.top-bar__toggle-button {
+  position: relative; // stack this above `.top-bar__title`
+  display: flex;
+  align-items: center;
+  height: var(--top-bar-height);
+  padding: 0 var(--size-4);
+  color: var(--color-fg-3);
+  cursor: pointer;
+}
+.top-bar__toggle-button:hover {
+  color: var(--color-fg-2);
+}
+.top-bar__toggle-button:focus {
+  outline: 0;
+}
+.top-bar__toggle-button:focus-visible {
+  color: var(--color-bg-1);
+  background-color: var(--color-fg-1);
+  outline: 0;
+}
+.top-bar__toggle-button-menu-svg,
+.top-bar__toggle-button-close-svg {
+  width: var(--font-size-md);
+  height: var(--font-size-md);
+}
+.top-bar__toggle-button-menu-svg {
+  display: block;
+}
+.--menu-visible .top-bar__toggle-button-menu-svg {
+  display: none;
+}
+.top-bar__toggle-button-close-svg {
+  display: none;
+}
+.--menu-visible .top-bar__toggle-button-close-svg {
+  display: block;
+}
+
+.top-bar__title {
+  flex-grow: 1;
+}
+.top-bar__title a {
+  display: inline-block;
+  padding: var(--size-5) var(--size-2);
+}
+.top-bar__title span {
+  color: var(--color-fg-4);
+}
+
+.top-bar__items {
+  display: none;
+  padding-right: var(--size-2);
+}
+@media (min-width: $breakpoint-lg) {
+  .top-bar__items {
+    display: flex;
+  }
+}
+.top-bar__items > ul {
+  display: flex;
+}
+.top-bar__items a {
+  display: block;
+  padding: var(--size-5) var(--size-2);
+}
+.top-bar__items a[target='_blank']:after {
+  content: ' ↗';
+}

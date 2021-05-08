@@ -4,23 +4,18 @@
   --base-font-size-lg: 18px;
   --base-font-size-xl: 22px;
   --border-radius: 0.25rem;
-  --button-height: 3rem;
-  --button-padding: 1rem;
-  --button-svg-height: 1rem;
-  --color-bg: #fff;
+  --color-bg-1: #fff;
+  --color-bg-2: #ebebeb; // 92%
   --color-fg-1: #000;
-  --color-fg-2: #404040;
-  --color-fg-3: #7f7f7f;
-  --color-fg-4: #e0e0e0;
-  --color-fg-5: #f6f6f6;
+  --color-fg-2: #303030; // 80%
+  --color-fg-3: #7f7f7f; // 50%
+  --color-fg-4: #a6a6a6; // 35%
+  --color-fg-5: #ccc; // 20%
   --color-accent: #946709;
   --color-addition-fg: #22863a;
   --color-addition-bg: #f0fff4;
   --color-deletion-fg: #b31d28;
   --color-deletion-bg: #ffeef0;
-  --color-selection-bg: rgba(0, 0, 0, 0.99);
-  --color-selection-fg: #fff;
-  --content-max-width: 80ch;
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   --font-family-code: SFMono-Regular, Consolas, 'Liberation Mono', Menlo,
@@ -48,33 +43,29 @@
   --size-14: 3.5rem;
   --size-15: 3.75rem;
   --size-16: 4rem;
-  --size-17: 4.25rem;
-  --size-18: 4.5rem;
-  --size-19: 4.75rem;
-  --size-20: 5rem;
-  --size-24: 6rem;
-  --size-64: 16rem;
-  --toc-min-width: 8rem;
-  --toc-max-width: 16rem;
   --z-index-1: 1;
-  --z-index-2: 2;
+
+  // Dimensions
+  --content-max-width: 80ch;
+  --scroll-margin-top: calc(var(--top-bar-height) + 40px);
+  --toc-width: 16rem;
+  --top-bar-height: 3.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
-    --color-bg: #000;
+    --color-bg-1: #000;
+    --color-bg-2: #141414; // 92%
     --color-fg-1: #fff;
-    --color-fg-2: #bfbfbf;
-    --color-fg-3: #7f7f7f;
-    --color-fg-4: #282828;
-    --color-fg-5: #121212;
+    --color-fg-2: #ccc; // 80%
+    --color-fg-3: #7f7f7f; // 50%
+    --color-fg-4: #595959; // 35%
+    --color-fg-5: #333; // 20%
     --color-accent: #f7eab2;
     --color-addition-fg: #aff5b4;
     --color-addition-bg: #033a16;
     --color-deletion-fg: #ffdcd7;
     --color-deletion-bg: #67060c;
-    --color-selection-bg: rgba(255, 255, 255, 0.99);
-    --color-selection-fg: #000;
   }
 }

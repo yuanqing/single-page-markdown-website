@@ -12,7 +12,7 @@
     "reset": "yarn run clean && lerna clean --yes && rm -rf ./node_modules ./yarn.lock && yarn install",
     "test": "lerna run test",
     "version": "lerna version",
-    "website-build": "yarn run website-clean && yarn run docs && TS_NODE_PROJECT=./packages/single-page-markdown-website/tsconfig.json node --loader ts-node/esm -- ./packages/single-page-markdown-website/src/cli.ts ./README.md",
+    "website-build": "yarn run website-clean && yarn run build && yarn run docs && node ./packages/single-page-markdown-website/lib/cli.js ./README.md",
     "website-clean": "rm -rf ./build"
   },
   "devDependencies": {

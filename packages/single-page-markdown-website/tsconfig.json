@@ -1,14 +1,15 @@
 {
   "extends": "../../tsconfig.shared.json",
   "compilerOptions": {
-    "lib": ["ES2020"],
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./lib",
     "paths": {
       "is-url": ["./src/types/untyped-dependencies.d.ts"],
       "rehype-autolink-headings": ["./src/types/untyped-dependencies.d.ts"],
       "rehype-highlight": ["./src/types/untyped-dependencies.d.ts"],
       "remark-strip-badges": ["./src/types/untyped-dependencies.d.ts"]
     },
-    "outDir": "./lib",
     "rootDir": "./src"
   },
   "include": ["./src/**/*.ts"]

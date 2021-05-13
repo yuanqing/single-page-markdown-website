@@ -29,7 +29,7 @@
     "single-page-markdown-website": "lib/cli.js"
   },
   "scripts": {
-    "build": "yarn run clean && tsc",
+    "build": "yarn run clean && tsc --build",
     "clean": "rm -rf './*.log' ./lib",
     "fix": "eslint --fix './src/**/*.ts'",
     "lint": "eslint './src/**/*.ts'",

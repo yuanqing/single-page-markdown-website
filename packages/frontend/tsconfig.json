@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.shared.json",
   "compilerOptions": {
-    "lib": ["DOM"]
+    "lib": ["DOM", "ES2020"]
   }
 }

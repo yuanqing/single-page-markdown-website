@@ -33,7 +33,7 @@
   },
   "simple-git-hooks": {
     "pre-commit": "yarn run lint-staged",
-    "pre-push": "yarn run lint && yarn run fix && yarn run build"
+    "pre-push": "yarn run lint && yarn run fix && yarn run build && yarn run website-build"
   },
   "single-page-markdown-website": {
     "baseUrl": "https://yuanqing.github.io/single-page-markdown-website/",

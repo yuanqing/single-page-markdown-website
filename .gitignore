@@ -1,9 +1,6 @@
 .DS_Store
-.nyc_output/
 build/
-coverage/
 lib/
 node_modules/
-sandbox/
 *.log
 packages/single-page-markdown-website/README.md

@@ -19,6 +19,20 @@ function main(): void {
     scrollMarginTopOffset: 40,
     topBarElement: document.querySelector('[data-js="top-bar"]') as HTMLElement
   })
+
+  const titleElement = document.querySelector(
+    '[data-js="title"]'
+  ) as HTMLElement
+  // Intercept clicks on the link in `titleElement`
+  titleElement.addEventListener('click', function (event: MouseEvent) {
+    event.preventDefault()
+    history.pushState(
+      '',
+      document.title,
+      `${window.location.pathname}${window.location.search}`
+    )
+    window.scrollTo({ top: 0 })
+  })
 }
 
 main()

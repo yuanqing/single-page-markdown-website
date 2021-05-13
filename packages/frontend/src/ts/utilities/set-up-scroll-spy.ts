@@ -14,7 +14,9 @@ export function setUpScrollSpy(options: {
   } = options
 
   function getIdElements(): Array<HTMLElement> {
-    return [...contentElement.querySelectorAll<HTMLElement>('[id]')]
+    return Array.prototype.slice.call(
+      contentElement.querySelectorAll<HTMLElement>('[id]')
+    )
   }
 
   function updateContentElementPaddingBottom() {

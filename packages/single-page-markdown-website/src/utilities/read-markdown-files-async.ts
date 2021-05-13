@@ -9,7 +9,7 @@ import unist from 'unist'
 import { visit } from 'unist-util-visit'
 import vfile from 'vfile'
 
-import { Images } from '../types.js'
+import { Images } from '../types/types.js'
 import { resolveNewImageFilePath } from './resolve-new-image-file-path.js'
 
 export async function readMarkdownFilesAsync(

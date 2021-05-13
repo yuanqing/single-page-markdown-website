@@ -1,6 +1,6 @@
 import isUrl from 'is-url'
 
-import { Options } from './types'
+import { Options } from './types/types'
 import { buildHtmlAsync } from './utilities/build-html-async/build-html-async.js'
 import { copyImageFilesAsync } from './utilities/copy-image-files-async.js'
 import { readMarkdownFilesAsync } from './utilities/read-markdown-files-async.js'

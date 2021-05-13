@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.shared.json",
   "compilerOptions": {
     "declaration": false,
-    "declarationMap": false
+    "declarationMap": false,
+    "lib": ["DOM"]
   }
 }

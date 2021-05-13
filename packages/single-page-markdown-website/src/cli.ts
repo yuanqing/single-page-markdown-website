@@ -8,7 +8,7 @@ import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
 
 import { buildAsync } from './build-async.js'
-import { Options } from './types.js'
+import { Options } from './types/types.js'
 import { log } from './utilities/log.js'
 import { readConfigAsync } from './utilities/read-config-async.js'
 

@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
 import path from 'path'
 
-import { Config } from '../types.js'
+import { Config } from '../types/types.js'
 
 const configKey = 'single-page-markdown-website'
 

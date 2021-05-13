@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
 import path from 'path'
 
-import { Images } from '../types.js'
+import { Images } from '../types/types.js'
 
 export async function copyImageFilesAsync(
   images: Images,

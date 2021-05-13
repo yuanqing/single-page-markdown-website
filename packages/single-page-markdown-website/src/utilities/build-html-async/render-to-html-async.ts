@@ -10,12 +10,13 @@ import remarkParse from 'remark-parse'
 import remarkToRehype from 'remark-rehype'
 import unified from 'unified'
 
-import { Link } from '../../types.js'
+import { Link } from '../../types/types.js'
 import { readFrontendLibFileAsync } from './read-frontend-lib-file-async.js'
 
 export async function renderToHtmlAsync(
   content: string,
   {
+    baseUrl,
     description,
     links,
     sections,
@@ -24,6 +25,7 @@ export async function renderToHtmlAsync(
     toc,
     version
   }: {
+    baseUrl: null | string
     description: null | string
     title: null | string
     links: Array<Link>
@@ -44,6 +46,7 @@ export async function renderToHtmlAsync(
       sections === null ? null : await renderMarkdownToHtmlAsync(sections),
     socialMediaPreviewImage,
     title,
+    titleUrl: baseUrl === 'null' ? 'index.html' : baseUrl,
     toc: toc === null ? null : await renderMarkdownToHtmlAsync(toc),
     version
   })

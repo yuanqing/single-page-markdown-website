@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
 import path from 'path'
 
-import { Options } from '../../types.js'
+import { Options } from '../../types/types.js'
 import { createMarkdownTocAsync } from './create-markdown-toc-async.js'
 import { renderToHtmlAsync } from './render-to-html-async.js'
 
@@ -22,6 +22,7 @@ export async function buildHtmlAsync(
       ? await createMarkdownTocAsync(content, { sections: false })
       : null
   const html = await renderToHtmlAsync(content, {
+    baseUrl: options.baseUrl,
     description: options.description,
     links: options.links,
     sections,

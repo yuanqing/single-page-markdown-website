@@ -4,10 +4,9 @@
     "declarationMap": true,
     "esModuleInterop": true,
     "module": "ES2020",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "removeComments": true,
     "strict": true,
-    "sourceMap": true,
     "target": "ES2020",
     "typeRoots": ["./node_modules/@types"]
   }

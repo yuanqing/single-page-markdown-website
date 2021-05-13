@@ -1,19 +1,19 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "lerna run build --scope @single-page-markdown-website/frontend && lerna run build --scope single-page-markdown-website",
-    "clean": "lerna run --parallel clean && yarn run website-clean && rm -rf '*.log'",
-    "docs": "markdown-interpolate README.md",
-    "fix": "lerna run --parallel fix",
-    "lint": "lerna run --parallel lint",
+    "clean": "lerna run --parallel --stream clean && yarn run website-clean && rm -rf './*.log'",
+    "docs": "markdown-interpolate ./README.md",
+    "fix": "lerna run --parallel --stream fix",
+    "lint": "lerna run --parallel --stream lint",
     "postinstall": "simple-git-hooks && yarn run build",
     "publish": "lerna publish from-package",
-    "reset": "yarn run clean && lerna clean --yes && rm -rf node_modules yarn.lock && yarn install",
+    "reset": "yarn run clean && lerna clean --yes && rm -rf ./node_modules ./yarn.lock && yarn install",
     "test": "lerna run test",
     "version": "lerna version",
-    "website-build": "yarn run website-clean && yarn run build && yarn run docs && node packages/single-page-markdown-website/lib/cli.js README.md",
-    "website-clean": "rm -rf build",
-    "website-watch": "chokidar --command 'ts-node --project tsconfig.shared.json packages/single-page-markdown-website/src/cli.ts README.md' --initial --silent 'packages/*/src/**/*'"
+    "website-build": "yarn run website-clean && yarn run build && yarn run docs && node ./packages/single-page-markdown-website/lib/cli.js README.md",
+    "website-clean": "rm -rf ./build"
   },
   "devDependencies": {
     "chokidar-cli": "^2.1.0",
@@ -33,7 +33,7 @@
   },
   "simple-git-hooks": {
     "pre-commit": "yarn run lint-staged",
-    "pre-push": "yarn run build"
+    "pre-push": "yarn run lint && yarn run fix && yarn run build"
   },
   "single-page-markdown-website": {
     "baseUrl": "https://yuanqing.github.io/single-page-markdown-website/",

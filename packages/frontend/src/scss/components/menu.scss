@@ -73,8 +73,9 @@
   }
 }
 
-@media (min-width: $breakpoint-xxl) {
+@media (min-width: $breakpoint-xl) {
   .menu {
+    display: block;
     border-right: 0;
   }
 }

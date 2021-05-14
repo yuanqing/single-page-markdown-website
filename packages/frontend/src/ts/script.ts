@@ -20,11 +20,11 @@ function main(): void {
     topBarElement: document.querySelector('[data-js="top-bar"]') as HTMLElement
   })
 
-  const titleElement = document.querySelector(
-    '[data-js="title"]'
+  const titleLinkElement = document.querySelector(
+    '[data-js="title-link"]'
   ) as HTMLElement
   // Intercept clicks on the link in `titleElement`
-  titleElement.addEventListener('click', function (event: MouseEvent) {
+  titleLinkElement.addEventListener('click', function (event: MouseEvent) {
     if (event.metaKey === true || event.shiftKey === true) {
       return
     }

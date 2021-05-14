@@ -177,12 +177,6 @@
   }
 }
 
-@media (min-width: $breakpoint-xxl) {
-  .--menu-visible .content {
-    margin-left: var(--toc-width);
-  }
-}
-
 @media (hover: hover) and (min-width: $breakpoint-lg) {
   .content h1,
   .content h2,
@@ -195,6 +189,7 @@
     margin-left: calc(-1 * var(--size-9));
     padding-left: var(--size-9);
   }
+
   .header-link {
     position: absolute;
     top: 0;
@@ -211,5 +206,11 @@
   .content h5:hover .header-link,
   .content h6:hover .header-link {
     opacity: 1;
+  }
+}
+
+@media (min-width: $breakpoint-xl) {
+  .content {
+    margin-left: var(--toc-width);
   }
 }

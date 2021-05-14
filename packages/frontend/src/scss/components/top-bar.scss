@@ -72,11 +72,12 @@
   padding-left: var(--size-2);
   color: var(--color-fg-3);
 }
-.top-bar__title a {
+.top-bar__title-link {
   display: inline-block;
   padding: var(--size-5) var(--size-2);
 }
 .top-bar__title-version {
+  display: inline-block;
   color: var(--color-fg-4);
 }
 
@@ -101,5 +102,11 @@
   }
   .top-bar__items {
     display: flex;
+  }
+}
+
+@media (min-width: $breakpoint-xl) {
+  .top-bar__toggle-button {
+    display: none;
   }
 }

@@ -23,7 +23,6 @@ function main(): void {
   const titleLinkElement = document.querySelector(
     '[data-js="title-link"]'
   ) as HTMLElement
-  // Intercept clicks on the link in `titleElement`
   titleLinkElement.addEventListener('click', function (event: MouseEvent) {
     if (event.metaKey === true || event.shiftKey === true) {
       return

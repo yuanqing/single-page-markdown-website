@@ -25,8 +25,8 @@
   --font-size-code: 90%;
   --font-size-sm: 0.8rem;
   --font-size-md: 1rem;
-  --line-height-sm: 1.2rem;
-  --line-height-md: 1.6rem;
+  --line-height-sm: 1.25rem;
+  --line-height-md: 1.75rem;
   --size-1: 0.25rem;
   --size-2: 0.5rem;
   --size-3: 0.75rem;
@@ -46,7 +46,7 @@
   // Dimensions
   --scroll-margin-top: calc(var(--top-bar-height) + 40px);
   --toc-width: 16rem;
-  --top-bar-height: 3.5rem;
+  --top-bar-height: 3rem;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,3 +1,5 @@
+import { findParentElement } from './find-parent-element'
+
 export function setUpTopBarMenuToggleButton(options: {
   breakpoint: number // The menu is kept visible at or beyond this `breakpoint`
   topBarMenuToggleButtonElement: HTMLButtonElement
@@ -42,17 +44,4 @@ export function setUpTopBarMenuToggleButton(options: {
     handleButtonClick()
   }
   window.addEventListener('keydown', handleWindowKeyDown)
-}
-
-function findParentElement(
-  element: null | HTMLElement,
-  callback: (element: HTMLElement) => boolean
-): null | HTMLElement {
-  while (element !== null) {
-    if (callback(element) === true) {
-      break
-    }
-    element = element.parentElement
-  }
-  return element
 }

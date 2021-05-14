@@ -17,9 +17,6 @@ function main(): void {
   const topBarTitleLinkElement = document.querySelector<HTMLAnchorElement>(
     '[data-js="top-bar-title-link"]'
   )
-  const topBarSectionsElement = document.querySelector<HTMLDivElement>(
-    '[data-js="top-bar-sections"]'
-  )
   const menuElement = document.querySelector<HTMLDivElement>('[data-js="menu"]')
 
   if (topBarMenuToggleButtonElement !== null) {
@@ -35,11 +32,8 @@ function main(): void {
       topBarTitleLinkElement
     })
   }
-  if (menuElement !== null && topBarSectionsElement !== null) {
-    setUpMenu({
-      menuElement,
-      topBarSectionsElement
-    })
+  if (menuElement !== null) {
+    setUpMenu(menuElement)
   }
   if (
     menuElement !== null &&

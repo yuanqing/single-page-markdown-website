@@ -85,8 +85,7 @@
   display: none;
   padding-right: var(--size-2);
 }
-.top-bar__items div,
-.top-bar__items ul {
+.top-bar__items > ul {
   display: flex;
 }
 .top-bar__items a {

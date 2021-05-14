@@ -172,12 +172,26 @@
 
 @media (min-width: $breakpoint-md) {
   .content__inner {
-    max-width: var(--content-max-width);
+    max-width: 70ch;
     margin: 0 auto;
   }
 }
 
-@media (hover: hover) and (min-width: $breakpoint-lg) {
+@media (min-width: $breakpoint-xl) {
+  .content {
+    margin-left: var(--toc-width);
+  }
+
+  .content__inner {
+    max-width: 66ch;
+  }
+}
+
+@media (min-width: $breakpoint-xxl) {
+  .content__inner {
+    max-width: 70ch;
+  }
+
   .content h1,
   .content h2,
   .content h3,
@@ -197,6 +211,11 @@
     left: 0;
     display: block;
     padding: 0 var(--size-3);
+  }
+}
+
+@media (hover: hover) {
+  .header-link {
     opacity: 0;
   }
   .content h1:hover .header-link,
@@ -206,11 +225,5 @@
   .content h5:hover .header-link,
   .content h6:hover .header-link {
     opacity: 1;
-  }
-}
-
-@media (min-width: $breakpoint-xl) {
-  .content {
-    margin-left: var(--toc-width);
   }
 }

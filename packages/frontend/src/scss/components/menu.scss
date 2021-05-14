@@ -38,7 +38,7 @@
 .menu li li li li li li a {
   padding-left: var(--size-24);
 }
-.menu a:not(.scroll-spy-active):hover {
+.menu a:not(.--scroll-spy-active):hover {
   color: var(--color-fg-2);
 }
 .menu a:focus-visible {

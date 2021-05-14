@@ -5,7 +5,7 @@
   --base-font-size-xl: 22px;
   --border-radius: 0.25rem;
   --color-bg-1: #fff;
-  --color-bg-2: #ebebeb; // 92%
+  --color-bg-2: #f5f5f5; // 96%
   --color-fg-1: #000;
   --color-fg-2: #303030; // 80%
   --color-fg-3: #7f7f7f; // 50%
@@ -44,7 +44,6 @@
   --z-index-1: 1;
 
   // Dimensions
-  --content-max-width: 72ch;
   --scroll-margin-top: calc(var(--top-bar-height) + 40px);
   --toc-width: 16rem;
   --top-bar-height: 3.5rem;

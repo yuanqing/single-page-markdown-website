@@ -13,25 +13,25 @@
     "directory": "packages/frontend"
   },
   "files": [
-    "lib"
+    "./lib"
   ],
   "scripts": {
     "build": "yarn run clean && concurrently --raw 'yarn run build-html' 'yarn run build-scss' 'yarn run build-ts'",
-    "build-html": "mkdirp lib && cp src/html/index.html lib",
-    "build-scss": "sass --load-path ../../node_modules --no-source-map --stop-on-error --style compressed src/scss/style.scss lib/style.css",
+    "build-html": "mkdirp ./lib && cp ./src/html/index.html ./lib",
+    "build-scss": "sass --load-path ../../node_modules --no-source-map --stop-on-error --style compressed ./src/scss/style.scss ./lib/style.css",
     "build-ts": "webpack --mode production",
-    "clean": "rm -rf '*.log' lib",
+    "clean": "rm -rf './*.log' ./lib",
     "fix": "concurrently --raw 'yarn run fix-scss' 'yarn run fix-ts'",
-    "fix-scss": "stylelint --fix 'src/**/*.scss'",
-    "fix-ts": "eslint --fix webpack.config.js 'src/**/*.ts'",
+    "fix-scss": "stylelint --fix './src/**/*.scss'",
+    "fix-ts": "eslint --fix ./webpack.config.js './src/**/*.ts'",
     "lint": "concurrently --raw 'yarn run lint-scss' 'yarn run lint-ts'",
-    "lint-scss": "stylelint 'src/**/*.scss'",
-    "lint-ts": "eslint webpack.config.js 'src/**/*.ts'",
+    "lint-scss": "stylelint './src/**/*.scss'",
+    "lint-ts": "eslint webpack.config.js './src/**/*.ts'",
     "prepublishOnly": "yarn run build",
     "watch": "yarn run clean && concurrently --raw 'yarn run watch-html' 'yarn run watch-scss' 'yarn run watch-ts'",
-    "watch-html": "chokidar --command 'yarn run build-html' --initial --silent 'src/html/**/*.html'",
-    "watch-scss": "chokidar --command 'yarn run build-scss' --initial --silent 'src/scss/**/*.scss'",
-    "watch-ts": "chokidar --command 'webpack --mode development' --initial --silent 'src/ts/**/*.ts'"
+    "watch-html": "chokidar --command 'yarn run build-html' --initial --silent './src/html/**/*.html'",
+    "watch-scss": "chokidar --command 'yarn run build-scss' --initial --silent './src/scss/**/*.scss'",
+    "watch-ts": "chokidar --command 'webpack --mode development' --initial --silent './src/ts/**/*.ts'"
   },
   "devDependencies": {
     "@types/node": "^15.0.3",

@@ -1,14 +1,15 @@
-export function setUpMenuToggleButton(options: {
+export function setUpTopBarMenuToggleButton(options: {
   breakpoint: number // The menu is kept visible at or beyond this `breakpoint`
-  menuToggleButtonElement: HTMLButtonElement
+  topBarMenuToggleButtonElement: HTMLButtonElement
   visibleClassName: string
 }): void {
-  const { breakpoint, menuToggleButtonElement, visibleClassName } = options
+  const { breakpoint, topBarMenuToggleButtonElement, visibleClassName } =
+    options
 
-  function handleMenuToggleButtonClick(): void {
+  function handleButtonClick(): void {
     document.body.classList.toggle(visibleClassName)
   }
-  menuToggleButtonElement.addEventListener('click', handleMenuToggleButtonClick)
+  topBarMenuToggleButtonElement.addEventListener('click', handleButtonClick)
 
   function handleWindowClick(event: MouseEvent): void {
     // Exit if the menu is already hidden
@@ -24,13 +25,13 @@ export function setUpMenuToggleButton(options: {
     const parentElement = findParentElement(
       eventTarget,
       function (element: HTMLElement): boolean {
-        return element === menuToggleButtonElement
+        return element === topBarMenuToggleButtonElement
       }
     )
     if (parentElement !== null) {
       return
     }
-    handleMenuToggleButtonClick()
+    handleButtonClick()
   }
   window.addEventListener('click', handleWindowClick)
 
@@ -38,7 +39,7 @@ export function setUpMenuToggleButton(options: {
     if (event.key !== 'Escape') {
       return
     }
-    handleMenuToggleButtonClick()
+    handleButtonClick()
   }
   window.addEventListener('keydown', handleWindowKeyDown)
 }

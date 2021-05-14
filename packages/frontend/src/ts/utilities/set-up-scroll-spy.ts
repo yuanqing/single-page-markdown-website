@@ -1,9 +1,9 @@
 export function setUpScrollSpy(options: {
   activeClassName: string
-  contentElement: HTMLElement
-  menuElement: HTMLElement
+  contentElement: HTMLDivElement
+  menuElement: HTMLDivElement
   scrollMarginTopOffset: number
-  topBarElement: HTMLElement
+  topBarElement: HTMLDivElement
 }): void {
   const {
     activeClassName,

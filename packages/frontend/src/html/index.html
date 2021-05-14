@@ -27,18 +27,18 @@
     <% if (title !== null || sections !== null || links.length > 0 || toc !== null) { %>
       <div class="top-bar" data-js="top-bar">
         <% if (links.length > 0 || toc !== null) { %>
-          <button class="top-bar__toggle-button" data-js="menu-toggle-button">
-            <svg class="top-bar__toggle-button-menu-svg" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <button class="top-bar__menu-toggle-button" data-js="top-bar-menu-toggle-button">
+            <svg class="top-bar__menu-toggle-button-menu-svg" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
               <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M0 2.75C0 2.33579.335786 2 .75 2h14.5c.4142 0 .75.33579.75.75s-.3358.75-.75.75H.75C.335786 3.5 0 3.16421 0 2.75zM0 8c0-.41421.335786-.75.75-.75h14.5c.4142 0 .75.33579.75.75s-.3358.75-.75.75H.75C.335786 8.75 0 8.41421 0 8zm.75 4.5c-.414214 0-.75.3358-.75.75s.335786.75.75.75h14.5c.4142 0 .75-.3358.75-.75s-.3358-.75-.75-.75H.75z" />
             </svg>
-            <svg class="top-bar__toggle-button-close-svg" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <svg class="top-bar__menu-toggle-button-close-svg" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
               <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M1.28033.21967c-.292893-.2928933-.767767-.2928933-1.06066 0-.2928933.292893-.2928933.767767 0 1.06066L6.93934 8 .21967 14.7197c-.2928933.2929-.2928933.7677 0 1.0606.292893.2929.767767.2929 1.06066 0L8 9.06066l6.7197 6.71964c.2929.2929.7677.2929 1.0606 0 .2929-.2929.2929-.7677 0-1.0606L9.06066 8l6.71964-6.71967c.2929-.292893.2929-.767767 0-1.06066-.2929-.2928933-.7677-.2928933-1.0606 0L8 6.93934 1.28033.21967z" />
             </svg>
           </button>
         <% } %>
         <% if (title !== null) { %>
           <div class="top-bar__title">
-            <a class="top-bar__title-link" href="<%= titleUrl %>" data-js="title-link">
+            <a class="top-bar__title-link" href="<%= titleUrl %>" data-js="top-bar-title-link">
               <%- title %>
             </a>
             <% if (version !== null) { %>
@@ -49,7 +49,9 @@
         <% if (sections !== null || links.length > 0) { %>
           <div class="top-bar__items">
             <% if (sections !== null) { %>
-              <%= sections %>
+              <div class="top-bar__sections" data-js="top-bar-sections">
+                <%= sections %>
+              </div>
             <% } %>
             <% if (links.length > 0) { %>
               <ul>

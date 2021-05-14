@@ -1,40 +1,58 @@
-import { setUpMenuToggleButton } from './utilities/set-up-menu-toggle-button'
+import { setUpMenu } from './utilities/set-up-menu'
 import { setUpScrollSpy } from './utilities/set-up-scroll-spy'
+import { setUpTopBarMenuToggleButton } from './utilities/set-up-top-bar-menu-toggle-button'
+import { setUpTopBarTitleLink } from './utilities/set-up-top-bar-title-link'
 
 function main(): void {
-  setUpMenuToggleButton({
-    breakpoint: 1600,
-    menuToggleButtonElement: document.querySelector(
-      '[data-js="menu-toggle-button"]'
-    ) as HTMLButtonElement,
-    visibleClassName: '--menu-visible'
-  })
-
-  setUpScrollSpy({
-    activeClassName: '--scroll-spy-active',
-    contentElement: document.querySelector(
-      '[data-js="content"]'
-    ) as HTMLElement,
-    menuElement: document.querySelector('[data-js="menu"]') as HTMLDivElement,
-    scrollMarginTopOffset: 40,
-    topBarElement: document.querySelector('[data-js="top-bar"]') as HTMLElement
-  })
-
-  const titleLinkElement = document.querySelector(
-    '[data-js="title-link"]'
-  ) as HTMLElement
-  titleLinkElement.addEventListener('click', function (event: MouseEvent) {
-    if (event.metaKey === true || event.shiftKey === true) {
-      return
-    }
-    event.preventDefault()
-    history.pushState(
-      '',
-      document.title,
-      `${window.location.pathname}${window.location.search}`
+  const contentElement = document.querySelector<HTMLDivElement>(
+    '[data-js="content"]'
+  )
+  const topBarElement = document.querySelector<HTMLDivElement>(
+    '[data-js="top-bar"]'
+  )
+  const topBarMenuToggleButtonElement =
+    document.querySelector<HTMLButtonElement>(
+      '[data-js="top-bar-menu-toggle-button"]'
     )
-    window.scrollTo({ top: 0 })
-  })
-}
+  const topBarTitleLinkElement = document.querySelector<HTMLAnchorElement>(
+    '[data-js="top-bar-title-link"]'
+  )
+  const topBarSectionsElement = document.querySelector<HTMLDivElement>(
+    '[data-js="top-bar-sections"]'
+  )
+  const menuElement = document.querySelector<HTMLDivElement>('[data-js="menu"]')
 
+  if (topBarMenuToggleButtonElement !== null) {
+    setUpTopBarMenuToggleButton({
+      breakpoint: 1600,
+      topBarMenuToggleButtonElement,
+      visibleClassName: '--menu-visible'
+    })
+  }
+  if (menuElement !== null && topBarTitleLinkElement !== null) {
+    setUpTopBarTitleLink({
+      menuElement,
+      topBarTitleLinkElement
+    })
+  }
+  if (menuElement !== null && topBarSectionsElement !== null) {
+    setUpMenu({
+      menuElement,
+      topBarSectionsElement
+    })
+  }
+  if (
+    menuElement !== null &&
+    contentElement !== null &&
+    topBarElement !== null
+  ) {
+    setUpScrollSpy({
+      activeClassName: '--scroll-spy-active',
+      contentElement,
+      menuElement,
+      scrollMarginTopOffset: 40,
+      topBarElement
+    })
+  }
+}
 main()

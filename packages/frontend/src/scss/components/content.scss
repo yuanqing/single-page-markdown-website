@@ -104,6 +104,22 @@
   margin-top: var(--size-4);
 }
 
+.content blockquote {
+  position: relative;
+  padding: var(--size-2) 0 var(--size-2) var(--size-7);
+  color: var(--color-fg-3);
+}
+.content blockquote:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 2px;
+  display: block;
+  width: 1px;
+  background-color: var(--color-fg-5);
+  content: '';
+}
+
 .content li {
   position: relative;
   padding-left: var(--size-7);
@@ -128,20 +144,8 @@
   font-variant-numeric: tabular-nums;
 }
 
-.content blockquote {
-  position: relative;
-  padding: var(--size-2) 0 var(--size-2) var(--size-7);
+.content table th {
   color: var(--color-fg-3);
-}
-.content blockquote:before {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 2px;
-  display: block;
-  width: 1px;
-  background-color: var(--color-fg-5);
-  content: '';
 }
 
 .content img {

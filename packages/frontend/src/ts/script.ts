@@ -25,6 +25,9 @@ function main(): void {
   ) as HTMLElement
   // Intercept clicks on the link in `titleElement`
   titleElement.addEventListener('click', function (event: MouseEvent) {
+    if (event.metaKey === true || event.shiftKey === true) {
+      return
+    }
     event.preventDefault()
     history.pushState(
       '',

@@ -21,8 +21,11 @@ export function setUpMenu(menuElement: HTMLDivElement): void {
 
   function handleClick(event: MouseEvent): void {
     const eventTarget = event.target as HTMLElement
+    if (eventTarget.tagName !== 'A') {
+      return
+    }
     // Read the `href` attribute off the element that was clicked
-    const href = eventTarget.tagName === 'A' && eventTarget.getAttribute('href')
+    const href = eventTarget.getAttribute('href')
     if (href === null) {
       return
     }

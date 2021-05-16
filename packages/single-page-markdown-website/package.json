@@ -23,18 +23,18 @@
     "node": ">=12.20"
   },
   "files": [
-    "./lib"
+    "lib"
   ],
   "bin": {
     "single-page-markdown-website": "./lib/cli.js"
   },
   "scripts": {
     "build": "yarn run clean && tsc --build",
-    "clean": "rm -rf './*.log' ./lib",
-    "fix": "eslint --fix './src/**/*.ts'",
-    "lint": "eslint './src/**/*.ts'",
+    "clean": "rm -rf '*.log' lib",
+    "fix": "eslint --fix 'src/**/*.ts'",
+    "lint": "eslint 'src/**/*.ts'",
     "prepublishOnly": "yarn run build && cp ../../README.md ./",
-    "watch": "yarn run clean && chokidar --command 'cd ../.. && TS_NODE_PROJECT=./packages/single-page-markdown-website/tsconfig.json node --loader ts-node/esm -- ./packages/single-page-markdown-website/src/cli.ts ./README.md' --initial --silent ../../package.json ../../README.md '../../media/**/*' '../frontend/lib/**/*' './src/**/*.ts'"
+    "watch": "yarn run clean && chokidar --command 'cd ../.. && TS_NODE_PROJECT=packages/single-page-markdown-website/tsconfig.json node --loader ts-node/esm -- packages/single-page-markdown-website/src/cli.ts README.md' --initial --silent ../../package.json ../../README.md '../../media/**/*' '../frontend/lib/**/*' 'src/**/*.ts'"
   },
   "dependencies": {
     "@single-page-markdown-website/frontend": "^0.0.15",

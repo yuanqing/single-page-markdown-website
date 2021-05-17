@@ -1,6 +1,6 @@
 {
   "name": "@single-page-markdown-website/frontend",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "publishConfig": {
     "access": "public"
   },

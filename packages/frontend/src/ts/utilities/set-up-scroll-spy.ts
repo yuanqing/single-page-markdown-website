@@ -1,3 +1,5 @@
+const SCROLL_Y_ALLOWANCE = 2
+
 export function setUpScrollSpy(options: {
   activeClassName: string
   contentElement: HTMLDivElement
@@ -79,7 +81,7 @@ function computeActiveId(options: {
   const reversed = idElements.slice().reverse()
   const scrollY = window.scrollY
   for (const element of reversed) {
-    if (element.offsetTop - scrollMarginTop <= scrollY) {
+    if (element.offsetTop - scrollMarginTop - SCROLL_Y_ALLOWANCE <= scrollY) {
       return element.getAttribute('id')
     }
   }

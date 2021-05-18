@@ -11,7 +11,7 @@
     "publish": "lerna publish from-package",
     "reset": "yarn run clean && lerna clean --yes && rm -rf node_modules yarn.lock && yarn install",
     "test": "lerna run test",
-    "version": "lerna version",
+    "version": "lerna version --force-publish",
     "website-build": "yarn run website-clean && yarn run build && yarn run docs && node packages/single-page-markdown-website/lib/cli.js README.md",
     "website-clean": "rm -rf build"
   },

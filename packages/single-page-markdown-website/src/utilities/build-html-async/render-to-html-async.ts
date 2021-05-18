@@ -5,6 +5,7 @@ import rehypeHighlightJs from 'rehype-highlight'
 import rehypeSlug from 'rehype-slug'
 import rehypeStringify from 'rehype-stringify'
 import remarkEmoji from 'remark-emoji'
+import remarkExternalLinks from 'remark-external-links'
 import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
 import remarkToRehype from 'remark-rehype'
@@ -62,6 +63,7 @@ async function renderMarkdownToHtmlAsync(content: string): Promise<string> {
     unified()
       .use(remarkParse)
       .use(remarkGfm)
+      .use(remarkExternalLinks, { rel: 'nofollow', target: '_blank' })
       .use(remarkEmoji)
       .use(remarkToRehype, {
         allowDangerousHtml: true

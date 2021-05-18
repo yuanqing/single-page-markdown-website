@@ -47,7 +47,7 @@ export async function renderToHtmlAsync(
       sections === null ? null : await renderMarkdownToHtmlAsync(sections),
     socialMediaPreviewImage,
     title,
-    titleUrl: baseUrl === 'null' ? 'index.html' : baseUrl,
+    titleUrl: baseUrl === null ? 'index.html' : baseUrl,
     toc: toc === null ? null : await renderMarkdownToHtmlAsync(toc),
     version
   })

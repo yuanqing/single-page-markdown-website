@@ -9,7 +9,8 @@ import remarkExternalLinks from 'remark-external-links'
 import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
 import remarkToRehype from 'remark-rehype'
-import unified from 'unified'
+import { unified } from 'unified'
+import { VFile } from 'vfile'
 
 import { Link } from '../../types/types.js'
 import { readFrontendLibFileAsync } from './read-frontend-lib-file-async.js'
@@ -96,12 +97,14 @@ async function renderMarkdownToHtmlAsync(content: string): Promise<string> {
       .use(rehypeStringify, {
         allowDangerousHtml: true
       })
-      .process(content, function (error, file) {
-        if (error) {
+      .process(content)
+      .then(
+        function (file: VFile) {
+          resolve(file.toString())
+        },
+        function (error: Error) {
           reject(error)
-          return
         }
-        resolve(file.toString())
-      })
+      )
   })
 }

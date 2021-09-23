@@ -97,7 +97,7 @@ async function main() {
         await onChangeAsync()
       })
     }
-  } catch (error) {
+  } catch (error: any) {
     log.error(error.message)
     process.exit(1)
   }

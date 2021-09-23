@@ -1,8 +1,9 @@
+import { ListItem, Root } from 'mdast'
 import { toc } from 'mdast-util-toc'
 import remarkParse from 'remark-parse'
 import remarkStringify from 'remark-stringify'
 import remarkStripBadges from 'remark-strip-badges'
-import unified from 'unified'
+import { Plugin, unified } from 'unified'
 import unist from 'unist'
 
 export async function createMarkdownTocAsync(
@@ -23,10 +24,10 @@ type RemarkExtractTocOptions = {
   sections: boolean
 }
 
-const remarkExtractToc: unified.Plugin<[RemarkExtractTocOptions]> = function (
+const remarkExtractToc: Plugin<[RemarkExtractTocOptions], Root> = function (
   options: RemarkExtractTocOptions
 ) {
-  return function (node: unist.Node) {
+  return function (node: Root) {
     const { map } = toc(node, {
       tight: true
     })
@@ -54,7 +55,7 @@ const remarkExtractToc: unified.Plugin<[RemarkExtractTocOptions]> = function (
       delete node.position
       return
     }
-    const result: Array<unist.Node> = []
+    const result: Array<ListItem> = []
     for (const node of map.children[0].children) {
       if (node.type === 'list') {
         for (const child of node.children) {

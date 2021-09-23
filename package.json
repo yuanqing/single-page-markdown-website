@@ -10,18 +10,17 @@
     "postinstall": "simple-git-hooks && yarn run build",
     "publish": "lerna publish from-package",
     "reset": "yarn run clean && lerna clean --yes && rm -rf node_modules yarn.lock && yarn install",
-    "test": "lerna run test",
     "version": "lerna version --force-publish",
     "website-build": "yarn run website-clean && yarn run build && yarn run docs && node packages/single-page-markdown-website/lib/cli.js README.md",
     "website-clean": "rm -rf build"
   },
   "devDependencies": {
-    "chokidar-cli": "^2.1.0",
+    "chokidar-cli": "^3.0.0",
     "lerna": "^4.0.0",
-    "lint-staged": "^11.0.0",
+    "lint-staged": "^11.1.2",
     "markdown-interpolate": "^0.0.7",
-    "simple-git-hooks": "^2.4.1",
-    "ts-node": "^9.1.1"
+    "simple-git-hooks": "^2.6.1",
+    "ts-node": "^10.2.1"
   },
   "lint-staged": {
     "*.ts": [

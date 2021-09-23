@@ -1,13 +1,13 @@
 import fs from 'fs-extra'
-import globby from 'globby'
+import { globby } from 'globby'
 import isUrl from 'is-url'
+import { Content, Root } from 'mdast'
 import path from 'path'
 import remarkParse from 'remark-parse'
 import stringify from 'remark-stringify'
-import unified from 'unified'
-import unist from 'unist'
+import { Plugin, unified } from 'unified'
 import { visit } from 'unist-util-visit'
-import vfile from 'vfile'
+import { VFile } from 'vfile'
 
 import { Images } from '../types/types.js'
 import { resolveNewImageFilePath } from './resolve-new-image-file-path.js'
@@ -45,10 +45,10 @@ async function readMarkdownFileAsync(
     .use(remarkReplaceLocalImageFilePaths, { images })
     .use(remarkTransclude)
     .use(stringify)
-    .process(vfile({ contents: value, path: filePath }))
+    .process(new VFile({ path: filePath, value }))
   return {
     fileContent: file.toString(),
-    fileImages: file.images as Images
+    fileImages: file.data.images as Images
   }
 }
 
@@ -58,11 +58,12 @@ const imageElementSrcRegex = /(<img src=)"([^"]+)"/g
 type RemarkReplaceLocalImageFilePaths = {
   images: Images
 }
-const remarkReplaceLocalImageFilePaths: unified.Plugin<
-  [RemarkReplaceLocalImageFilePaths]
+const remarkReplaceLocalImageFilePaths: Plugin<
+  [RemarkReplaceLocalImageFilePaths],
+  Root
 > = function (options: RemarkReplaceLocalImageFilePaths) {
-  return function (node: unist.Node, file: vfile.VFile) {
-    const directory = path.dirname(file.path as string)
+  return function (node: Root, file: VFile) {
+    const directory = path.dirname(file.path)
     function createNewFilePath(imageSrc: string) {
       const originalFilePath = path.join(
         imageSrc[0] === '/' ? process.cwd() : directory,
@@ -75,40 +76,45 @@ const remarkReplaceLocalImageFilePaths: unified.Plugin<
       options.images[originalFilePath] = newFilePath
       return newFilePath
     }
-    visit(node, ['html', 'image'], function (node: unist.Node) {
-      if (node.type === 'image') {
-        const imageSrc = node.url as string
-        if (isUrl(imageSrc) === true) {
+    visit<Root, Array<string>>(
+      node,
+      ['html', 'image'],
+      function (node: Root | Content) {
+        if (node.type === 'image') {
+          const imageSrc = node.url
+          if (isUrl(imageSrc) === true) {
+            return
+          }
+          node.url = createNewFilePath(imageSrc)
           return
         }
-        node.url = createNewFilePath(imageSrc)
-        return
-      }
-      const html = node.value as string
-      node.value = html.replace(
-        imageElementSrcRegex,
-        function (match, prefix, imageSrc) {
-          if (isUrl(imageSrc) === true) {
-            return match
-          }
-          const filePath = createNewFilePath(imageSrc)
-          return `${prefix}"${filePath}"`
+        if (node.type === 'html') {
+          const html = node.value as string
+          node.value = html.replace(
+            imageElementSrcRegex,
+            function (match, prefix, imageSrc) {
+              if (isUrl(imageSrc) === true) {
+                return match
+              }
+              const filePath = createNewFilePath(imageSrc)
+              return `${prefix}"${filePath}"`
+            }
+          )
         }
-      )
-    })
-    file.images = options.images
+      }
+    )
+    file.data.images = options.images
   }
 }
 
-const remarkTransclude: unified.Plugin<[]> = function () {
-  return async function (node: unist.Node, file: vfile.VFile) {
-    if (typeof file.images === 'undefined') {
-      throw new Error('`file.images` is `undefined`')
+const remarkTransclude: Plugin<[], Root> = function () {
+  return async function (node: Root, file: VFile) {
+    if (typeof file.data.images === 'undefined') {
+      throw new Error('`file.data.images` is `undefined`')
     }
-    const fileImages = file.images as Images
-    let result: Array<unist.Node> = []
-    for (const childNode of (node as unist.Parent)
-      .children as Array<unist.Parent>) {
+    const fileImages = file.data.images as Images
+    let result: Array<Content> = []
+    for (const childNode of node.children) {
       if (
         childNode.type === 'paragraph' &&
         childNode.children.length === 1 &&
@@ -123,8 +129,8 @@ const remarkTransclude: unified.Plugin<[]> = function () {
             [glob],
             fileImages
           )
-          const tree = unified().use(remarkParse).parse(files.join('\n'))
-          result = result.concat((tree as unist.Parent).children)
+          const tree: Root = unified().use(remarkParse).parse(files.join('\n'))
+          result = result.concat(tree.children)
           for (const originalFilePath in images) {
             fileImages[originalFilePath] = images[originalFilePath]
           }

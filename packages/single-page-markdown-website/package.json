@@ -63,7 +63,7 @@
     "remark-strip-badges": "^6.0.0",
     "unified": "^10.1.0",
     "unist-util-visit": "^4.1.0",
-    "vfile": "5.1.0"
+    "vfile": "^5.1.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",

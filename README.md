@@ -15,7 +15,7 @@
 *Requires [Node.js](https://nodejs.org).*
 
 ```sh
-$ npx single-page-markdown-website '*.md' --open
+$ npx --yes -- single-page-markdown-website '*.md' --open
 ```
 
 The above command does the following:
@@ -148,7 +148,7 @@ Deploy your single-page website to [GitHub Pages](https://docs.github.com/en/fre
 2. Use the [`gh-pages`](https://github.com/tschaub/gh-pages) CLI to deploy the `./build` directory to the `gh-pages` branch:
 
     ```sh
-    $ npx gh-pages --dist build
+    $ npx --yes -- gh-pages --dist build
     ```
 
     Then, set the `gh-pages` branch as the publishing source in your GitHub repository settings.

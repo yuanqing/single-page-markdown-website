@@ -43,8 +43,13 @@ export function setUpMenu(menuElement: HTMLDivElement): void {
   }
   window.addEventListener('click', handleClick)
 
-  const hash = window.location.hash
-  if (hash !== '') {
-    scrollToActiveMenuElement(hash)
+  function handlePopState() {
+    const hash = window.location.hash
+    if (hash !== '') {
+      scrollToActiveMenuElement(hash)
+    }
   }
+  window.addEventListener('popstate', handlePopState)
+
+  handlePopState()
 }

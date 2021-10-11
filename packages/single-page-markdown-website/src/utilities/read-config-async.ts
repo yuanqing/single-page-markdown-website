@@ -8,9 +8,10 @@ const configKey = 'single-page-markdown-website'
 const defaultConfig = {
   baseUrl: null,
   description: null,
+  faviconImage: null,
   links: [],
   sections: true,
-  socialMediaPreviewImage: null,
+  shareImage: null,
   title: null,
   toc: true,
   version: null

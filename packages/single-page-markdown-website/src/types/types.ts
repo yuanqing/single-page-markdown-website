@@ -5,12 +5,13 @@ export interface Options extends Config {
 
 export interface Config {
   baseUrl: null | string
-  title: null | string
   description: null | string
-  toc: boolean
-  sections: boolean
+  faviconImage: null | string
   links: Array<Link>
-  socialMediaPreviewImage: null | string
+  sections: boolean
+  shareImage: null | string
+  title: null | string
+  toc: boolean
   version: null | string
 }
 

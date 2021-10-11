@@ -20,19 +20,21 @@ export async function renderToHtmlAsync(
   {
     baseUrl,
     description,
+    faviconImage,
     links,
     sections,
-    socialMediaPreviewImage,
+    shareImage,
     title,
     toc,
     version
   }: {
     baseUrl: null | string
     description: null | string
+    faviconImage: null | string
     title: null | string
     links: Array<Link>
     sections: null | string
-    socialMediaPreviewImage: null | string
+    shareImage: null | string
     toc: null | string
     version: null | string
   }
@@ -42,11 +44,12 @@ export async function renderToHtmlAsync(
     content: await renderMarkdownToHtmlAsync(content),
     css: await readFrontendLibFileAsync('style.css'),
     description,
+    faviconImage,
     js: await readFrontendLibFileAsync('script.js'),
     links,
     sections:
       sections === null ? null : await renderMarkdownToHtmlAsync(sections),
-    socialMediaPreviewImage,
+    shareImage,
     title,
     titleUrl: baseUrl === null ? 'index.html' : baseUrl,
     toc: toc === null ? null : await renderMarkdownToHtmlAsync(toc),

@@ -11,25 +11,32 @@ export async function buildAsync(
   options: Options
 ): Promise<string> {
   const { files, images } = await readMarkdownFilesAsync(globs)
-  if (
-    options.socialMediaPreviewImage !== null &&
-    isUrl(options.socialMediaPreviewImage) === false
-  ) {
-    const socialMediaPreviewImageFilePath = resolveNewImageFilePath(
-      options.socialMediaPreviewImage,
+  if (options.shareImage !== null && isUrl(options.shareImage) === false) {
+    const shareImageFilePath = resolveNewImageFilePath(
+      options.shareImage,
       Object.values(images)
     )
-    images[options.socialMediaPreviewImage] = socialMediaPreviewImageFilePath
-    options.socialMediaPreviewImage = [
-      options.baseUrl === null ? '' : options.baseUrl,
-      socialMediaPreviewImageFilePath
-    ]
-      .join('/')
-      .replace(/(?<!:)\/+/g, '/')
+    images[options.shareImage] = shareImageFilePath
+    options.shareImage = createImageUrl(shareImageFilePath, options.baseUrl)
+  }
+  if (options.faviconImage !== null && isUrl(options.faviconImage) === false) {
+    const faviconImageFilePath = resolveNewImageFilePath(
+      options.faviconImage,
+      Object.values(images)
+    )
+    images[options.faviconImage] = faviconImageFilePath
+    options.faviconImage = createImageUrl(faviconImageFilePath, options.baseUrl)
   }
   await copyImageFilesAsync(images, {
     outputDirectory: options.outputDirectory
   })
   const htmlFilePath = await buildHtmlAsync(files.join('\n\n'), options)
   return htmlFilePath
+}
+
+function createImageUrl(imageFilePath: string, baseUrl: null | string): string {
+  if (baseUrl === null) {
+    return imageFilePath
+  }
+  return [baseUrl, imageFilePath].join('/').replace(/(?<!:)\/+/g, '/')
 }

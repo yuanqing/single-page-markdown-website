@@ -24,9 +24,10 @@ export async function buildHtmlAsync(
   const html = await renderToHtmlAsync(content, {
     baseUrl: options.baseUrl,
     description: options.description,
+    faviconImage: options.faviconImage,
     links: options.links,
     sections,
-    socialMediaPreviewImage: options.socialMediaPreviewImage,
+    shareImage: options.shareImage,
     title: options.title,
     toc,
     version: options.version

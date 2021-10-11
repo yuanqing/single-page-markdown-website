@@ -40,13 +40,14 @@
     "baseUrl": "https://yuanqing.github.io/single-page-markdown-website/",
     "title": "Single-Page Markdown Website",
     "description": "Create a nice single-page documentation website from one or more Markdown files",
+    "faviconImage": "media/favicon.svg",
     "links": [
       {
         "text": "GitHub",
         "url": "https://github.com/yuanqing/single-page-markdown-website"
       }
     ],
-    "socialMediaPreviewImage": "media/share.png"
+    "shareImage": "media/share.png"
   },
   "workspaces": [
     "packages/*"

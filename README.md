@@ -45,7 +45,7 @@ Configuration is via the **`"single-page-markdown-website"`** key of your `packa
         "url": "https://github.com/yuanqing/single-page-markdown-website"
       }
     ],
-    "socialMediaPreviewImage": "media/share.png"
+    "shareImage": "media/share.png"
   }
 }
 ```
@@ -98,11 +98,19 @@ A list of links to add to the menu.
 
 - Defaults to `[{ text: 'GitHub', url: packageJson.homepage }]`, else `null`
 
-## `"socialMediaPreviewImage"`
+## `"faviconImage"`
 
 (*`null`* or *`string`*)
 
-The URL or file path of the social media preview image to use for the website.
+The URL or file path of the favicon to use.
+
+- Defaults to `null`
+
+## `"shareImage"`
+
+(*`null`* or *`string`*)
+
+The URL or file path of the share image to use.
 
 - Defaults to `null`
 

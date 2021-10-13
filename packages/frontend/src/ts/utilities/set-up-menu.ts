@@ -1,12 +1,23 @@
 import { findParentElement } from './find-parent-element'
 
-export function setUpMenu(menuElement: HTMLDivElement): void {
+export function setUpMenu(
+  menuElement: HTMLDivElement,
+  topBarElement: null | HTMLDivElement
+): void {
   function scrollToActiveMenuElement(href: string): void {
-    // Find the element in `menuElement` with the same `href`, then scroll to it
+    // Find the element in `menuElement` with the same `href`
     const activeMenuElement = menuElement.querySelector<HTMLAnchorElement>(
       `[href="${href}"]`
     )
+    // Exit if invalid `href`
     if (activeMenuElement === null) {
+      return
+    }
+    const rect = activeMenuElement.getBoundingClientRect()
+    const top = topBarElement === null ? 0 : topBarElement.offsetHeight
+    const bottom = window.innerHeight
+    // Exit if already in viewport
+    if (rect.top >= top && rect.bottom <= bottom) {
       return
     }
     const padding =

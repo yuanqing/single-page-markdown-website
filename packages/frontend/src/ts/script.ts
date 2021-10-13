@@ -33,7 +33,7 @@ function main(): void {
     })
   }
   if (menuElement !== null) {
-    setUpMenu(menuElement)
+    setUpMenu(menuElement, topBarElement)
   }
   if (
     menuElement !== null &&

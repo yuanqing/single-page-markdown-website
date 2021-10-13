@@ -45,6 +45,7 @@ Configuration is via the **`"single-page-markdown-website"`** key of your `packa
         "url": "https://github.com/yuanqing/single-page-markdown-website"
       }
     ],
+    "faviconImage": "media/favicon.svg",
     "shareImage": "media/share.png"
   }
 }
@@ -102,7 +103,7 @@ A list of links to add to the menu.
 
 (*`null`* or *`string`*)
 
-The URL or file path of the favicon to use.
+The URL or file path of the favicon image to use.
 
 - Defaults to `null`
 

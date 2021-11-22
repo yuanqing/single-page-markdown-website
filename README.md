@@ -162,6 +162,17 @@ Deploy your single-page website to [GitHub Pages](https://docs.github.com/en/fre
 
     Then, set the `gh-pages` branch as the publishing source in your GitHub repository settings.
 
+## Deploying to Cloudflare Pages
+
+To deploy your website to [Cloudflare Pages](https://pages.cloudflare.com/), use the following settings in your build:
+```
+Build command: exit 0
+Build output directory: /build
+Root directory: /
+```
+
+
+
 # CLI
 
 <!-- ``` markdown-interpolate: node packages/single-page-markdown-website/lib/cli.js --help -->

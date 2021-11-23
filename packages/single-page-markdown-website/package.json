@@ -34,7 +34,7 @@
     "fix": "eslint --fix 'src/**/*.ts'",
     "lint": "eslint 'src/**/*.ts'",
     "prepublishOnly": "yarn run build && cp ../../README.md ./",
-    "watch": "yarn run clean && chokidar --command 'cd ../.. && TS_NODE_PROJECT=packages/single-page-markdown-website/tsconfig.json node --loader ts-node/esm -- packages/single-page-markdown-website/src/cli.ts README.md' --initial --silent ../../package.json ../../README.md '../../media/**/*' '../frontend/lib/**/*' 'src/**/*.ts'"
+    "watch": "yarn run clean && chokidar --command 'cd ../.. && TS_NODE_PROJECT=packages/single-page-markdown-website/tsconfig.json node --loader tsm -- packages/single-page-markdown-website/src/cli.ts README.md' --initial --silent ../../package.json ../../README.md '../../media/**/*' '../frontend/lib/**/*' 'src/**/*.ts'"
   },
   "dependencies": {
     "@single-page-markdown-website/frontend": "^0.0.24",
@@ -75,8 +75,8 @@
     "eslint": "^7.32.0",
     "eslint-config-yuanqing": "^0.0.5",
     "prettier": "^2.4.1",
-    "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
+    "tsm": "^2.1.4",
   },
   "eslintConfig": {
     "extends": "eslint-config-yuanqing"

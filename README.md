@@ -150,9 +150,9 @@ You can also specify a glob to include multiple files:
 
 ## Deploying to GitHub Pages
 
-Deploy your single-page website to [GitHub Pages](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) via one of the following two ways:
+Deploy your single-page website to [GitHub Pages](https://pages.github.com/) via one of the following two ways:
 
-1. Commit the `./build` directory and push your changes. Then, set the `./build` directory as the publishing source in your GitHub repository settings.
+1. Commit the `./build` directory and push your changes. Then, set the `./build` directory as the [publishing source](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) in your GitHub repository settings.
 
 2. Use the [`gh-pages`](https://github.com/tschaub/gh-pages) CLI to deploy the `./build` directory to the `gh-pages` branch:
 
@@ -164,14 +164,11 @@ Deploy your single-page website to [GitHub Pages](https://docs.github.com/en/fre
 
 ## Deploying to Cloudflare Pages
 
-To deploy your website to [Cloudflare Pages](https://pages.cloudflare.com/), use the following settings in your build:
-```
-Build command: exit 0
-Build output directory: /build
-Root directory: /
-```
+To deploy your single-page website to [Cloudflare Pages](https://pages.cloudflare.com/), use the following settings in your [build configuration](https://developers.cloudflare.com/pages/get-started#configuring-your-deployment):
 
-
+- Build command: `exit 0`
+- Build output directory: `/build`
+- Root directory: `/`
 
 # CLI
 

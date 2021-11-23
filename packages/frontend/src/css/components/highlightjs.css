@@ -47,17 +47,16 @@
 .hljs-name,
 .hljs-number,
 .hljs-regexp,
-.hljs-selector-attr, // css
-.hljs-selector-tag // css
-{
+.hljs-selector-attr, /* css */
+.hljs-selector-tag /* css */ {
   color: var(--color-accent);
 }
 
 .hljs-deletion {
-  color: var(--color-deletion-fg);
   background-color: var(--color-deletion-bg);
+  color: var(--color-deletion-fg);
 }
 .hljs-addition {
-  color: var(--color-addition-fg);
   background-color: var(--color-addition-bg);
+  color: var(--color-addition-fg);
 }

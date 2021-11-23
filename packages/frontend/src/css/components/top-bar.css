@@ -1,15 +1,15 @@
 .top-bar {
   position: fixed;
+  z-index: var(--z-index-1);
   top: 0;
   right: 0;
   left: 0;
-  z-index: var(--z-index-1);
   display: flex;
-  overflow-x: auto;
+  background-color: var(--color-bg-1);
   font-size: var(--font-size-md);
   line-height: var(--top-bar-height);
+  overflow-x: auto;
   white-space: nowrap;
-  background-color: var(--color-bg-1);
 }
 
 .top-bar:before {
@@ -35,22 +35,22 @@
   color: var(--color-fg-2);
 }
 .top-bar a:focus-visible {
-  color: var(--color-bg-1);
   background-color: var(--color-fg-1);
+  color: var(--color-bg-1);
   outline: 0;
 }
 .top-bar .--scroll-spy-active {
-  color: var(--color-fg-1);
   border-bottom: 1px solid var(--color-fg-1);
+  color: var(--color-fg-1);
 }
 
 .top-bar__menu-toggle-button {
-  position: relative; // stack this above `.top-bar__title`
+  position: relative; /* stack this above `.top-bar__title` */
   display: flex;
-  align-items: center;
   height: var(--top-bar-height);
-  margin-right: calc(-1 * var(--size-2));
+  align-items: center;
   padding: 0 var(--size-4);
+  margin-right: calc(-1 * var(--size-2));
   color: var(--color-fg-3);
   cursor: pointer;
 }
@@ -61,8 +61,8 @@
   outline: 0;
 }
 .top-bar__menu-toggle-button:focus-visible {
-  color: var(--color-bg-1);
   background-color: var(--color-fg-1);
+  color: var(--color-bg-1);
   outline: 0;
 }
 .top-bar__menu-toggle-button-menu-svg,
@@ -100,7 +100,7 @@
   display: none;
 }
 
-@media (min-width: $breakpoint-lg) {
+@media (min-width: 960px) {
   .top-bar {
     font-size: var(--font-size-sm);
   }
@@ -120,7 +120,7 @@
   }
 }
 
-@media (min-width: $breakpoint-xl) {
+@media (min-width: 1280px) {
   .top-bar__menu-toggle-button {
     display: none;
   }

@@ -5,12 +5,12 @@
   --base-font-size-xl: 20px;
   --border-radius: 0.25rem;
   --color-bg-1: #fff;
-  --color-bg-2: #f5f5f5; // 96%
+  --color-bg-2: #f5f5f5; /* 96% */
   --color-fg-1: #000;
-  --color-fg-2: #303030; // 80%
-  --color-fg-3: #7f7f7f; // 50%
-  --color-fg-4: #a6a6a6; // 35%
-  --color-fg-5: #ccc; // 20%
+  --color-fg-2: #303030; /* 80% */
+  --color-fg-3: #7f7f7f; /* 50% */
+  --color-fg-4: #a6a6a6; /* 35% */
+  --color-fg-5: #ccc; /* 20% */
   --color-accent: #946709;
   --color-addition-fg: #22863a;
   --color-addition-bg: #f0fff4;
@@ -43,7 +43,7 @@
   --size-24: 6rem;
   --z-index-1: 1;
 
-  // Dimensions
+  /* Dimensions */
   --scroll-margin-top: calc(var(--top-bar-height) + 40px);
   --toc-width: 16rem;
   --top-bar-height: 3rem;
@@ -53,12 +53,12 @@
   :root {
     color-scheme: dark;
     --color-bg-1: #000;
-    --color-bg-2: #141414; // 92%
+    --color-bg-2: #141414; /* 92% */
     --color-fg-1: #fff;
-    --color-fg-2: #ccc; // 80%
-    --color-fg-3: #7f7f7f; // 50%
-    --color-fg-4: #595959; // 35%
-    --color-fg-5: #333; // 20%
+    --color-fg-2: #ccc; /* 80% */
+    --color-fg-3: #7f7f7f; /* 50% */
+    --color-fg-4: #595959; /* 35% */
+    --color-fg-5: #333; /* 20% */
     --color-accent: #f7eab2;
     --color-addition-fg: #aff5b4;
     --color-addition-bg: #033a16;

@@ -1,20 +1,18 @@
-@import './breakpoints';
-
 html {
   font-size: var(--base-font-size-sm);
 }
 
 body {
+  background-color: var(--color-bg-1);
   color: var(--color-fg-1);
   font-family: var(--font-family);
-  background-color: var(--color-bg-1);
 }
 
 .--menu-visible {
   overflow: hidden;
 }
 
-@media (min-width: $breakpoint-md) {
+@media (min-width: 640px) {
   html {
     font-size: var(--base-font-size-md);
   }
@@ -23,13 +21,13 @@ body {
   }
 }
 
-@media (min-width: $breakpoint-lg) {
+@media (min-width: 960px) {
   html {
     font-size: var(--base-font-size-lg);
   }
 }
 
-@media (min-width: $breakpoint-xl) {
+@media (min-width: 1280px) {
   html {
     font-size: var(--base-font-size-xl);
   }

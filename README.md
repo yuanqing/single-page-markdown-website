@@ -8,7 +8,7 @@
 - Render a table of contents, shortcuts to the top-level sections, and custom links
 - Include the contents of other Markdown files using a special syntax
 - Responsive from mobile and up
-- Dark mode
+- Dark mode (follows system settings)
 
 # Quick start
 
@@ -20,8 +20,8 @@ $ npx --yes -- single-page-markdown-website '*.md' --open
 
 The above command does the following:
 
-- Concatenates the given globs of Markdown files (`'*.md'`) and renders the result as a single-page website to `build/index.html`.
-- Copies any local image file referenced in the Markdown to `build/images`.
+- Concatenates the given globs of Markdown files (`'*.md'`) and renders the result as a single-page website to `./build/index.html`.
+- Copies any local image file referenced in the Markdown to `./build/images`.
 - Opens the rendered page in your default web browser.
 
 # Configuration
